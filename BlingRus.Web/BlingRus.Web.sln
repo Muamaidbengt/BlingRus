@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlingRus.Web", "BlingRus.Web\BlingRus.Web.csproj", "{3ECDC3B7-402F-4038-BAEB-BF31CE8A4EFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlingRus.Domain", "..\BlingRus.Domain\BlingRus.Domain.csproj", "{1BAB8D2A-BAC0-482B-98FF-8AA332E1E3E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3ECDC3B7-402F-4038-BAEB-BF31CE8A4EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ECDC3B7-402F-4038-BAEB-BF31CE8A4EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ECDC3B7-402F-4038-BAEB-BF31CE8A4EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ECDC3B7-402F-4038-BAEB-BF31CE8A4EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BAB8D2A-BAC0-482B-98FF-8AA332E1E3E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BAB8D2A-BAC0-482B-98FF-8AA332E1E3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BAB8D2A-BAC0-482B-98FF-8AA332E1E3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BAB8D2A-BAC0-482B-98FF-8AA332E1E3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
