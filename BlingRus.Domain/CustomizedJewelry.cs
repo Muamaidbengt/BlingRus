@@ -12,9 +12,12 @@ namespace BlingRus.Domain
 
         public string Text { get; }
 
-        public decimal Price => Jewelry.Price + Text.Length > 10 ? 50 : 0;
-        public decimal ShippingCost => Jewelry.ShippingCost;
+        public decimal UnitCost => Jewelry.UnitCost + Text.Length > 10 ? 50 : 0;
+        public decimal UnitShippingCost => Jewelry.UnitShippingCost;
+
+        public string Image => Jewelry.Image;
 
         public T Jewelry { get; }
+        public string Description => $"{Jewelry.Description} with the text: \"{Text}\"";
     }
 }

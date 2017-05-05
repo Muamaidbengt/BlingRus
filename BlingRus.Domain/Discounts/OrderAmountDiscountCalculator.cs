@@ -24,7 +24,7 @@ namespace BlingRus.Domain.Discounts
                 return;
             var discountedAmount = order.TotalGoodsValue * Percent / 100;
 
-            order.Apply(new Discount($"Supersaver deal! {Percent}% off since you ordered more than {MinimumAmount} items.", discountedAmount));
+            order.Apply(new OrderDiscount($"Supersaver deal! {Percent}% off since you ordered more than {MinimumAmount} items.", discountedAmount));
         }
     }
 }

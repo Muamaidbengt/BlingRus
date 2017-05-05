@@ -1,8 +1,8 @@
 ﻿namespace BlingRus.Domain
 {
-    public interface IOrderable
+    public interface IOrderable : IHasCost
     {
-        decimal Price { get; }
-        decimal ShippingCost { get; }
+        string Image { get; }
+        string Description { get; }
     }
 }

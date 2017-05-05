@@ -1,7 +1,7 @@
 ﻿namespace BlingRus.Domain.Discounts
 {
-    public interface IDiscountable
+    public interface IDiscountable<in TDiscount>
     {
-        void Apply(Discount discount);
+        void Apply(TDiscount orderDiscount);
     }
 }

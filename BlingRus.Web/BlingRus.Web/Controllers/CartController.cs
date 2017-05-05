@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BlingRus.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.Controllers
@@ -6,18 +9,42 @@ namespace BlingRus.Web.Controllers
     [Route("api/[controller]")]
     public class CartController : Controller
     {
+        private readonly IShoppingContext _shoppingContext;
+        private readonly CheckoutService _checkoutService;
+        public CartController(IShoppingContext shoppingContext, CheckoutService checkoutService)
+        {
+            _shoppingContext = shoppingContext;
+            _checkoutService = checkoutService;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            var cart = new ShoppingCart();
+            cart.Add(6, new Jewelry("Bracelet", JewelrySize.Humongous, "foo.jpg"));
+
+            var order = _checkoutService.CalculateOrder(cart);
+
+            _shoppingContext.Add(order);
+            _shoppingContext.Save();
             return new string[] { "value1", "value2" };
+        }
+
+        [HttpGet("empty")]
+        public JsonResult Empty()
+        {
+            var cart = new ShoppingCart();
+            _shoppingContext.Add(cart);
+            _shoppingContext.Save();
+            return Json(cart);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public JsonResult Get(Guid id)
         {
-            return "value";
+            return Json(_shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id));
         }
 
         // POST api/values

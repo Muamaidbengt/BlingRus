@@ -1,29 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BlingRus.Domain.Discounts;
 
 namespace BlingRus.Domain
 {
-    public class OrderLine : IDiscountable
+    public class OrderLine : IDiscountable<LineDiscount>
     {
-        private readonly List<Discount> _discounts = new List<Discount>();
-        public IOrderable OrderedItem { get; }
-        public int AmountOrdered { get; }
-        public decimal GoodsValue => OrderedItem.Price * AmountOrdered;
-        public decimal ShippingCost => OrderedItem.ShippingCost * AmountOrdered;
-        public IEnumerable<Discount> EffectiveDiscounts => new List<Discount>(_discounts);
+        //public IOrderable OrderedItem { get; }
+        public int AmountOrdered { get; private set; }
+        public decimal UnitGoodsValue { get; private set; }
+        public decimal GoodsValue => AmountOrdered * UnitGoodsValue;
+        public decimal DiscountedAmount => EffectiveDiscounts.Sum(d => d.DiscountedAmount);
+        public decimal ShippingCost { get; private set; }
+        public List<LineDiscount> EffectiveDiscounts { get; private set; }
+        public string Description { get; private set; }
+        public Guid Id { get; private set; }
 
-        public OrderLine(IOrderable orderable, int amount)
+        protected OrderLine()
         {
-            if(amount < 0)
-                throw new ArgumentException("Amount cannot be negative");
-            AmountOrdered = amount;
-            OrderedItem = orderable;
+            
         }
 
-        public void Apply(Discount discount)
+        public OrderLine(string description, int amount, decimal unitCost, decimal unitShippingCost)
         {
-            _discounts.Add(discount);
+            if (amount < 0)
+                throw new ArgumentException("Amount cannot be negative");
+
+            Id = Guid.NewGuid();
+            EffectiveDiscounts = new List<LineDiscount>();
+            Description = description;
+            AmountOrdered = amount;
+            UnitGoodsValue = unitCost;
+            ShippingCost = unitShippingCost * AmountOrdered;
+        }
+
+        public void Apply(LineDiscount discount)
+        {
+            EffectiveDiscounts.Add(discount);
         }
     }
 }

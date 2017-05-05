@@ -10,11 +10,11 @@ namespace BlingRus.Domain
             var orderlines = new List<OrderLine>();
             var everyNthDiscount = new NthFreeDiscountCalculator(5);
             var orderamountDiscount = new OrderAmountDiscountCalculator(4, 10);
-            var freeShippingDiscount = new FreeShippingDiscount(250);
+            var freeShippingDiscount = new FreeShippingDiscountCalculator(250);
 
             foreach (var entry in cart.Contents)
             {
-                var line = new OrderLine(entry.Item, entry.Amount);
+                var line = new OrderLine(entry.Description, entry.Amount, entry.UnitCost, entry.UnitShippingCost);
                 everyNthDiscount.ApplyTo(line);
                 orderlines.Add(line);
             }
