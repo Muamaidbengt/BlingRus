@@ -3,5 +3,9 @@
 ################################################################################
 
 /BlingRus.Web/.vs
+/BlingRus.Web/BlingRus.Web/bin
 /BlingRus.Web/BlingRus.Web/obj
 /BlingRus.Domain/obj
+/BlingRus.Domain/bin
+/BlingRus.Domain.Tests/bin
+/BlingRus.Domain.Tests/obj
