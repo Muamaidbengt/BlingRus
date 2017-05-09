@@ -12,7 +12,7 @@ namespace BlingRus.Domain
 
         public string Text { get; }
 
-        public decimal UnitCost => Jewelry.UnitCost + Text.Length > 10 ? 50 : 0;
+        public decimal UnitCost => Jewelry.UnitCost + (Text.Length > 10 ? 50 : 0);
         public decimal UnitShippingCost => Jewelry.UnitShippingCost;
 
         public string Image => Jewelry.Image;

@@ -34,6 +34,6 @@ namespace BlingRus.Domain
         public List<OrderLine> OrderLines { get; set; }
         public IEnumerable<OrderDiscount> EffectiveDiscounts => new List<OrderDiscount>(_discounts);
 
-        public decimal Sum => TotalGoodsValue + TotalShippingCost + TotalDiscountedAmount;
+        public decimal Sum => TotalGoodsValue + TotalShippingCost - TotalDiscountedAmount;
     }
 }

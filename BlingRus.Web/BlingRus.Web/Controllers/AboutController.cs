@@ -14,6 +14,11 @@ namespace BlingRus.Web.Controllers
             return View();
         }
 
+        [HttpPost("contact")]
+        public IActionResult Contact()
+        {
 
+            return View();
+        }
     }
 }
