@@ -1,19 +1,25 @@
-﻿namespace BlingRus.Domain
+﻿using System;
+
+namespace BlingRus.Domain
 {
     public class Jewelry : IOrderable
     {
-        public Jewelry(string description, JewelrySize size, string image)
+        protected Jewelry()
         {
-            Size = size;
+        }
+
+        public Jewelry(string description, string image)
+        {
             Image = image;
             Description = description;
         }
 
+        public Guid Id { get; private set; }
+
         public virtual decimal UnitCost => 100;
         public virtual decimal UnitShippingCost => 36;
 
-        public JewelrySize Size { get; }
-        public string Image { get; }
+        public string Image { get; private set; }
         public string Description { get; private set; }
     }
 }

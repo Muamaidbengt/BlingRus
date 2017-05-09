@@ -1,20 +1,33 @@
 using System.Linq;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Moq;
 using Xunit;
 
 namespace BlingRus.Domain.Tests
 {
     public class SuperTests
     {
+        private readonly Mock<IHttpContextAccessor> _mockHttpContext;
+        private readonly Mock<IShoppingContext> _mockShoppingContext;
+        private readonly CheckoutService _checkoutService;
+
+        public SuperTests()
+        {
+            _mockHttpContext = new Mock<IHttpContextAccessor>();
+            _mockShoppingContext = new Mock<IShoppingContext>();
+            _checkoutService = new CheckoutService(_mockHttpContext.Object, _mockShoppingContext.Object);
+        }
+
+
         [Fact]
         public void CheckoutService()
         {
-            var svc = new CheckoutService();
             var cart = new ShoppingCart();
-            cart.Add(new ShoppingCartItem(1, new Jewelry("Bracelet", JewelrySize.Medium, "foo.jpg")));
-            cart.Add(new ShoppingCartItem(2, new Jewelry("Necklace", JewelrySize.Medium, "foo.jpg")));
+            cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Bracelet", "foo.jpg")));
+            cart.Add(new ShoppingCartItem(2, JewelrySize.Medium, new Jewelry("Necklace", "foo.jpg")));
 
-            var order = svc.CalculateOrder(cart);
+            var order = _checkoutService.CalculateOrder(cart);
             order.TotalAmountOrdered.Should().Be(3);
             order.TotalGoodsValue.Should().Be(300);
             order.TotalShippingCost.Should().Be(36 * 3);
@@ -23,11 +36,10 @@ namespace BlingRus.Domain.Tests
         [Fact]
         public void CheckoutService2()
         {
-            var svc = new CheckoutService();
             var cart = new ShoppingCart();
-            cart.Add(new ShoppingCartItem(11, new Jewelry("Bracelet", JewelrySize.Medium, "foo.jpg")));
+            cart.Add(new ShoppingCartItem(11, JewelrySize.Medium, new Jewelry("Bracelet", "foo.jpg")));
 
-            var order = svc.CalculateOrder(cart);
+            var order = _checkoutService.CalculateOrder(cart);
             order.TotalAmountOrdered.Should().Be(11);
             order.TotalGoodsValue.Should().Be(1100);
             order.TotalShippingCost.Should().Be(36 * 11);

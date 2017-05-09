@@ -8,33 +8,34 @@ namespace BlingRus.Domain
     {
         public Guid Id { get; protected set; }
 
-        private readonly List<ShoppingCartItem> _contents = new List<ShoppingCartItem>();
+        internal List<ShoppingCartItem> ContentsInternal { get; set; }
 
-        public decimal AggregatedCost => _contents.Sum(c => c.AggregatedCost);
-        public decimal AggregatedShippingCost => _contents.Sum(c => c.AggregatedShippingCost);
+        public decimal AggregatedCost => ContentsInternal.Sum(c => c.AggregatedCost);
+        public decimal AggregatedShippingCost => ContentsInternal.Sum(c => c.AggregatedShippingCost);
 
         public ShoppingCart()
         {
             Id = Guid.NewGuid();
+            ContentsInternal = new List<ShoppingCartItem>();
         }
 
-        public void Add(int amount, IOrderable item)
+        public void Add(int amount, JewelrySize size, IOrderable item)
         {
-            Add(new ShoppingCartItem(amount, item));
+            Add(new ShoppingCartItem(amount, size, item));
         }
 
         public void Add(ShoppingCartItem item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
-            _contents.Add(item);
+            ContentsInternal.Add(item);
         }
 
         public void Remove(ShoppingCartItem item)
         {
-            _contents.Remove(item);
+            ContentsInternal.Remove(item);
         }
 
-        public IEnumerable<ShoppingCartItem> Contents => new List<ShoppingCartItem>(_contents);
+        public IEnumerable<ShoppingCartItem> Contents => new List<ShoppingCartItem>(ContentsInternal);
     }
 }

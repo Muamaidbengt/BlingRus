@@ -7,17 +7,16 @@ namespace BlingRus.Domain
 {
     public class ShoppingContext : DbContext, IShoppingContext
     {
-        //private readonly string _filename;
         public ShoppingContext(DbContextOptions<ShoppingContext> options) : base(options)
         {
-            //_filename = filename;
         }
 
-        public IQueryable<ShoppingCart> Carts => CartsInternal.Include(c => c.Contents);
+        public IQueryable<ShoppingCart> Carts => CartsInternal.Include(c => c.ContentsInternal);
+        public IQueryable<Jewelry> Catalog => CatalogInternal;
 
         public void Add(Order order)
         {
-            Orders.Add(order);
+            OrdersInternal.Add(order);
         }
 
         public void Add(ShoppingCart cart)
@@ -30,21 +29,26 @@ namespace BlingRus.Domain
             SaveChanges();
         }
 
-        protected DbSet<Order> Orders { get; set; }
-        protected DbSet<ShoppingCart> CartsInternal { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            //optionsBuilder.UseSqlite($"Filename={_filename}");
-        }
+        internal DbSet<Jewelry> CatalogInternal { get; set; }
+        internal DbSet<Order> OrdersInternal { get; set; }
+        internal DbSet<ShoppingCart> CartsInternal { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ShoppingCart>().ToTable("ShoppingCarts");
-            modelBuilder.Entity<ShoppingCartItem>().ToTable("ShoppingCartItems");
+            modelBuilder.Entity<ShoppingCartItem>(item =>
+            {
+                item.ToTable("ShoppingCartItems");
+                item.Property<Guid>("ShoppingCartId");
+            });
+
+            modelBuilder.Entity<ShoppingCart>(cart =>
+            {
+                cart.ToTable("ShoppingCarts");
+            });
+
+            
             modelBuilder.Entity<OrderLine>(orderline =>
             {
                 orderline.Property<Guid>("OrderId");
@@ -71,6 +75,12 @@ namespace BlingRus.Domain
                 discount.ToTable("LineDiscounts");
             });
 
+            modelBuilder.Entity<Jewelry>(jewelry =>
+            {
+                jewelry.HasKey(j => j.Id);
+                jewelry.ToTable("Jewelry");
+            });
+
             modelBuilder.Entity<Order>()
                 .HasMany(p => p.OrderLines)
                 .WithOne()
@@ -88,6 +98,12 @@ namespace BlingRus.Domain
                 .WithOne()
                 .HasPrincipalKey(l => l.Id)
                 .HasForeignKey("OrderId");
+
+            modelBuilder.Entity<ShoppingCart>()
+                .HasMany(c => c.ContentsInternal)
+                .WithOne()
+                .HasPrincipalKey(c => c.Id)
+                .HasForeignKey("ShoppingCartId");
         }
     }
 }

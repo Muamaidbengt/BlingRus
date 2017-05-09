@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using BlingRus.Domain;
+using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.Controllers
@@ -17,26 +17,24 @@ namespace BlingRus.Web.Controllers
             _checkoutService = checkoutService;
         }
 
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            var cart = new ShoppingCart();
-            cart.Add(6, new Jewelry("Bracelet", JewelrySize.Humongous, "foo.jpg"));
+        //// GET api/values
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    var cart = new ShoppingCart();
+        //    cart.Add(6, new Jewelry("Bracelet", JewelrySize.Humongous, "foo.jpg"));
 
-            var order = _checkoutService.CalculateOrder(cart);
+        //    var order = _checkoutService.CalculateOrder(cart);
 
-            _shoppingContext.Add(order);
-            _shoppingContext.Save();
-            return new string[] { "value1", "value2" };
-        }
+        //    _shoppingContext.Add(order);
+        //    _shoppingContext.Save();
+        //    return new string[] { "value1", "value2" };
+        //}
 
         [HttpGet("empty")]
         public JsonResult Empty()
         {
-            var cart = new ShoppingCart();
-            _shoppingContext.Add(cart);
-            _shoppingContext.Save();
+            var cart = _checkoutService.CreateCart();
             return Json(cart);
         }
 
@@ -47,22 +45,40 @@ namespace BlingRus.Web.Controllers
             return Json(_shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id));
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpGet("{id}/calculate")]
+        public JsonResult Calculate(Guid id)
         {
+            var targetCart = _shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id);
+            if (targetCart == null)
+                return Json("Not found");
+
+            var order = _checkoutService.CalculateOrder(targetCart);
+            return Json(order);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPost("{id}/add")]
+        public JsonResult Add(Guid id, AddItemModel model)
         {
-        }
+            var targetCart = _shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id);
+            if (targetCart == null)
+                return Json("Cart not found");
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var itemToAdd = _shoppingContext.Catalog.FirstOrDefault(item => item.Id == model.ItemId);
+            if (itemToAdd == null)
+                return Json("Item not found");
+
+            if (!string.IsNullOrEmpty(model.Customization))
+            {
+                var customItem = new CustomizedJewelry<Jewelry>(model.Customization, itemToAdd);
+                targetCart.Add(model.Amount, model.Size, customItem);
+            }
+            else
+            {
+                targetCart.Add(model.Amount, model.Size, itemToAdd);
+            }
+            
+            _shoppingContext.Save();
+            return Json(targetCart);
         }
     }
 }

@@ -38,7 +38,17 @@ namespace BlingRus.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseStaticFiles();
             app.UseMvc();
+
+            //var routeTemplate = "{controller=Store}/{action=Index}/{id?}";
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: routeTemplate);
+            //});
 
             ShoppingInitializer.Initialize(shoppingContext);
         }

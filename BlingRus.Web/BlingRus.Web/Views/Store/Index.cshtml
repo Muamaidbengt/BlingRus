@@ -1,0 +1,94 @@
+﻿@using BlingRus.Web.Models
+@using Microsoft.AspNetCore.Routing
+@model CatalogModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<ul class="list-group">
+    @foreach (var item in Model.Catalog)
+    {
+        <li class="list-group-item row">
+            <div class="form-group form-inline">
+                <div class="col-xs-2">
+                    <input type="hidden" value="@item.Id" data-role="itemId" />
+                    <a href="@Url.Content("~/img/" + item.Image)" class="thumbnail">
+                        <img src="@Url.Content("~/img/" + item.Image)" />
+                    </a>
+                </div>
+                <div class="col-xs-4">
+                    @item.Description
+                </div>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="" data-role="customization" placeholder="Customized text" />    
+                    </div>
+
+                    <div class="input-group">
+                        <input class="form-control" type="number" data-role="amount" value="1">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" data-action="AddToCart" data-href="@Url.Action("Add", "Cart", new RouteValueDictionary(new {id = Model.CartId}))">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                Add to cart
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+
+<div class="modal fade" id="success" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Dialog title</h4>
+            </div>
+            <div class="modal-body">
+                <p id="success-text"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".btn[data-action='AddToCart']").click(function (e) {
+                e.preventDefault();
+                var row = $(this).closest("li"),
+                    customization = row.find("input[data-role=\"customization\"]").val(),
+                    amount = row.find("input[data-role=\"amount\"]").val(),
+                    size = 3,
+                    itemId = row.find("input[data-role=\"itemId\"]").val(),
+                    url = $(this).attr("data-href");
+
+                $.post({
+                    "type": "POST",
+                    "url": url,
+                    "data": {
+                        "@nameof(AddItemModel.Customization)": customization,
+                        "@nameof(AddItemModel.Amount)": amount,
+                        "@nameof(AddItemModel.Size)": size,
+                        "@nameof(AddItemModel.ItemId)": itemId
+                    },
+                    success: function() {
+                        $("#success-text").text("Successfully added " + amount + " item(s) to the cart.");
+                    },
+                    error: function() {
+                        $("#success-text").text("Something went awry!");
+                    },
+                    always: function () {
+                        $("#success").modal('show');
+                    }
+                });
+
+            });
+
+
+        });
+    </script>
+}

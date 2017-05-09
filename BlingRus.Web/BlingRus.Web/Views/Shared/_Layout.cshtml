@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body style="background-color: #6495ed;">
+
+    <div class="navbar navbar-default" style="background-color: white;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand" style="height: 225px;">
+                    <img src="@Url.Content("~/img/Bling-R-Us-Logo3.jpg")"/>
+                </div>
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*<a asp-area="" asp-controller="Store" asp-action="Index" class="navbar-brand">Store</a>*@
+            </div>
+            
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Store" asp-action="Index">Store</a></li>
+                    <li><a asp-controller="About" asp-action="Index">Contact us</a></li>
+                </ul>
+            </div>
+
+            <div class="input-group">
+                <a asp-controller="Store" asp-action="Checkout" class="btn btn-default"><i class="glyphicon glyphicon-shopping-cart"></i> Proceed to checkout</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

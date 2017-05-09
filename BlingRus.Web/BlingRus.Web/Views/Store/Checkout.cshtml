@@ -1,0 +1,82 @@
+﻿@using BlingRus.Domain
+@model Order
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="well">
+    <h2>Your order</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item row">
+            <div class="col-xs-8 list-group-item-heading">
+                <h4>Description</h4>
+            </div>
+            <div class="col-xs-1 list-group-item-heading">
+                <h4>#</h4>
+            </div>
+            <div class="col-xs-2 list-group-item-heading">
+                <h4>Amount</h4>
+            </div>
+        </li>
+        @foreach (var item in Model.OrderLines)
+        {
+            <li class="list-group-item list-group-item-info row">
+                <div class="col-xs-8">
+                    <span>@item.Description</span>
+                </div>
+                <div class="col-xs-1">
+                    <span>@item.AmountOrdered</span>
+                </div>
+                <div class="col-xs-2">
+                    <span>@item.GoodsValue</span>
+                </div>
+            </li>
+            if (item.EffectiveDiscounts?.Any() == true)
+            {
+                foreach (var discount in item.EffectiveDiscounts)
+                {
+                    <li class="list-group-item list-group-item-success row">
+                        <div>
+                            <div class="col-xs-8">
+                                @discount.Description
+                            </div>
+                            <div class="col-xs-offset-1 col-xs-3">
+                                -@discount.DiscountedAmount
+                            </div>
+                        </div>
+                    </li>
+                }
+            }
+        }
+        <li class="list-group-item list-group-item-warning row">
+            <div class="col-xs-9">
+                <h4 class="list-group-item-heading">Shipping</h4>
+            </div>
+            <div class="col-xs-3">
+                @Model.TotalShippingCost
+            </div>
+        </li>
+        @foreach (var discount in Model.EffectiveDiscounts)
+        {
+            <li class="list-group-item list-group-item-success row">
+                <div class="col-xs-8">
+                    @discount.Description
+                </div>
+                <div class="col-xs-offset-1 col-xs-3">
+                    -@discount.DiscountedAmount
+                </div>
+            </li>
+        }
+        <li class="list-group-item list-group-item-warning row">
+            <div class="col-xs-9">
+                <h4 class="list-group-item-heading">Order amount</h4>
+            </div>
+            <div class="col-xs-3">
+                @Model.Sum
+            </div>
+        </li>
+    </ul>
+    
+    <a asp-action="Confirm" class="btn btn-default">Confirm</a>
+</div>
