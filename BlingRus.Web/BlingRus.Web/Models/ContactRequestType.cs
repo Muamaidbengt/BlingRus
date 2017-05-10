@@ -7,11 +7,14 @@ namespace BlingRus.Web.Models
         [Display(Name = "I have a question about your products")]
         Inquiry,
 
-        [Display(Name = "I have a question about my order/bill")]
-        Billing,
+        [Display(Name = "I have a question about invoicing")]
+        Invoicing,
 
-        [Display(Name = "I want to register a complaint")]
-        Complaint,
+        [Display(Name = "I am not satisfied with my shipment")]
+        OrderComplaint,
+
+        [Display(Name = "I am not satisfied with my bill")]
+        BillComplaint,
 
         [Display(Name = "Other")]
         Other

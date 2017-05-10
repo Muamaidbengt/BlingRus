@@ -5,6 +5,7 @@ namespace BlingRus.Web.Models
 {
     public class ContactRequestModel
     {
+        [Required]
         [Display(Name = "Your name")]
         public string CustomerName { get; set; }
 
@@ -18,7 +19,7 @@ namespace BlingRus.Web.Models
         [Display(Name = "Your mailing adress")]
         public string CustomerAddress { get; set; }
 
-        [Display(Name = "Your phone no")]
+        [Display(Name = "Phone number")]
         public string CustomerPhone { get; set; }
 
         [Display(Name = "Order date (if applicable)")]
@@ -28,6 +29,7 @@ namespace BlingRus.Web.Models
         public string ContactStart { get; set; }
         public string ContactEnd { get; set; }
 
+        [Required]
         [Display(Name = "How may we assist you?")]
         public ContactRequestType RequestType { get; set; }
     }

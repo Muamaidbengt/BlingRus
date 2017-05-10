@@ -69,7 +69,7 @@
                 var row = $(this).closest("li"),
                     customization = row.find("input[data-role=\"customization\"]").val(),
                     amount = row.find("input[data-role=\"amount\"]").val(),
-                    size = row.find("input[data-rolw=\"size\"]").val(),
+                    size = row.find("input[data-role=\"size\"]").val(), @* borde vara select *@
                     itemId = row.find("input[data-role=\"itemId\"]").val(),
                     url = $(this).attr("data-href"),
                     adding = $.post({

@@ -47,10 +47,15 @@ namespace BlingRus.Web.Controllers
         [HttpPost("checkout")]
         public IActionResult Checkout(SubmitOrderModel model)
         {
-            if (!ModelState.IsValid)
-                return View(model);
+            var cart =_checkoutService.CreateCart();
 
-            var cart = _checkoutService.CreateCart();
+            if (!ModelState.IsValid)
+            {
+                var order = _checkoutService.CalculateOrder(cart);
+                model.Order = order;
+                return View(model);
+            }
+
             return View("Confirm");
         }
     }

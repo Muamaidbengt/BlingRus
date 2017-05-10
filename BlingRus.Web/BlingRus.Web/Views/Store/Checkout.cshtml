@@ -77,8 +77,8 @@
             </div>
         </li>
     </ul>
-    <div style="max-width: 500px;">
-        <form method="post">
+    <div style="max-width: 550px;">
+        <form method="post" class="">
             <h4>Customer information</h4>
 
             <div class="form-group">
@@ -87,7 +87,7 @@
                     <input asp-for="CustomerName" class="form-control" />
                 </div>
             </div>
-
+            
             <div class="form-group">
                 <label asp-for="CustomerEmail" class="col-sm-4 control-label"></label>
                 <div class="col-sm-8">
@@ -109,18 +109,22 @@
                 </div>
             </div>
 
-            @if (ViewData.ModelState.Any(s => s.Value.Errors.Any()))
-            {
-                <div class="alert alert-danger alert-dismissable">
-                    <a class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                    @foreach (var modelError in ViewData.ModelState.SelectMany(kvp => kvp.Value.Errors))
-                {
-                        <p>@modelError.ErrorMessage</p>
-                    }
-                </div>
-            }
-
-            <button type="submit" class="btn btn-default">Confirm</button>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Confirm</button>    
+            </div>
         </form>
+        
+        @if (ViewData.ModelState.Any(s => s.Value.Errors.Any()))
+        {
+            <div class="alert alert-danger alert-dismissable">
+                <a class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                @foreach (var modelError in ViewData.ModelState.SelectMany(kvp => kvp.Value.Errors))
+                {
+                    <p>@modelError.ErrorMessage</p>
+                }
+            </div>
+        }
+
     </div>
 </div>
