@@ -1,24 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using System;
+using BlingRus.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.Controllers
 {
     [Route("[controller]")]
     public class AboutController : Controller
     {
-        [HttpGet]
-        [HttpGet("index")]
-        public IActionResult Index()
+        [HttpGet("contact")]
+        public IActionResult Contact()
         {
-            return View();
+            var model = new ContactRequestModel();
+            return View(model);
         }
 
         [HttpPost("contact")]
-        public IActionResult Contact()
+        public IActionResult Contact(ContactRequestModel model)
         {
+            if (!ModelState.IsValid)
+                return View(model);
 
-            return View();
+            return View("ThankYou");
         }
     }
 }

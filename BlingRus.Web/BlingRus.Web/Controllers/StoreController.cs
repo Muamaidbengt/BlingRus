@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.Controllers
 {
+    [Route("~/")]
     [Route("[controller]")]
     public class StoreController : Controller
     {
@@ -39,14 +40,18 @@ namespace BlingRus.Web.Controllers
         {
             var cart = _checkoutService.GetCart();
             var order = _checkoutService.CalculateOrder(cart);
-            return View(order);
+            var model = new SubmitOrderModel {Order = order};
+            return View(model);
         }
 
-        [HttpGet("confirm")]
-        public IActionResult Confirm()
+        [HttpPost("checkout")]
+        public IActionResult Checkout(SubmitOrderModel model)
         {
+            if (!ModelState.IsValid)
+                return View(model);
+
             var cart = _checkoutService.CreateCart();
-            return View();
+            return View("Confirm");
         }
     }
 }

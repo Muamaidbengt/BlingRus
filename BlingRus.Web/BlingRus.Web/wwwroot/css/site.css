@@ -1,2 +1,7 @@
 ﻿body {
+    background-color: #6495ed;
+}
+
+.navbar-default {
+    background-color: rgb(254, 254, 254) !important;
 }

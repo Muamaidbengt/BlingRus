@@ -38,17 +38,17 @@ namespace BlingRus.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();    
+            }
+
             app.UseStaticFiles();
-            app.UseMvc();
-
-            //var routeTemplate = "{controller=Store}/{action=Index}/{id?}";
-
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: routeTemplate);
-            //});
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Store}/{action=Index}/{id?}");
+            });
 
             ShoppingInitializer.Initialize(shoppingContext);
         }

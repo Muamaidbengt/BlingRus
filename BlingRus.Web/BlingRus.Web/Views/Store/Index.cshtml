@@ -1,4 +1,5 @@
 ﻿@using BlingRus.Web.Models
+@using BlingRus.Domain
 @using Microsoft.AspNetCore.Routing
 @model CatalogModel
 @{
@@ -10,22 +11,28 @@
     {
         <li class="list-group-item row">
             <div class="form-group form-inline">
-                <div class="col-xs-2">
+                <div class="col-sm-2 col-xs-6">
                     <input type="hidden" value="@item.Id" data-role="itemId" />
                     <a href="@Url.Content("~/img/" + item.Image)" class="thumbnail">
-                        <img src="@Url.Content("~/img/" + item.Image)" />
+                        <img src="@Url.Content("~/img/" + item.Image)" class="img-rounded" />
                     </a>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-sm-4 col-xs-2">
                     @item.Description
                 </div>
-                <div class="col-xs-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" value="" data-role="customization" placeholder="Customized text" />    
+                <div class="col-sm-6 col-xs-4 row">
+                    <div class="input-group col-xs-6 col-sm-4">
+                        <input type="text" class="form-control" value="" data-role="customization" placeholder="Personalized text" />
+                    </div>
+                    
+                    <div class="input-group col-xs-6 col-sm-2">
+                        <input class="form-control" type="number" data-role="amount" value="1">
                     </div>
 
-                    <div class="input-group">
-                        <input class="form-control" type="number" data-role="amount" value="1">
+                    <div class="input-group col-xs-6 col-sm-2">
+                        <select class="form-control" data-role="size" asp-items="Html.GetEnumSelectList<JewelrySize>()"></select>
+                    </div>
+                    <div class="input-group col-xs-6 col-sm-3">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" data-action="AddToCart" data-href="@Url.Action("Add", "Cart", new RouteValueDictionary(new {id = Model.CartId}))">
                                 <i class="glyphicon glyphicon-plus"></i>
@@ -62,32 +69,34 @@
                 var row = $(this).closest("li"),
                     customization = row.find("input[data-role=\"customization\"]").val(),
                     amount = row.find("input[data-role=\"amount\"]").val(),
-                    size = 3,
+                    size = row.find("input[data-rolw=\"size\"]").val(),
                     itemId = row.find("input[data-role=\"itemId\"]").val(),
-                    url = $(this).attr("data-href");
+                    url = $(this).attr("data-href"),
+                    adding = $.post({
+                        "type": "POST",
+                        "url": url,
+                        "data": {
+                            "@nameof(AddItemModel.Customization)": customization,
+                            "@nameof(AddItemModel.Amount)": amount,
+                            "@nameof(AddItemModel.Size)": size,
+                            "@nameof(AddItemModel.ItemId)": itemId
+                        }
+                    });
 
-                $.post({
-                    "type": "POST",
-                    "url": url,
-                    "data": {
-                        "@nameof(AddItemModel.Customization)": customization,
-                        "@nameof(AddItemModel.Amount)": amount,
-                        "@nameof(AddItemModel.Size)": size,
-                        "@nameof(AddItemModel.ItemId)": itemId
-                    },
-                    success: function() {
-                        $("#success-text").text("Successfully added " + amount + " item(s) to the cart.");
-                    },
-                    error: function() {
-                        $("#success-text").text("Something went awry!");
-                    },
-                    always: function () {
-                        $("#success").modal('show');
-                    }
+                adding.done(function() {
+                    $("#cart-counter").fadeOut(function() {
+                        $(this).text(parseInt($(this).text()) + 1).fadeIn();
+                    });
+                    $("#success-text").text("Added " + amount + " item(s) to the cart.");
                 });
-
+                adding.fail(function(data) {
+                    var error = data ? data.responseText : "";
+                    $("#success-text").text("Something went awry: " + error);
+                });
+                adding.always(function() {
+                    $("#success").modal('show');
+                });
             });
-
 
         });
     </script>

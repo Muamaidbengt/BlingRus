@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using BlingRus.Domain;
 using BlingRus.Web.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BlingRus.Web.Controllers
 {
     [Route("api/[controller]")]
     public class CartController : Controller
     {
+        private readonly IHttpContextAccessor _httpContext;
         private readonly IShoppingContext _shoppingContext;
         private readonly CheckoutService _checkoutService;
-        public CartController(IShoppingContext shoppingContext, CheckoutService checkoutService)
+        public CartController(IHttpContextAccessor httpContext, IShoppingContext shoppingContext, CheckoutService checkoutService)
         {
+            _httpContext = httpContext;
             _shoppingContext = shoppingContext;
             _checkoutService = checkoutService;
         }
@@ -61,24 +66,37 @@ namespace BlingRus.Web.Controllers
         {
             var targetCart = _shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id);
             if (targetCart == null)
-                return Json("Cart not found");
+                return JsonError(HttpStatusCode.NotFound, "Cart not found");
 
             var itemToAdd = _shoppingContext.Catalog.FirstOrDefault(item => item.Id == model.ItemId);
             if (itemToAdd == null)
-                return Json("Item not found");
+                return JsonError(HttpStatusCode.BadRequest, "Item not found");
 
-            if (!string.IsNullOrEmpty(model.Customization))
+            try
             {
-                var customItem = new CustomizedJewelry<Jewelry>(model.Customization, itemToAdd);
-                targetCart.Add(model.Amount, model.Size, customItem);
+                if (!string.IsNullOrEmpty(model.Customization))
+                {
+                    var customItem = new CustomizedJewelry<Jewelry>(model.Customization, itemToAdd);
+                    targetCart.Add(model.Amount, model.Size, customItem);
+                }
+                else
+                {
+                    targetCart.Add(model.Amount, model.Size, itemToAdd);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                targetCart.Add(model.Amount, model.Size, itemToAdd);
+                return JsonError(HttpStatusCode.BadRequest, ex.Message);
             }
-            
+
             _shoppingContext.Save();
             return Json(targetCart);
+        }
+
+        private JsonResult JsonError(HttpStatusCode code, object result)
+        {
+            _httpContext.HttpContext.Response.StatusCode = (int)code;
+            return new JsonResult(result);
         }
     }
 }
