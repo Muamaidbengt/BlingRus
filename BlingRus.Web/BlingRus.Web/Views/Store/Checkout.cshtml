@@ -5,18 +5,18 @@
 }
 
 <div class="well">
-    <h2>Your order</h2>
+    <h2>Din varukorg innehåller</h2>
 
     <ul class="list-group">
         <li class="list-group-item row">
             <div class="col-xs-8 list-group-item-heading">
-                <h4>Description</h4>
+                <h4>Beskrivning</h4>
             </div>
             <div class="col-xs-1 list-group-item-heading">
-                <h4>#</h4>
+                <h4>Antal</h4>
             </div>
             <div class="col-xs-2 list-group-item-heading">
-                <h4>Amount</h4>
+                <h4>Summa</h4>
             </div>
         </li>
         @foreach (var item in Model.Order.OrderLines)
@@ -79,7 +79,7 @@
     </ul>
     <div style="max-width: 550px;">
         <form method="post" class="">
-            <h4>Customer information</h4>
+            <h4>Kunduppgifter</h4>
 
             <div class="form-group">
                 <label asp-for="CustomerName" class="col-sm-4 control-label"></label>
@@ -111,7 +111,7 @@
 
             
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Confirm</button>    
+                <button type="submit" class="btn btn-default">Bekräfta köp</button>    
             </div>
         </form>
         

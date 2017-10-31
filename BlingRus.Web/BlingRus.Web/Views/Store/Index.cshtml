@@ -3,7 +3,7 @@
 @using Microsoft.AspNetCore.Routing
 @model CatalogModel
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Kontakta oss";
 }
 
 <ul class="list-group">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-sm-6 col-xs-4 row">
                     <div class="input-group col-xs-6 col-sm-4">
-                        <input type="text" class="form-control" value="" data-role="customization" placeholder="Personalized text" />
+                        <input type="text" class="form-control" value="" data-role="customization" placeholder="Personlig gravyr" />
                     </div>
                     
                     <div class="input-group col-xs-6 col-sm-2">
@@ -36,7 +36,7 @@
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" data-action="AddToCart" data-href="@Url.Action("Add", "Cart", new RouteValueDictionary(new {id = Model.CartId}))">
                                 <i class="glyphicon glyphicon-plus"></i>
-                                Add to cart
+                                Köp
                             </button>
                         </span>
                     </div>
@@ -87,11 +87,11 @@
                     $("#cart-counter").fadeOut(function() {
                         $(this).text(parseInt($(this).text()) + 1).fadeIn();
                     });
-                    $("#success-text").text("Added " + amount + " item(s) to the cart.");
+                    $("#success-text").text(amount + " sak(er) lades i kundvagnen.");
                 });
                 adding.fail(function(data) {
                     var error = data ? data.responseText : "";
-                    $("#success-text").text("Something went awry: " + error);
+                    $("#success-text").text("Nåt gick på tok: " + error);
                 });
                 adding.always(function() {
                     $("#success").modal('show');

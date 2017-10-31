@@ -6,16 +6,16 @@ namespace BlingRus.Web.Models
     public class SubmitOrderModel
     {
         [Required]
-        [Display(Name = "Your name")]
+        [Display(Name = "Ditt namn")]
         public string CustomerName { get; set; }
 
-        [Display(Name = "Your shipping adress")]
+        [Display(Name = "Leveransadress")]
         public string CustomerAddress { get; set; }
 
-        [Display(Name = "Your e-mail adress")]
+        [Display(Name = "Epostadress")]
         public string CustomerEmail { get; set; }
 
-        [Display(Name = "Your phone no.")]
+        [Display(Name = "Telefonnummer")]
         public string CustomerPhone { get; set; }
 
         public Order Order { get; set; }

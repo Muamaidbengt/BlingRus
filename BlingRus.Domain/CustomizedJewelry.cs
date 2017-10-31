@@ -18,6 +18,6 @@ namespace BlingRus.Domain
         public string Image => Jewelry.Image;
 
         public T Jewelry { get; }
-        public string Description => $"{Jewelry.Description} with the text: \"{Text}\"";
+        public string Description => $"{Jewelry.Description} med gravyren: \"{Text}\"";
     }
 }

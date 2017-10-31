@@ -6,31 +6,31 @@ namespace BlingRus.Web.Models
     public class ContactRequestModel
     {
         [Required]
-        [Display(Name = "Your name")]
+        [Display(Name = "Ditt namn")]
         public string CustomerName { get; set; }
 
-        [Display(Name = "Your massage for us")]
+        [Display(Name = "Ditt medelande")]
         public string Message { get; set; }
 
         [EmailAddress]
-        [Display(Name = "Your e-mail adress")]
+        [Display(Name = "Din epostadress")]
         public string CustomerEmail { get; set; }
 
-        [Display(Name = "Your mailing adress")]
+        [Display(Name = "Din postadress")]
         public string CustomerAddress { get; set; }
 
-        [Display(Name = "Phone number")]
+        [Display(Name = "Telefonnummer")]
         public string CustomerPhone { get; set; }
 
-        [Display(Name = "Order date (if applicable)")]
+        [Display(Name = "Beställningsdatum (om applicerbart)")]
         public DateTime? OrderDate { get; set; }
 
-        [Display(Name = "What would be the best time interval for us to reach you during the day?")]
+        [Display(Name = "När på dagen föredrar du att vi kontaktar dig?")]
         public string ContactStart { get; set; }
         public string ContactEnd { get; set; }
 
         [Required]
-        [Display(Name = "How may we assist you?")]
+        [Display(Name = "Hur kan vi stå till tjänst?")]
         public ContactRequestType RequestType { get; set; }
     }
 }

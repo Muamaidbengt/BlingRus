@@ -1,7 +1,21 @@
 ﻿body {
-    background-color: #6495ed;
+    background-color: rgb(59,134,251);
 }
 
 .navbar-default {
+    background-color: rgb(251, 176, 59);
+}
+
+.navbar-header {
     background-color: rgb(254, 254, 254) !important;
+}
+
+.navbar {
+    border: 0;
+}
+
+.navbar-nav > li > a {
+    border-left: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(0,0,0,0.2);
+    border-radius: 0;
 }

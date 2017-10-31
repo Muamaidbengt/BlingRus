@@ -4,19 +4,19 @@ namespace BlingRus.Web.Models
 {
     public enum ContactRequestType
     {
-        [Display(Name = "I have a question about your products")]
+        [Display(Name = "Jag har en fråga om en av era produkter")]
         Inquiry,
 
-        [Display(Name = "I have a question about invoicing")]
+        [Display(Name = "Jag har en fråga om betalning")]
         Invoicing,
 
-        [Display(Name = "I am not satisfied with my shipment")]
+        [Display(Name = "Jag är missnöjd med mina varor")]
         OrderComplaint,
 
-        [Display(Name = "I am not satisfied with my bill")]
+        [Display(Name = "Jag är missnöjd med min faktura")]
         BillComplaint,
 
-        [Display(Name = "Other")]
+        [Display(Name = "Övrigt")]
         Other
     }
 }

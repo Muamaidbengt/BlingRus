@@ -7,6 +7,12 @@ namespace BlingRus.Web.Controllers
     [Route("[controller]")]
     public class AboutController : Controller
     {
+        [HttpGet("index")]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet("contact")]
         public IActionResult Contact()
         {
