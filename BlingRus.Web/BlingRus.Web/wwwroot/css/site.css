@@ -3,19 +3,51 @@
 }
 
 .navbar-default {
-    background-color: rgb(251, 176, 59);
+    background-color: rgb(6, 81, 107);
 }
 
-.navbar-header {
+.navbar-default .navbar-nav > li > a {
+    color: rgb(251, 176, 59) !important;
+    
+}
+/*.navbar-header {
     background-color: rgb(254, 254, 254) !important;
-}
-
+    Mörkblå: rgb(6, 81, 107)
+    Gul: background-color: rgb(251, 176, 59);
+}*/
 .navbar {
     border: 0;
+    font-size: 16px;
 }
 
-.navbar-nav > li > a {
+/*.navbar-nav > li > a {
     border-left: 1px solid rgba(255,255,255,0.1);
     border-right: 1px solid rgba(0,0,0,0.2);
     border-radius: 0;
+}*/
+
+.logo {
+    background-color: rgb(255, 255, 255);
+    color: rgb(251, 176, 59);
+}
+
+.logo div {
+    width: 510px;
+    height: 125px;
+}
+
+.logo h1 {
+    font-weight: bold;
+    font-size: 48px;
+    float: left;
+    vertical-align: middle;
+    margin-top: 40px;
+}
+
+.nonempty-cart .badge {
+    color: rgb(251, 176, 59);
+}
+
+#checkout-button {
+    background-color: rgb(230, 239, 254);
 }

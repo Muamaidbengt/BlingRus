@@ -10,27 +10,31 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <div class="navbar navbar-default">
-        <div class="">
-            <div class="navbar-header" style="width: 100%;" >
-                <div class="navbar-brand" style="height: 125px;">
-                    <img src="@Url.Content("~/img/BlingRUs_storre.png")" style="max-height: 100px" />
-                </div>
-            </div>
-            <div class="navbar-menu">
-                <ul class="nav navbar-nav">
-                    <li><a asp-controller="Store" asp-action="Index">Butiken</a></li>
-                    <li><a asp-controller="About" asp-action="Index">Om företaget</a></li>
-                    <li><a asp-controller="About" asp-action="Contact">Kontakt</a></li>
-                    <li class="hidden-xs">
-                        <div class="input-group">
-                            <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-shopping-cart"></i><span class="badge" id="cart-counter">0</span> Till kassan</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+    <div class="logo">
+        <div class="center-block">
+            <h1 class="text-left">Bling R Us</h1>
+            <img src="@Url.Content("~/img/BlingRUs_storre.png")" class="" style="max-height: 125px; float: right;" />
         </div>
     </div>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a asp-controller="Store" asp-action="Index">Butiken</a></li>
+                <li><a asp-controller="About" asp-action="Index">Om företaget</a></li>
+                <li><a asp-controller="About" asp-action="Contact">Kontakt</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-right: 15px;">
+                <li>
+                    <div class="input-group">
+                        <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button"><i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge" id="cart-counter"></span></a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
 
     <div class="container-fluid">
         @RenderBody()

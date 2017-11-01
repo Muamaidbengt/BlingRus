@@ -84,8 +84,12 @@
                     });
 
                 adding.done(function() {
-                    $("#cart-counter").fadeOut(function() {
-                        $(this).text(parseInt($(this).text()) + 1).fadeIn();
+                    $("#checkout-button").addClass("nonempty-cart");
+                    $("#cart-counter").fadeOut(function () {
+                        var previousAmount = parseInt($(this).text());
+                        if (isNaN(previousAmount))
+                            previousAmount = 0;
+                        $(this).text(previousAmount + 1).fadeIn();
                     });
                     $("#success-text").text(amount + " sak(er) lades i kundvagnen.");
                 });
