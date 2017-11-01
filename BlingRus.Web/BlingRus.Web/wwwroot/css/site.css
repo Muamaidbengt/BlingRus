@@ -1,5 +1,6 @@
 ﻿body {
     background-color: rgb(59,134,251);
+    padding-bottom: 70px;
 }
 
 .navbar-default {
@@ -8,7 +9,6 @@
 
 .navbar-default .navbar-nav > li > a {
     color: rgb(251, 176, 59) !important;
-    
 }
 /*.navbar-header {
     background-color: rgb(254, 254, 254) !important;
@@ -50,4 +50,16 @@
 
 #checkout-button {
     background-color: rgb(230, 239, 254);
+}
+
+.page-footer {
+    background-color: rgb(6, 81, 107);
+    color: rgb(251, 176, 59);
+    border: 0;
+}
+
+.page-footer img {
+    max-height: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
