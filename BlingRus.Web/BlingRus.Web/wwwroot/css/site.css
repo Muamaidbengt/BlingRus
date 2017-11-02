@@ -5,6 +5,11 @@
 
 body.fullpage {
     padding: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.landing {
+    width: 100%;
 }
 
 .navbar-default {
@@ -66,8 +71,4 @@ body.fullpage {
     max-height: 25px;
     margin-left: 25px;
     margin-right: 25px;
-}
-
-.landing {
-    background-color: rgb(255, 255, 255);
 }
