@@ -3,11 +3,9 @@ using BlingRus.Domain;
 using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BlingRus.Web.Controllers
 {
-    [Route("~/")]
     [Route("[controller]")]
     public class StoreController : Controller
     {

@@ -3,6 +3,10 @@
     padding-bottom: 70px;
 }
 
+body.fullpage {
+    padding: 0;
+}
+
 .navbar-default {
     background-color: rgb(6, 81, 107);
 }
@@ -62,4 +66,8 @@
     max-height: 25px;
     margin-left: 25px;
     margin-right: 25px;
+}
+
+.landing {
+    background-color: rgb(255, 255, 255);
 }

@@ -9,49 +9,53 @@
     <link rel="stylesheet" href="~/lib/bootstrap-timepicker/css/bootstrap-timepicker.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <div class="logo">
-        <div class="center-block">
-            <h1 class="text-left">Bling R Us</h1>
-            <img src="@Url.Content("~/img/BlingRUs_storre.png")" class="" style="max-height: 125px; float: right;" />
-        </div>
-    </div>
-
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a asp-controller="Store" asp-action="Index">Butiken</a></li>
-                <li><a asp-controller="About" asp-action="Index">Om företaget</a></li>
-                <li><a asp-controller="About" asp-action="Contact">Kontakt</a></li>
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-right: 15px;">
-                <li>
-                    <div class="input-group">
-                        <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button"><i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge" id="cart-counter"></span></a>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-
-    <div class="container-fluid">
+<body class="@(ViewBag.FullPageContent ?? false ? "fullpage" : "")">
+    @if (ViewBag.FullPageContent ?? false) { 
         @RenderBody()
-    </div>
-
-    <nav class="navbar page-footer navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-text">
-                <span>Why compromize when you can personalize?</span>
-            </div>
-            <div class="navbar-text navbar-right">
-                <span>Powered by</span>
-                <img src="/img/klarna-white-tagline.png" alt="Klarna"/>
-                <img src="/img/bankgirot-logo.png" alt="Bankgirot"/>
+    } else {
+        <div class="logo">
+            <div class="center-block">
+                <h1 class="text-left">Bling R Us</h1>
+                <img src="@Url.Content("~/img/BlingRUs_storre.png")" class="" style="max-height: 125px; float: right;"/>
             </div>
         </div>
-    </nav>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Store" asp-action="Index">Butiken</a></li>
+                    <li><a asp-controller="About" asp-action="Index">Om företaget</a></li>
+                    <li><a asp-controller="About" asp-action="Contact">Kontakt</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-right: 15px;">
+                    <li>
+                        <div class="input-group">
+                            <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button"><i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge" id="cart-counter"></span></a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+
+        <nav class="navbar page-footer navbar-fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-text">
+                    <span>Why compromize when you can personalize?</span>
+                </div>
+                <div class="navbar-text navbar-right">
+                    <span>Powered by</span>
+                    <img src="/img/klarna-white-tagline.png" alt="Klarna"/>
+                    <img src="/img/bankgirot-logo.png" alt="Bankgirot"/>
+                </div>
+            </div>
+        </nav>
+    }
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
