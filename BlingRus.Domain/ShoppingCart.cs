@@ -13,10 +13,14 @@ namespace BlingRus.Domain
         public decimal AggregatedCost => ContentsInternal.Sum(c => c.AggregatedCost);
         public decimal AggregatedShippingCost => ContentsInternal.Sum(c => c.AggregatedShippingCost);
 
-        public ShoppingCart(int id)
+        protected ShoppingCart()
+        {
+            ContentsInternal = new List<ShoppingCartItem>();
+        }
+
+        public ShoppingCart(int id) : this()
         {
             Id = id;
-            ContentsInternal = new List<ShoppingCartItem>();
         }
 
         public void Add(int amount, JewelrySize size, IOrderable item)
