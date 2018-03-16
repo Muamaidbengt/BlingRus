@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using BlingRus.Domain.Discounts;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
@@ -16,7 +18,8 @@ namespace BlingRus.Domain.Tests
         {
             _mockHttpContext = new Mock<IHttpContextAccessor>();
             _mockShoppingContext = new Mock<IShoppingContext>();
-            _checkoutService = new CheckoutService(_mockHttpContext.Object, _mockShoppingContext.Object);
+            
+            _checkoutService = new CheckoutService(_mockHttpContext.Object, _mockShoppingContext.Object, new DiscountModel());
         }
 
         public class WhenCartContains3ItemsWithoutText : CheckoutServiceTests

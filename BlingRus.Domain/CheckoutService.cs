@@ -9,11 +9,14 @@ namespace BlingRus.Domain
     {
         private readonly IHttpContextAccessor _httpContext;
         private readonly IShoppingContext _shoppingContext;
-
-        public CheckoutService(IHttpContextAccessor httpContext, IShoppingContext shoppingContext)
+        private readonly DiscountModel _discountModel;
+        
+        public CheckoutService(IHttpContextAccessor httpContext, 
+            IShoppingContext shoppingContext, DiscountModel discountModel)
         {
             _httpContext = httpContext;
             _shoppingContext = shoppingContext;
+            _discountModel = discountModel;
         }
 
         public ShoppingCart CreateCart()
@@ -42,20 +45,18 @@ namespace BlingRus.Domain
         public Order CalculateOrder(ShoppingCart cart)
         {
             var orderlines = new List<OrderLine>();
-            var everyNthDiscount = new NthFreeDiscountCalculator(5);
-            var orderamountDiscount = new OrderAmountDiscountCalculator(4, 10);
-            var freeShippingDiscount = new FreeShippingDiscountCalculator(250);
 
             foreach (var entry in cart.Contents)
             {
                 var line = new OrderLine(entry.Description, entry.Amount, entry.UnitCost, entry.UnitShippingCost);
-                everyNthDiscount.ApplyTo(line);
+                foreach(var orderlineDiscountCalculator in _discountModel.OrderLineDiscountCalculators)
+                    orderlineDiscountCalculator.ApplyTo(line);
                 orderlines.Add(line);
             }
 
             var order = new Order(orderlines);
-            orderamountDiscount.ApplyTo(order);
-            freeShippingDiscount.ApplyTo(order);
+            foreach(var orderDiscountCalculator in _discountModel.OrderDiscountCalculators)
+                orderDiscountCalculator.ApplyTo(order);
 
             return order;
         }

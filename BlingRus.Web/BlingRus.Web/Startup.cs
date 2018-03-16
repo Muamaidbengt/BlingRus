@@ -1,4 +1,5 @@
 ﻿using BlingRus.Domain;
+using BlingRus.Domain.Discounts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,7 @@ namespace BlingRus.Web
             services.AddDbContext<ShoppingContext>(options => options.UseSqlite("Filename=shopping.sqlite"));
             services.AddScoped<IShoppingContext, ShoppingContext>();
             services.AddScoped<CheckoutService, CheckoutService>();
+            services.AddScoped<DiscountModel, DiscountModel>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +43,6 @@ namespace BlingRus.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();    
             }
 
             app.UseStaticFiles();
