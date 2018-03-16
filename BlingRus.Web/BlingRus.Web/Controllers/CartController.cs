@@ -45,13 +45,13 @@ namespace BlingRus.Web.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public JsonResult Get(Guid id)
+        public JsonResult Get(int id)
         {
             return Json(_shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id));
         }
 
         [HttpGet("{id}/calculate")]
-        public JsonResult Calculate(Guid id)
+        public JsonResult Calculate(int id)
         {
             var targetCart = _shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id);
             if (targetCart == null)
@@ -62,7 +62,7 @@ namespace BlingRus.Web.Controllers
         }
 
         [HttpPost("{id}/add")]
-        public JsonResult Add(Guid id, AddItemModel model)
+        public JsonResult Add(int id, AddItemModel model)
         {
             var targetCart = _shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id);
             if (targetCart == null)

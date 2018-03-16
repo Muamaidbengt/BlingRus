@@ -6,16 +6,16 @@ namespace BlingRus.Domain
 {
     public class ShoppingCart : IHasAggregateCost
     {
-        public Guid Id { get; protected set; }
+        public int Id { get; protected set; }
 
         internal List<ShoppingCartItem> ContentsInternal { get; set; }
 
         public decimal AggregatedCost => ContentsInternal.Sum(c => c.AggregatedCost);
         public decimal AggregatedShippingCost => ContentsInternal.Sum(c => c.AggregatedShippingCost);
 
-        public ShoppingCart()
+        public ShoppingCart(int id)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             ContentsInternal = new List<ShoppingCartItem>();
         }
 

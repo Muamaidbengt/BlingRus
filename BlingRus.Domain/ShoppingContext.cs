@@ -24,6 +24,14 @@ namespace BlingRus.Domain
             CartsInternal.Add(cart);
         }
 
+        public ShoppingCart CreateCart()
+        {
+            var maxId = CartsInternal.Any() 
+                ? CartsInternal.Max(c => c.Id) 
+                : 821103;
+            return new ShoppingCart(maxId + 1);
+        }
+
         public void Save()
         {
             SaveChanges();

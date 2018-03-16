@@ -8,6 +8,7 @@ namespace BlingRus.Domain
         IQueryable<Jewelry> Catalog { get; }
         void Add(Order order);
         void Add(ShoppingCart cart);
+        ShoppingCart CreateCart();
         void Save();
     }
 }

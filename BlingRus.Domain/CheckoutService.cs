@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BlingRus.Domain.Discounts;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +18,7 @@ namespace BlingRus.Domain
 
         public ShoppingCart CreateCart()
         {
-            var cart = new ShoppingCart();
+            var cart = _shoppingContext.CreateCart();
             _shoppingContext.Add(cart);
             _shoppingContext.Save();
 
@@ -31,7 +30,7 @@ namespace BlingRus.Domain
         public ShoppingCart GetCart()
         {
             var cartCookie = _httpContext.HttpContext.Request.Cookies["ShoppingCartId"];
-            if (cartCookie != null && Guid.TryParse(cartCookie, out var cartId))
+            if (cartCookie != null && int.TryParse(cartCookie, out var cartId))
             {
                 var cart = _shoppingContext.Carts.FirstOrDefault(c => c.Id == cartId);
                 if (cart != null)
