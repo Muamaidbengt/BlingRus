@@ -47,13 +47,14 @@ namespace BlingRus.Domain.Tests
             [Fact]
             public void ThenTheGoodsValueIs300()
             {
-                _order.TotalShippingCost.Should().Be(3 * 100);
+                _order.TotalGoodsValue.Should().Be(3 * 100);
             }
 
             [Fact]
-            public void ThenThereAreNoDiscounts()
+            public void ThenTheShippingCostShouldBeDiscounted()
             {
-                _order.EffectiveDiscounts.Should().BeEmpty();
+                _order.EffectiveDiscounts.Should()
+                    .ContainSingle(discount => discount.DiscountedAmount == 36 * 3);
             }
         }
 
@@ -84,7 +85,7 @@ namespace BlingRus.Domain.Tests
             [Fact]
             public void ThenTheGoodsValueIs1100()
             {
-                _order.TotalShippingCost.Should().Be(11 * 100);
+                _order.TotalGoodsValue.Should().Be(11 * 100);
             }
 
             [Fact]
