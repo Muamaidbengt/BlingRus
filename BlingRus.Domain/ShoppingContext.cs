@@ -48,7 +48,7 @@ namespace BlingRus.Domain
             modelBuilder.Entity<ShoppingCartItem>(item =>
             {
                 item.ToTable("ShoppingCartItems");
-                item.Property<Guid>("ShoppingCartId");
+                item.Property<int>("ShoppingCartId");
             });
 
             modelBuilder.Entity<ShoppingCart>(cart =>
