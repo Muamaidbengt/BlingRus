@@ -1,9 +1,11 @@
 ﻿@using BlingRus.Web.Models
- @using BlingRus.Domain
+@using BlingRus.Domain
+@using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.AspNetCore.Routing
+@inject IViewLocalizer Localizer
 @model CatalogModel
 @{
-    ViewData["Title"] = "Kontakta oss";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <ul class="list-group">
@@ -22,7 +24,7 @@
                 </div>
                 <div class="col-sm-6 col-xs-4 row">
                     <div class="input-group col-xs-6 col-sm-4">
-                        <input type="text" class="form-control" value="" data-role="customization" placeholder="Personlig gravyr" />
+                        <input type="text" class="form-control" value="" data-role="customization" placeholder="@Localizer["Customization"]" />
                     </div>
                     
                     <div class="input-group col-xs-6 col-sm-2">
@@ -36,7 +38,7 @@
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" data-action="AddToCart" data-href="@Url.Action("Add", "Cart", new RouteValueDictionary(new {id = Model.CartId}))">
                                 <i class="glyphicon glyphicon-plus"></i>
-                                Köp
+                                @Localizer["AddToCart"]
                             </button>
                         </span>
                     </div>
@@ -51,7 +53,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Dialog title</h4>
+                <h4 class="modal-title">@Localizer["ConfirmationDialogTitle"]</h4>
             </div>
             <div class="modal-body">
                 <p id="success-text"></p>
@@ -91,11 +93,11 @@
                             previousAmount = 0;
                         $(this).text(previousAmount + 1).fadeIn();
                     });
-                    $("#success-text").text(amount + " sak(er) lades i kundvagnen.");
+                    $("#success-text").text(amount + " @Localizer["NrOfThingsAddedToCart"]");
                 });
                 adding.fail(function(data) {
                     var error = data ? data.responseText : "";
-                    $("#success-text").text("Nåt gick på tok: " + error);
+                    $("#success-text").text("Oops: " + error);
                 });
                 adding.always(function() {
                     $("#success").modal('show');

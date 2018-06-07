@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Välkommen";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
     ViewBag.FullPageContent = true;
 }
 

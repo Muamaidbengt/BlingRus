@@ -1,7 +1,11 @@
-﻿using BlingRus.Domain;
+﻿using System.Globalization;
+using BlingRus.Domain;
 using BlingRus.Domain.Discounts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +31,10 @@ namespace BlingRus.Web
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddLocalization();
+            services.AddMvc()
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization();
             services.AddDbContext<ShoppingContext>(options => options.UseSqlite("Filename=shopping.sqlite"));
             services.AddScoped<IShoppingContext, ShoppingContext>();
             services.AddScoped<CheckoutService, CheckoutService>();
@@ -44,6 +51,19 @@ namespace BlingRus.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            var supportedCultures = new[]
+            {
+                new CultureInfo("sv"),
+                new CultureInfo("en")
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("sv"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             app.UseStaticFiles();
             app.UseMvc(routes =>

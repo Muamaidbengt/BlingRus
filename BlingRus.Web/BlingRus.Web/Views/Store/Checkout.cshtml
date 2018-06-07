@@ -1,22 +1,24 @@
 ﻿@using BlingRus.Web.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @model SubmitOrderModel
 @{
-    ViewData["Title"] = "Checkout";
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <div class="well">
-    <h2>Din varukorg innehåller</h2>
+    <h2>@Localizer["ContentsOfYourBasket"]</h2>
 
     <ul class="list-group">
         <li class="list-group-item row">
             <div class="col-xs-8 list-group-item-heading">
-                <h4>Beskrivning</h4>
+                <h4>@Localizer["Description"]</h4>
             </div>
             <div class="col-xs-1 list-group-item-heading">
-                <h4>Antal</h4>
+                <h4>@Localizer["Count"]</h4>
             </div>
             <div class="col-xs-2 list-group-item-heading">
-                <h4>Summa</h4>
+                <h4>@Localizer["Subtotal"]</h4>
             </div>
         </li>
         @foreach (var item in Model.Order.OrderLines)
@@ -79,7 +81,7 @@
     </ul>
     <div style="max-width: 550px;">
         <form method="post" class="">
-            <h4>Kunduppgifter</h4>
+            <h4>@Localizer["CustomerDetails"]</h4>
 
             <div class="form-group">
                 <label asp-for="CustomerName" class="col-sm-4 control-label"></label>
@@ -108,10 +110,9 @@
                     <input asp-for="CustomerPhone" class="form-control" />
                 </div>
             </div>
-
             
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Bekräfta köp</button>    
+                <button type="submit" class="btn btn-default">@Localizer["ConfirmPurchase"]</button>    
             </div>
         </form>
         
