@@ -1,32 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Om oss";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <div class="well">
-    <h2>Om oss</h2>
-    <p>Bling-R-Us skapades 2010 av Agneta och Gunde.</p>
-    <p>
-        Agneta har jobbat som guld- och silversmed sedan 1970-talet och har jobbat med många av Sveriges stora smyckeskedjor under åren.
-        2008 träffades Agneta och Gunde och de konstaterade efter en tid att de ville se ett alternativ till kedjornas massproduktion
-        men samtidigt erbjuda billiga kvalitetssmycken till kunderna.
-        Verksamheten har vuxit under åren men produktionen sker fortfarande i samma lokal, med samma hantverksglädje och med 100 % kundfokus.
-    </p>
+    <h2>@Localizer["AboutUs"]</h2>
+    <p>@Localizer["OurBackground"]</p>
+    <p>@Localizer["OurFounders"]</p>
 
-    <h2>Kontakta oss</h2>
-    <p>Vi har ingen fysisk butik men svarar med glädje på alla frågor du kan ha.</p>
+    <h2>@Localizer["ContactUs"]</h2>
+    <p>@Localizer["WeHaveNoStoreIRL"]</p>
     <p>
-        Välkommen att kontakta oss via mail:
+        @Localizer["FeelFreeToContactUs"]
         <ul class="list-unstyled">
-            <li><a href="mailto:gunde@bling.r.us">Frågor kring beställningar, leveranser, villkor och returer</a></li>
-            <li><a href="mailto:agneta@bling.r.us">Frågor kring tillverkningsprocess, material och smakråd</a></li>
+            <li><a href="mailto:gunde@bling.r.us">@Localizer["ContactGunde"]</a></li>
+            <li><a href="mailto:agneta@bling.r.us">@Localizer["ContactAgneta"]</a></li>
         </ul>
     </p>
 
-    <h2>Storleksguide</h2>
+    <h2>@Localizer["SizeChart"]</h2>
     <table class="table">
         <thead>
             <tr>
-                <th>Vara/Storlek</th>
+                <th>@Localizer["Size"]</th>
                 <td>The Bling Ring</td>
                 <td>The Bling Thing*</td>
                 <td>The Bling Fling by Gunde</td>
@@ -59,7 +56,7 @@
             </tr>
         </tbody>
     </table>
-    <p>* Armbandet bör vara cirka 2 cm större än ditt faktiska handledsmått</p>
+    <p>* @Localizer["BraceletNotice"]</p>
 
     <h2>Köpvillkor och prissättning </h2>
     <h3>Pris</h3>
@@ -92,7 +89,7 @@
     <h3>Köpvillkor</h3>
     <p>Beställningar upp till 2000 kr kan göras mot följande betalsätt:</p>
     <ul>
-        <li>Klarna Checkout: Där du kan välja på faktura, delbetalning eller kortbetalning. KlarnaCheckout</li>
+        <li>Klarna Checkout: Där du kan välja på faktura, delbetalning eller kortbetalning.</li>
         <li>Förskottsinbetala till vårt bankgirokonto (kontonr i beställningsbekräftelsen). <br />Glöm inte att ange ordernummer. Som mottagare anges BlingRUs</li>
     </ul>
     <p>Beställningar över 2000kr sker alltid mot förskottsbetalning.</p>

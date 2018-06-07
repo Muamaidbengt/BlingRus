@@ -53,7 +53,7 @@
         }
         <li class="list-group-item list-group-item-warning row">
             <div class="col-xs-9">
-                <h4 class="list-group-item-heading">Shipping</h4>
+                <h4 class="list-group-item-heading">@Localizer["ShippingCost"]</h4>
             </div>
             <div class="col-xs-3">
                 @Model.Order.TotalShippingCost
@@ -72,7 +72,7 @@
         }
         <li class="list-group-item list-group-item-warning row">
             <div class="col-xs-9">
-                <h4 class="list-group-item-heading">Order amount</h4>
+                <h4 class="list-group-item-heading">@Localizer["OrderTotalAmount"]</h4>
             </div>
             <div class="col-xs-3">
                 @Model.Order.Sum

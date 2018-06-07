@@ -117,31 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmPurchase" xml:space="preserve">
-    <value>Confirm purchase</value>
+  <data name="About" xml:space="preserve">
+    <value>About us</value>
   </data>
-  <data name="ContentsOfYourBasket" xml:space="preserve">
-    <value>Your basket contains</value>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
   </data>
-  <data name="Count" xml:space="preserve">
-    <value>Count</value>
-  </data>
-  <data name="CustomerDetails" xml:space="preserve">
-    <value>Your contact details</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="OrderTotalAmount" xml:space="preserve">
-    <value>Total</value>
-  </data>
-  <data name="ShippingCost" xml:space="preserve">
-    <value>Shipping cost</value>
-  </data>
-  <data name="Subtotal" xml:space="preserve">
-    <value>Sum</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Checkout</value>
+  <data name="Store" xml:space="preserve">
+    <value>Store</value>
   </data>
 </root>

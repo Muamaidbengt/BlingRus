@@ -1,9 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Tack!";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
 }
 
 <div class="well">
-    <h2>Tack för ditt meddelande!</h2>
+    <h2>@Localizer["ThankYouForContactingUs"]</h2>
     
-    <p>Våra medarbetare kommer höra av sig till dig inom kort.</p>
+    <p>@Localizer["WeWillGetBackToYou"]</p>
 </div>

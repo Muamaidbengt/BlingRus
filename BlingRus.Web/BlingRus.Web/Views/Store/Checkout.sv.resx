@@ -132,6 +132,12 @@
   <data name="Description" xml:space="preserve">
     <value>Beskrivning</value>
   </data>
+  <data name="OrderTotalAmount" xml:space="preserve">
+    <value>Totalt</value>
+  </data>
+  <data name="ShippingCost" xml:space="preserve">
+    <value>Fraktkostnad</value>
+  </data>
   <data name="Subtotal" xml:space="preserve">
     <value>Summa</value>
   </data>

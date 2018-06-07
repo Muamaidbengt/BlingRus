@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -22,9 +24,9 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li><a asp-controller="Store" asp-action="Index">Butiken</a></li>
-                    <li><a asp-controller="About" asp-action="Index">Om företaget</a></li>
-                    <li><a asp-controller="About" asp-action="Contact">Kontakt</a></li>
+                    <li><a asp-controller="Store" asp-action="Index">@Localizer["Store"]</a></li>
+                    <li><a asp-controller="About" asp-action="Index">@Localizer["About"]</a></li>
+                    <li><a asp-controller="About" asp-action="Contact">@Localizer["Contact"]</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-right: 15px;">

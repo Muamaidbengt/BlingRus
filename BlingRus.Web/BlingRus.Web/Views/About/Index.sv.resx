@@ -117,31 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmPurchase" xml:space="preserve">
-    <value>Confirm purchase</value>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Om oss</value>
   </data>
-  <data name="ContentsOfYourBasket" xml:space="preserve">
-    <value>Your basket contains</value>
+  <data name="BraceletNotice" xml:space="preserve">
+    <value>Armbandet bör vara cirka 2 cm större än ditt faktiska handledsmått</value>
   </data>
-  <data name="Count" xml:space="preserve">
-    <value>Count</value>
+  <data name="ContactAgneta" xml:space="preserve">
+    <value>Frågor kring tillverkningsprocess, material och smakråd</value>
   </data>
-  <data name="CustomerDetails" xml:space="preserve">
-    <value>Your contact details</value>
+  <data name="ContactGunde" xml:space="preserve">
+    <value>Frågor kring beställningar, leveranser, villkor och returer</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Description</value>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Kontakta oss</value>
   </data>
-  <data name="OrderTotalAmount" xml:space="preserve">
-    <value>Total</value>
+  <data name="FeelFreeToContactUs" xml:space="preserve">
+    <value>Välkommen att kontakta oss via mail:</value>
   </data>
-  <data name="ShippingCost" xml:space="preserve">
-    <value>Shipping cost</value>
+  <data name="OurBackground" xml:space="preserve">
+    <value>Bling-R-Us skapades 2010 av Agneta och Gunde.</value>
   </data>
-  <data name="Subtotal" xml:space="preserve">
-    <value>Sum</value>
+  <data name="OurFounders" xml:space="preserve">
+    <value>Agneta har jobbat som guld- och silversmed sedan 1970-talet och har jobbat med många av Sveriges stora smyckeskedjor under åren.
+        2008 träffades Agneta och Gunde och de konstaterade efter en tid att de ville se ett alternativ till kedjornas massproduktion
+        men samtidigt erbjuda billiga kvalitetssmycken till kunderna.
+        Verksamheten har vuxit under åren men produktionen sker fortfarande i samma lokal, med samma hantverksglädje och med 100 % kundfokus.</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Varans storlek</value>
+  </data>
+  <data name="SizeChart" xml:space="preserve">
+    <value>Storleksguide</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Checkout</value>
+    <value>Om oss</value>
+  </data>
+  <data name="WeHaveNoStoreIRL" xml:space="preserve">
+    <value>Vi har ingen fysisk butik men svarar med glädje på alla frågor du kan ha.</value>
   </data>
 </root>
