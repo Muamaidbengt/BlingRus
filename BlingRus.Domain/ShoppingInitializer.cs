@@ -15,6 +15,9 @@ namespace BlingRus.Domain
                 return;
             }
 
+            if(string.IsNullOrEmpty(inventoryJson))
+                throw new ArgumentNullException(nameof(inventoryJson));
+
             var inventory = JObject.Parse(inventoryJson);
             foreach (var itemJson in inventory.First.First.Children())
             {
