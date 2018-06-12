@@ -28,7 +28,7 @@ namespace BlingRus.Domain
 
             Id = Guid.NewGuid();
             Size = size;
-            Description = $"{item.Description} ({size})";
+            Description = $"{item.Name} ({size})";
             UnitCost = item.UnitCost;
             UnitShippingCost = item.UnitShippingCost;
             Amount = amount;

@@ -3,6 +3,6 @@
     public interface IOrderable : IHasCost
     {
         string Image { get; }
-        string Description { get; }
+        string Name { get; }
     }
 }

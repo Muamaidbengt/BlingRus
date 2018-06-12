@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Resources\Inventory.json" />
+  </ItemGroup>
+
   
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.2.1" />
@@ -16,10 +20,24 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Inventory.json" />
     <None Include="Views\Store\Index.sv.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\BlingRus.Domain\BlingRus.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Inventory.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Inventory.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Inventory.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Inventory.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

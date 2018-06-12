@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Xml;
 using BlingRus.Domain;
 using BlingRus.Domain.Discounts;
 using Microsoft.AspNetCore.Builder;
@@ -71,7 +72,7 @@ namespace BlingRus.Web
                 routes.MapRoute("default", "{controller=Landing}/{action=Index}/{id?}");
             });
 
-            ShoppingInitializer.Initialize(shoppingContext);
+            ShoppingInitializer.Initialize(shoppingContext, Resources.Inventory.InventoryJson);
         }
     }
 }

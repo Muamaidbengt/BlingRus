@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace BlingRus.Domain
 {
     public static class ShoppingInitializer
     {
-        public static void Initialize(ShoppingContext context)
+        public static void Initialize(ShoppingContext context, string inventoryJson)
         {
             context.Database.EnsureCreated();
 
@@ -13,9 +15,19 @@ namespace BlingRus.Domain
                 return;
             }
 
-            context.CatalogInternal.Add(new Jewelry("The Bling Ring", "BlingRUs_Ring.jpg"));
-            context.CatalogInternal.Add(new Jewelry("Teh Bling Thing", "BlingRUs_Dogtags.jpg"));
-            context.CatalogInternal.Add(new Jewelry("The Bling Fling by Gunde™", "BlingRUs_Armband.jpg"));
+            var inventory = JObject.Parse(inventoryJson);
+            foreach (var itemJson in inventory.First.First.Children())
+            {
+                var name = itemJson.Value<string>("name");
+                var image = itemJson.Value<string>("image");
+                var description = itemJson.Value<string>("description");
+                var description2 = itemJson.Value<string>("description2");
+                var categoryRaw = itemJson.Value<string>("category");
+                var category = Enum.Parse<Category>(categoryRaw);
+
+                var jewelry = new Jewelry(name, category, image, description, description2);
+                context.CatalogInternal.Add(jewelry);
+            }
 
             context.SaveChanges();
         }

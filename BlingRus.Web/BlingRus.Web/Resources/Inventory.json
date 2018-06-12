@@ -1,0 +1,95 @@
+﻿{
+  "inventory": [
+    {
+    "name": "The Bling Ring",
+    "category": "Ring",
+    "image": "BlingRUs_Ring.jpg",
+    "description": "This simple 5mm wide and 1.5mm thick 925 Sterling silver band is made from Sterling silver and comes with a straight edge and a polished finish. Great for friendship rings!",
+    "description2": "Generally 30-35 characters will fit but for smaller sizes we recommend a maximum of 25 characters while the larger sizes might allow as much as 40."  
+  },
+  {
+    "name": "The Twins",
+    "category": "Ring",
+    "image": "DubbelRingText.png",
+    "description": "This is a 925 Sterling silver band, 7.7mm wide and 1.1mm thick with a split front, allowing for two rows of engraving. It has a straight edge and polished finish. The perfect gift for someone with two kids (or why not dogs or cats?).",
+    "description2": "We recommend no more than 20 characters per row but will try to resolve requests for more.\nIn your order, mark rows clearly with ”/”, like this:\nOne ring/To Rule Them All."
+  },
+  {
+    "name": "The Signet",
+    "category": "Ring",
+    "image": "KlackringText.png",
+    "description": "This massive 925 Sterling silver ring has a 17X10mm plaque and is 8mm wide and 1.5mm thick at the base. It has a slightly softened edge and a matte finish. Very popular as graduation gift.",
+    "description2": "This ring is usually engraved in a larger font (up to 7 characters) but can be engraved using a smaller font, which will allow for 20 characters."
+  },
+  {
+    "name": "The Stamp",
+    "category": "Ring",
+    "image": "PlattaRingText.png",
+    "description": "This thin Sterling Silver band is perfect for someone who wants something smaller and softer. The band is 2mm wide and 1mm thick with a rounded edge and polished finish. The plaque is 12x4mm with a softened edge and matte finish.",
+    "description2": "Due to the size of the petite plaque we recommend no more than 20 characters but as seen in the picture we can engrave more using a smaller font, allowing up to 35 characters."
+  },
+  {
+    "name": "The BlingBangle",
+    "category": "Bracelet",
+    "image": "BlingRUs_Armband.jpg",
+    "description": "This 15mm wide cuff is made from 1,5mm thick Swedish Steel and comes with a matte finish and a straight edge.",
+    "description2": "This can be engraved with up to 100 characters but we would recommend a maximum of 50.\n\nPlease note that this is not silver!"
+  },
+  {
+    "name": "The Fling",
+    "category": "Bracelet",
+    "image": "OppenArmbandText.png",
+    "description": "This thin 925 Sterling Silver band has a 4mm wide and 1.5mm thick band with a rounded edge and polished finish. The plaque is 30x8mm with a softened edge and matte finish.",
+    "description2": "The plaque can fit up to three rows with a maximum of 35 characters per line.\nIn your order, mark rows clearly with ”/”, like this:\nInsanity is doing the same things/over and over again/but expecting different results."
+  },
+  {
+    "name": "The Dainty",
+    "category": "Bracelet",
+    "image": "NamnArmbandText.png",
+    "description": "This dainty 3mm 925 Sterling silver curb chain holds a 20x5mm plaque with a rounded edge and semi-matte finish.",
+    "description2": "We recommend no more than 25 characters but the plaque can fit up to 35 if needed."
+  },
+  {
+    "name": "The Inside Matters",
+    "category": "Bracelet",
+    "image": "SmalArmbandText.png",
+    "description": "For the person who doesn’t want to flaunt their message to the world we have found the perfect solution. This 8mm wide 1.5mm thick 925 Sterling Silver cuff has a softened edge and a semi-matte finish and hides the engraved text on the inside!",
+    "description2": "We recommend no more than 75 characters"
+  },
+  {
+    "name": "The Officer",
+    "category": "Bracelet",
+    "image": "OfficerArmbandText.png",
+    "description": "This 7mm thick 925 Sterling silver curb chain anchors a 30x8mm plaque with a rounded edge and polished finish.",
+    "description2": "This looks best engraved using a big font, which is why we recommend a maximum of 20 characters"
+  },
+  {
+    "name": "The Puppy Collar",
+    "category": "Necklace",
+    "image": "BlingRUs_Dogtags.jpg",
+    "description": "These 49x28 dog tags are made from 1,2mm thick Swedish Steel with a matte finish and comes with a 70cm long steel ball chain.",
+    "description2": "The tags can be engraved with either 2 longer rows (see picture) or up to 5 shorter rows (text rotated 90 degrees counter clockwise). We will use the orientation shown in picture for 1-2 rows.\nIn your order, mark rows clearly with ”/”, like this:\nBling/before flings."
+  },
+  {
+    "name": "The Heart",
+    "category": "Necklace",
+    "image": "HjartaNamnHalsbandText.png",
+    "description": "This cute heart is the perfect christening gift! 925 Sterling Silver throughout with a 25x25mm heart and a rope chain, both with a matte finish.",
+    "description2": "The heart can support 2 rows of text, why not name and birth date?\nWe recommend no more than 15 characters for the first row and 10 for the second row.\nIn your order, mark rows clearly with ”/”, like this:\nLinn Olga Lou/12-3-7."
+  },
+  {
+    "name": "The Shield",
+    "category": "Necklace",
+    "image": "RundNamnHalsbandText.png",
+    "description": "This is our smallest plaque, 20x20mm, which is made out of 925 Sterling Silver and comes with a matte finish and a thin curb chain.",
+    "description2": "We strongly recommend no more than 10 characters for this piece. We will try to resolve any requests but our experience shows 10 is the limit for a perfect result."
+  },
+  {
+    "name": "The Twin Towers",
+    "category": "Necklace",
+    "image": "NamnHalsbandText.png",
+    "description": "These 35x5mm rods are made from 1mm thick 925 Sterling silver and comes with a matte finish and a 70cm long ball chain. A small pearl charm is included.",
+    "description2": "Each rod can fit 20-25 characters.\nIn your order, mark rows clearly with ”/”, like this:\nWithout music/life would be a mistake"
+  }
+  ]
+}
