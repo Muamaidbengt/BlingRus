@@ -134,7 +134,7 @@
                     <div class="form-group row">
                         <label asp-for="CreditCardExpiration" class="col-sm-4 control-label"></label>
                         <div class="col-sm-8">
-                            <input asp-for="CreditCardExpiration" class="form-control" type="month" autocomplete="cc-exp" />
+                            <input asp-for="CreditCardExpiration" class="form-control" type="month" autocomplete="cc-exp" value="@string.Format("{0:yyyy-MM}", Model.CreditCardExpiration)" />
                         </div>
                     </div>
                 </div>

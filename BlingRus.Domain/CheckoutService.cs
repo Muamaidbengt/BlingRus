@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BlingRus.Domain.Discounts;
 using Microsoft.AspNetCore.Http;
@@ -58,6 +59,18 @@ namespace BlingRus.Domain
             foreach(var orderDiscountCalculator in _discountModel.OrderDiscountCalculators)
                 orderDiscountCalculator.ApplyTo(order);
 
+            return order;
+        }
+
+        public Order FinalizeOrder(ShoppingCart cart, string customerName, string customerAddress, string creditCardNumber, DateTime? creditCardExpiration)
+        {
+            var order = CalculateOrder(cart);
+            cart.CustomerName = customerName;
+            cart.CustomerAddress = customerAddress;
+            cart.CreditCardNumber = creditCardNumber;
+            cart.CreditCardExpiration = creditCardExpiration;
+
+            _shoppingContext.Save();
             return order;
         }
     }

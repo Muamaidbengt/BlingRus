@@ -7,6 +7,11 @@ namespace BlingRus.Domain
     public class ShoppingCart : IHasAggregateCost
     {
         public int Id { get; protected set; }
+        public string CreditCardNumber { get; set; }
+        public DateTime? CreditCardExpiration { get; set; }
+        
+        public string CustomerName { get; set; }
+        public string CustomerAddress { get; set; }
 
         internal List<ShoppingCartItem> ContentsInternal { get; set; }
 

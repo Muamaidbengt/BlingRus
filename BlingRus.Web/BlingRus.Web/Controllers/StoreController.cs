@@ -38,20 +38,29 @@ namespace BlingRus.Web.Controllers
         {
             var cart = _checkoutService.GetCart();
             var order = _checkoutService.CalculateOrder(cart);
-            var model = new SubmitOrderModel {Order = order};
+            var model = new SubmitOrderModel 
+            {
+                Order = order, 
+                CreditCardNumber = cart.CreditCardNumber,
+                CreditCardExpiration = cart.CreditCardExpiration,
+                CustomerName = cart.CustomerName
+            };
             return View(model);
         }
 
         [HttpPost("checkout")]
         public IActionResult Checkout(SubmitOrderModel model)
         {
+            var cart =_checkoutService.GetCart();
+            
             if (!ModelState.IsValid)
             {
-                var cart =_checkoutService.GetCart();
-                var order = _checkoutService.CalculateOrder(cart);
-                model.Order = order;
+                var originalOrder = _checkoutService.CalculateOrder(cart);
+                model.Order = originalOrder;
                 return View(model);
             }
+
+            var finalizedOrder = _checkoutService.FinalizeOrder(cart, model.CustomerName, model.CustomerAddress, model.CreditCardNumber, model.CreditCardExpiration);
 
             _checkoutService.CreateCart();
 

@@ -55,7 +55,6 @@ namespace BlingRus.Domain
             {
                 cart.ToTable("ShoppingCarts");
             });
-
             
             modelBuilder.Entity<OrderLine>(orderline =>
             {
