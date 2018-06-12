@@ -22,20 +22,6 @@ namespace BlingRus.Web.Controllers
             _checkoutService = checkoutService;
         }
 
-        //// GET api/values
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    var cart = new ShoppingCart();
-        //    cart.Add(6, new Jewelry("Bracelet", JewelrySize.Humongous, "foo.jpg"));
-
-        //    var order = _checkoutService.CalculateOrder(cart);
-
-        //    _shoppingContext.Add(order);
-        //    _shoppingContext.Save();
-        //    return new string[] { "value1", "value2" };
-        //}
-
         [HttpGet("empty")]
         public JsonResult Empty()
         {
@@ -43,7 +29,6 @@ namespace BlingRus.Web.Controllers
             return Json(cart);
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {

@@ -135,6 +135,9 @@
   <data name="OrderTotalAmount" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>Payment details</value>
+  </data>
   <data name="ShippingCost" xml:space="preserve">
     <value>Shipping cost</value>
   </data>

@@ -1,0 +1,119 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="well">
+    <h2>About us</h2>
+    <p>Bling-R-Us skapades 2010 av Agneta och Gunde.</p>
+    <p>
+        Agneta har jobbat som guld- och silversmed sedan 1970-talet och har jobbat med många av Sveriges stora smyckeskedjor under åren.
+        2008 träffades Agneta och Gunde och de konstaterade efter en tid att de ville se ett alternativ till kedjornas massproduktion
+        men samtidigt erbjuda billiga kvalitetssmycken till kunderna.
+        Verksamheten har vuxit under åren men produktionen sker fortfarande i samma lokal, med samma hantverksglädje och med 100 % kundfokus.
+    </p>
+
+    <h2>Kontakta oss</h2>
+    <p>Vi har ingen fysisk butik men svarar med glädje på alla frågor du kan ha.</p>
+    <p>
+        Välkommen att kontakta oss via mail:
+        <ul class="list-unstyled">
+            <li><a href="mailto:gunde@bling.r.us">Frågor kring beställningar, leveranser, villkor och returer</a></li>
+            <li><a href="mailto:agneta@bling.r.us">Frågor kring tillverkningsprocess, material och smakråd</a></li>
+        </ul>
+    </p>
+
+    <h2>Storleksguide</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Varans storlek</th>
+                <td>The Bling Ring</td>
+                <td>The Bling Thing*</td>
+                <td>The Bling Fling by Gunde</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Small</td>
+                <td>16.5 mm</td>
+                <td>16 cm</td>
+                <td>40 cm</td>
+            </tr>
+            <tr>
+                <td>Medium</td>
+                <td>18 mm</td>
+                <td>18 cm</td>
+                <td>52 cm</td>
+            </tr>
+            <tr>
+                <td>Large</td>
+                <td>20.5 mm</td>
+                <td>20 cm</td>
+                <td>64 cm</td>
+            </tr>
+            <tr>
+                <td>X-Large</td>
+                <td>23 mm</td>
+                <td>22 cm</td>
+                <td>76 cm</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>* Armbandet bör vara cirka 2 cm större än ditt faktiska handledsmått</p>
+
+    <h2>Köpvillkor och prissättning </h2>
+    <h3>Pris</h3>
+    <ul class="list-unstyled">
+        <li>Alla priser är inklusive moms* och exklusive frakt. </li>
+        <li> Varje smycke har ett enhetspris på 100 kr</li>
+        <li>1-2 smycken, ingen rabatt</li>
+        <li>4+ smycken, 10% rabatt på totalen</li>
+        <li>Var femte smycke på köpet</li>
+    </ul>
+
+    <h3>Frakt</h3>
+    <ul class="list-unstyled">
+        <li>36:-/smycke</li>
+        <li>Fraktfritt över 250 kr</li>
+    </ul>
+
+    <h3>Gravyr</h3>
+    <p>Gravyr görs alltid i det typsnitt som syns på bilderna**</p>
+    <ul>
+        <li>1-10 tecken ingår</li>
+        <li>10-20 tecken + 50 kr</li>
+    </ul>
+    <p>Observera att vi bara lämnar kvalitetsgaranti på gravyr av halsband och armband.</p>
+
+    <p>Ringar graveras på kundens egen risk på grund av material- och storleksbegränsingar.</p>
+    <p>* Är du företag och vill göra en större beställning? Kontakta Gunde för prisförslag och specialhantering.</p>
+    <p>** Specialbeställningar med alternativt typsnitt eller symboler? Kontakta Gunde för prisförslag och specialhantering.</p>
+
+    <h3>Köpvillkor</h3>
+    <p>Beställningar upp till 2000 kr kan göras mot följande betalsätt:</p>
+    <ul>
+        <li>Klarna Checkout: Där du kan välja på faktura, delbetalning eller kortbetalning.</li>
+        <li>Förskottsinbetala till vårt bankgirokonto (kontonr i beställningsbekräftelsen). <br />Glöm inte att ange ordernummer. Som mottagare anges BlingRUs</li>
+    </ul>
+    <p>Beställningar över 2000kr sker alltid mot förskottsbetalning.</p>
+
+    <h3>Leveranstid</h3>
+    <p>Normalt (ej specialbeställningar) är leveranstiden 1 vecka från beställning till att varan lämnar oss.</p>
+    <p>Alla leveranser sker spårbart men vi kan tyvärr inte ansvara för fraktbolagets leveranstider.</p>
+
+    <h3>Ångerrätt</h3>
+    <p>
+        Då alla smycken tillverkas med egenvald text kan vi tyvärr inte lämna ångerrätt då vi inte har möjlighet att
+        slipa bort gravyren och återställa varan i säljbart skick.
+    </p>
+
+    <h3>Returer</h3>
+    <p>Returer av defekta varor görs kostnadsfritt. Inga övriga returer godtas (se ångerrätt).</p>
+    <p>Kontakta Gunde och beskriv varan, felet och ordernummer. Avvakta returfraktsedel från oss och följ instruktionerna som medföljer.</p>
+    <p>Vi kan erbjuda återbetalning eller nytt smycke enligt ordinarie beställning, var tydlig med vilket du önskar.</p>
+    <p>Returer ska skickas spårbart. Vi ansvarar ej för försvunna returer.</p>
+    <p>När du utnyttjat din ångerrätt ska du, sända eller lämna tillbaka varan till oss i oskadat skick.</p>
+
+</div>
