@@ -60,7 +60,9 @@ namespace BlingRus.Web.Controllers
                 return View(model);
             }
 
-            var finalizedOrder = _checkoutService.FinalizeOrder(cart, model.CustomerName, model.CustomerAddress, model.CreditCardNumber, model.CreditCardExpiration);
+            var finalizedOrder = _checkoutService.FinalizeOrder(cart, 
+                model.CustomerName, model.CustomerAddress, model.CustomerEmail, 
+                model.CreditCardNumber, model.CreditCardExpiration);
 
             _checkoutService.CreateCart();
 

@@ -10,13 +10,15 @@ namespace BlingRus.Domain
     {
         private readonly IHttpContextAccessor _httpContext;
         private readonly IShoppingContext _shoppingContext;
+        private readonly IMailService _mailService;
         private readonly DiscountModel _discountModel;
         
         public CheckoutService(IHttpContextAccessor httpContext, 
-            IShoppingContext shoppingContext, DiscountModel discountModel)
+            IShoppingContext shoppingContext, IMailService mailService, DiscountModel discountModel)
         {
             _httpContext = httpContext;
             _shoppingContext = shoppingContext;
+            _mailService = mailService;
             _discountModel = discountModel;
         }
 
@@ -62,7 +64,7 @@ namespace BlingRus.Domain
             return order;
         }
 
-        public Order FinalizeOrder(ShoppingCart cart, string customerName, string customerAddress, string creditCardNumber, DateTime? creditCardExpiration)
+        public Order FinalizeOrder(ShoppingCart cart, string customerName, string customerAddress, string customerEmail, string creditCardNumber, DateTime? creditCardExpiration)
         {
             var order = CalculateOrder(cart);
             cart.CustomerName = customerName;
@@ -70,8 +72,16 @@ namespace BlingRus.Domain
             cart.CreditCardNumber = creditCardNumber;
             cart.CreditCardExpiration = creditCardExpiration;
 
+            if (!string.IsNullOrEmpty(customerEmail))
+                _mailService.SendOrderConfirmationMail(customerEmail, cart);
+
             _shoppingContext.Save();
             return order;
         }
+    }
+
+    public interface IMailService
+    {
+        void SendOrderConfirmationMail(string customerEmail, ShoppingCart cart);
     }
 }
