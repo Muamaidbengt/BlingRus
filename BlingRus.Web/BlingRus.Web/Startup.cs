@@ -2,6 +2,7 @@
 using System.IO;
 using BlingRus.Domain;
 using BlingRus.Domain.Discounts;
+using BlingRus.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
@@ -38,6 +39,8 @@ namespace BlingRus.Web
             services.AddScoped<IShoppingContext, ShoppingContext>();
             services.AddScoped<CheckoutService, CheckoutService>();
             services.AddScoped<DiscountModel, DiscountModel>();
+            services.AddScoped<IViewRenderService, ViewRenderService>();
+            services.AddTransient<IMailService>(_ => new SendGridMailService(Configuration.GetValue<string>("SendGrid.ApiKey")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

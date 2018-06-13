@@ -19,7 +19,7 @@ namespace BlingRus.Domain.Tests
             _mockHttpContext = new Mock<IHttpContextAccessor>();
             _mockShoppingContext = new Mock<IShoppingContext>();
             
-            _checkoutService = new CheckoutService(_mockHttpContext.Object, _mockShoppingContext.Object, new SendGridMailService(), new DiscountModel());
+            _checkoutService = new CheckoutService(_mockHttpContext.Object, _mockShoppingContext.Object, new DiscountModel());
         }
 
         public class WhenCartContains3ItemsWithoutText : CheckoutServiceTests

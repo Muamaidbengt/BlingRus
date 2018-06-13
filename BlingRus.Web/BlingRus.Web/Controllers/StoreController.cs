@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using BlingRus.Domain;
 using BlingRus.Web.Models;
+using BlingRus.Web.Services;
+using BlingRus.Web.ViewComponents;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -11,11 +14,18 @@ namespace BlingRus.Web.Controllers
     {
         private readonly IShoppingContext _shoppingContext;
         private readonly CheckoutService _checkoutService;
+        private readonly IMailService _mailService;
+        private readonly IViewRenderService _viewRenderService;
 
-        public StoreController(IShoppingContext shoppingContext, CheckoutService checkoutService)
+        public StoreController(IShoppingContext shoppingContext
+            , CheckoutService checkoutService
+            , IMailService mailService
+            , IViewRenderService viewRenderService)
         {
             _shoppingContext = shoppingContext;
             _checkoutService = checkoutService;
+            _mailService = mailService;
+            _viewRenderService = viewRenderService;
         }
 
         [HttpGet]
@@ -63,6 +73,11 @@ namespace BlingRus.Web.Controllers
             var finalizedOrder = _checkoutService.FinalizeOrder(cart, 
                 model.CustomerName, model.CustomerAddress, model.CustomerEmail, 
                 model.CreditCardNumber, model.CreditCardExpiration);
+
+            var mailContents =
+                _viewRenderService.RenderToString(@"~/Views/Shared/Components/ConfirmationMail/Default.cshtml");
+
+            _mailService.SendOrderConfirmationMail(model.CustomerEmail, mailContents);
 
             _checkoutService.CreateCart();
 
