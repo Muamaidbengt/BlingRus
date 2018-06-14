@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BlingRus.Domain.Discounts;
+using BlingRus.Domain.Services;
 using Microsoft.AspNetCore.Http;
 
 namespace BlingRus.Domain
@@ -11,13 +11,18 @@ namespace BlingRus.Domain
         private readonly IHttpContextAccessor _httpContext;
         private readonly IShoppingContext _shoppingContext;
         private readonly DiscountModel _discountModel;
+        private readonly IMailService _mailService;
+        private readonly IViewRenderService _viewRenderService;
         
-        public CheckoutService(IHttpContextAccessor httpContext, 
-            IShoppingContext shoppingContext, DiscountModel discountModel)
+        public CheckoutService(IHttpContextAccessor httpContext
+            , IShoppingContext shoppingContext
+            , DiscountModel discountModel
+            , IMailService mailService)
         {
             _httpContext = httpContext;
             _shoppingContext = shoppingContext;
             _discountModel = discountModel;
+            _mailService = mailService;
         }
 
         public ShoppingCart CreateCart()
@@ -62,15 +67,21 @@ namespace BlingRus.Domain
             return order;
         }
 
-        public Order FinalizeOrder(ShoppingCart cart, string customerName, string customerAddress, string customerEmail, string creditCardNumber, DateTime? creditCardExpiration)
+        public Order FinalizeOrder(ShoppingCart cart)
         {
             var order = CalculateOrder(cart);
-            cart.CustomerName = customerName;
-            cart.CustomerAddress = customerAddress;
-            cart.CreditCardNumber = creditCardNumber;
-            cart.CreditCardExpiration = creditCardExpiration;
+            
+            order.DeliveryName = cart.CustomerName;
+            order.DeliveryAddress = cart.CustomerAddress;
+            order.ConfirmationEmail = cart.CustomerEmail;
+            order.CreditCardNumber = cart.CreditCardNumber;
+            order.CreditCardExpiration = cart.CreditCardExpiration;
+
+            CreateCart();
 
             _shoppingContext.Save();
+
+            _mailService.SendOrderConfirmationMail(order);
             return order;
         }
     }

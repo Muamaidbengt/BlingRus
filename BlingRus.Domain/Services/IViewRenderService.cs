@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BlingRus.Web.Services
+namespace BlingRus.Domain.Services
 {
     public interface IViewRenderService
     {

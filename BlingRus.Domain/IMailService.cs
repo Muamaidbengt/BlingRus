@@ -2,6 +2,6 @@
 {
     public interface IMailService
     {
-        void SendOrderConfirmationMail(string customerEmail, string htmlContent);
+        void SendOrderConfirmationMail(Order order);
     }
 }

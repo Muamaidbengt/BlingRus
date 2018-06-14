@@ -1,9 +1,6 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using BlingRus.Domain;
 using BlingRus.Web.Models;
-using BlingRus.Web.Services;
-using BlingRus.Web.ViewComponents;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -14,18 +11,15 @@ namespace BlingRus.Web.Controllers
     {
         private readonly IShoppingContext _shoppingContext;
         private readonly CheckoutService _checkoutService;
-        private readonly IMailService _mailService;
-        private readonly IViewRenderService _viewRenderService;
+        
 
         public StoreController(IShoppingContext shoppingContext
             , CheckoutService checkoutService
-            , IMailService mailService
-            , IViewRenderService viewRenderService)
+            )
         {
             _shoppingContext = shoppingContext;
             _checkoutService = checkoutService;
-            _mailService = mailService;
-            _viewRenderService = viewRenderService;
+           
         }
 
         [HttpGet]
@@ -70,16 +64,14 @@ namespace BlingRus.Web.Controllers
                 return View(model);
             }
 
-            var finalizedOrder = _checkoutService.FinalizeOrder(cart, 
-                model.CustomerName, model.CustomerAddress, model.CustomerEmail, 
-                model.CreditCardNumber, model.CreditCardExpiration);
+            cart.CustomerName = model.CustomerName;
+            cart.CustomerAddress = model.CustomerAddress;
+            cart.CustomerEmail = model.CustomerEmail;
+            cart.CustomerPhone = model.CustomerPhone;
+            cart.CreditCardNumber = model.CreditCardNumber;
+            cart.CreditCardExpiration = model.CreditCardExpiration;
 
-            var mailContents =
-                _viewRenderService.RenderToString(@"~/Views/Shared/Components/ConfirmationMail/Default.cshtml");
-
-            _mailService.SendOrderConfirmationMail(model.CustomerEmail, mailContents);
-
-            _checkoutService.CreateCart();
+            _checkoutService.FinalizeOrder(cart);
 
             return View("Confirm");
         }

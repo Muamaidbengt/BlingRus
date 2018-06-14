@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BlingRus.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.ViewComponents
 {
     public class ConfirmationMailViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(Order order)
         {
-            return View();
+            return View(order);
         }
     }
 }

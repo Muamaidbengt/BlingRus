@@ -1,5 +1,65 @@
-﻿@{
-    ViewData["Title"] = "Mail";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model BlingRus.Domain.Order
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
 }
 
-<h2>Thank you for your order!</h2>
+<h2>@Localizer["ThankYouForYourOrder"]</h2>
+
+<h3>@Localizer["DeliveryDetails"]</h3>
+<p>@Localizer["DeliveryName"]: @Model.DeliveryName</p>
+<p>@Localizer["DeliveryAddress"]: @Model.DeliveryAddress</p>
+
+<h3>@Localizer["PaymentDetails"]</h3>
+<p>@Localizer["CreditCardNumber"]: @Model.CreditCardNumber, @Localizer["CreditCardExpiration"]: @Model.CreditCardExpiration?.ToString("mmyy")</p>
+
+<h3>@Localizer["OrderDetails"]</h3>
+<table>
+    <tr>
+        <td>@Localizer["Description"]</td>
+        <td>@Localizer["Count"]</td>
+        <td>@Localizer["Subtotal"]</td>
+    </tr>
+    @foreach (var item in Model.OrderLines)
+    {
+        <tr>
+            <td>@item.Description</td>
+            <td>@item.AmountOrdered</td>
+            <td>@item.GoodsValue</td>
+        </tr>
+
+
+        if (item.EffectiveDiscounts?.Any() == true)
+        {
+            foreach (var discount in item.EffectiveDiscounts)
+            {
+                <tr>
+                    <td>@discount.Description</td>
+                    <td></td>
+                    <td>-@discount.DiscountedAmount</td>
+                </tr>
+            }
+        }
+    }
+                <tr>
+                    <td>@Localizer["ShippingCost"]</td>
+                    <td></td>
+                    <td>@Model.TotalShippingCost</td>
+                </tr>
+    @foreach (var discount in Model.EffectiveDiscounts)
+    {
+        <tr>
+            <td>@discount.Description</td>
+            <td></td>
+            <td>-@discount.DiscountedAmount</td>
+        </tr>
+    }
+    
+    <tr>
+        <td>@Localizer["OrderTotalAmount"]</td>
+        <td></td>
+        <td>@Model.Sum</td>
+    </tr>
+
+</table>

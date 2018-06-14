@@ -15,6 +15,12 @@ namespace BlingRus.Domain
         public decimal TotalShippingCost => OrderLines.Sum(l => l.ShippingCost);
         public decimal TotalDiscountedAmount => OrderLines.Sum(l => l.DiscountedAmount) + EffectiveDiscounts.Sum(d => d.DiscountedAmount);
 
+        public string DeliveryName { get; set; }
+        public string DeliveryAddress { get; set; }
+        public string ConfirmationEmail { get; set; }
+        public string CreditCardNumber { get; set; }
+        public DateTime? CreditCardExpiration { get; set; }
+
         protected Order()
         {
             OrderLines = new List<OrderLine>();

@@ -12,6 +12,8 @@ namespace BlingRus.Domain
         
         public string CustomerName { get; set; }
         public string CustomerAddress { get; set; }
+        public string CustomerEmail { get; set; }
+        public string CustomerPhone { get; set; }
 
         internal List<ShoppingCartItem> ContentsInternal { get; set; }
 
