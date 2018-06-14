@@ -8,10 +8,11 @@ namespace BlingRus.Domain
         {
         }
 
-        public Jewelry(string name, Category category, string image, string description, string description2)
+        public Jewelry(string name, Category category, int cost, string image, string description, string description2)
         {
             Name = name;
             Category = category;
+            UnitCost = cost;
             Image = image;
             Description = description;
             Description2 = description2;
@@ -19,7 +20,7 @@ namespace BlingRus.Domain
 
         public Guid Id { get; private set; }
 
-        public virtual decimal UnitCost => 100;
+        public virtual decimal UnitCost { get; private set; }
         public virtual decimal UnitShippingCost => 36;
 
         public string Image { get; private set; }

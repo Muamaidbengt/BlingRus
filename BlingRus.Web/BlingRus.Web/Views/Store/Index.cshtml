@@ -13,10 +13,10 @@
 </div>
 
 <div class="store">
-    
+
     @foreach (var category in Model.Catalog.GroupBy(item => item.Category))
     {
-        
+
         <ul class="list-group">
             <li class="list-group-item row"><h4 class="list-group-item-heading">@category.Key</h4></li>
             @foreach (var item in category)
@@ -24,10 +24,11 @@
                 <li class="list-group-item row">
                     <div class="form-group form-inline">
                         <div class="col-sm-1 col-xs-4">
-                            <input type="hidden" value="@item.Id" data-role="itemId"/>
+                            <input type="hidden" value="@item.Id" data-role="itemId" />
                             <a href="@Url.Content("~/img/" + item.Image)" class="thumbnail">
-                                <img src="@Url.Content("~/img/" + item.Image)" class="img-rounded"/>
+                                <img src="@Url.Content("~/img/" + item.Image)" class="img-rounded" />
                             </a>
+                            <span><strong>@item.UnitCost.ToString("0") SEK</strong></span>
                         </div>
                         <div class="col-sm-5 col-xs-4">
                             <h4 class="list-group-item-heading">@item.Name</h4>
@@ -36,7 +37,7 @@
                         </div>
                         <div class="col-sm-6 col-xs-4 row">
                             <div class="input-group col-xs-6 col-sm-4">
-                                <input type="text" class="form-control" value="" data-role="customization" placeholder="@Localizer["Customization"]"/>
+                                <input type="text" class="form-control" value="" data-role="customization" placeholder="@Localizer["Customization"]" />
                             </div>
 
                             <div class="input-group col-xs-6 col-sm-2">

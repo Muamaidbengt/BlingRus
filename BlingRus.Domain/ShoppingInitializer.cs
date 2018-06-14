@@ -26,9 +26,10 @@ namespace BlingRus.Domain
                 var description = itemJson.Value<string>("description");
                 var description2 = itemJson.Value<string>("description2");
                 var categoryRaw = itemJson.Value<string>("category");
+                var cost = itemJson.Value<int>("cost");
                 var category = Enum.Parse<Category>(categoryRaw);
 
-                var jewelry = new Jewelry(name, category, image, description, description2);
+                var jewelry = new Jewelry(name, category, cost, image, description, description2);
                 context.CatalogInternal.Add(jewelry);
             }
 

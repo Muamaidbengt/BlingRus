@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using BlingRus.Domain.Discounts;
 using FluentAssertions;
@@ -32,8 +31,8 @@ namespace BlingRus.Domain.Tests
             public WhenCartContains3ItemsWithoutText()
             {
                 _cart = new ShoppingCart(42);
-                _cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelet, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
-                _cart.Add(new ShoppingCartItem(2, JewelrySize.Medium, new Jewelry("Necklace", Category.Necklace, "foo.jpg", "Necklacedescription", "Necklacedescription2")));
+                _cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelets, 100, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
+                _cart.Add(new ShoppingCartItem(2, JewelrySize.Medium, new Jewelry("Necklace", Category.Necklaces, 100, "foo.jpg", "Necklacedescription", "Necklacedescription2")));
                 _order = _checkoutService.CalculateOrder(_cart);
             }
 
@@ -71,7 +70,7 @@ namespace BlingRus.Domain.Tests
             public WhenCartContains11ItemsWithoutText()
             {
                 _cart = new ShoppingCart(42);
-                _cart.Add(new ShoppingCartItem(11, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelet, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
+                _cart.Add(new ShoppingCartItem(11, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelets, 100, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
                 _order = _checkoutService.CalculateOrder(_cart);
             }
 
