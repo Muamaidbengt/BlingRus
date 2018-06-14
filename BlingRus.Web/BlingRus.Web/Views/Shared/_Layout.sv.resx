@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>Om företaget</value>
   </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Varukorg</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontakta oss</value>
   </data>

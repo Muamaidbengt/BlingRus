@@ -33,7 +33,7 @@
                 <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-right: 15px;">
                     <li>
                         <div class="input-group">
-                            <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button"><i class="glyphicon glyphicon-shopping-cart"></i> @await Component.InvokeAsync(nameof(CartCounter))</a>
+                            <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button"><i class="glyphicon glyphicon-shopping-cart"></i> @await Component.InvokeAsync(nameof(CartCounter)) @Localizer["Cart"]</a>
                         </div>
                     </li>
                 </ul>
