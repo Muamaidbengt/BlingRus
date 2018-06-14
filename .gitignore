@@ -7,3 +7,4 @@ bin
 obj
 logs
 *.sqlite
+*.user

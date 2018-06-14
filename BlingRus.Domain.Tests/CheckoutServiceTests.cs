@@ -10,16 +10,18 @@ namespace BlingRus.Domain.Tests
 {
     public abstract class CheckoutServiceTests
     {
-        private readonly Mock<IHttpContextAccessor> _mockHttpContext;
-        private readonly Mock<IShoppingContext> _mockShoppingContext;
+        private readonly Mock<IHttpContextAccessor> _mockHttpContext = new Mock<IHttpContextAccessor>();
+        private readonly Mock<IShoppingContext> _mockShoppingContext = new Mock<IShoppingContext>();
+        private readonly Mock<IMailService> _mockMailService = new Mock<IMailService>();
         private readonly CheckoutService _checkoutService;
 
         protected CheckoutServiceTests()
         {
-            _mockHttpContext = new Mock<IHttpContextAccessor>();
-            _mockShoppingContext = new Mock<IShoppingContext>();
-            
-            _checkoutService = new CheckoutService(_mockHttpContext.Object, _mockShoppingContext.Object, new DiscountModel());
+            _checkoutService = new CheckoutService(
+                _mockHttpContext.Object, 
+                _mockShoppingContext.Object, 
+                new DiscountModel(), 
+                _mockMailService.Object);
         }
 
         public class WhenCartContains3ItemsWithoutText : CheckoutServiceTests
