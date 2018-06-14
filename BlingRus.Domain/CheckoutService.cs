@@ -12,9 +12,9 @@ namespace BlingRus.Domain
         private readonly IShoppingContext _shoppingContext;
         private readonly DiscountModel _discountModel;
         private readonly IMailService _mailService;
-        private readonly IViewRenderService _viewRenderService;
         
-        public CheckoutService(IHttpContextAccessor httpContext
+        public CheckoutService(
+            IHttpContextAccessor httpContext
             , IShoppingContext shoppingContext
             , DiscountModel discountModel
             , IMailService mailService)

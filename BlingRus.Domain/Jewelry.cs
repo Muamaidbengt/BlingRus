@@ -28,11 +28,4 @@ namespace BlingRus.Domain
         public string Description2 { get; private set; }
         public Category Category { get; private set; }
     }
-
-    public enum Category
-    {
-        Necklace,
-        Ring,
-        Bracelet
-    }
 }

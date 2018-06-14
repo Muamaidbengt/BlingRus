@@ -47,6 +47,8 @@ namespace BlingRus.Web.Controllers
                 Order = order, 
                 CreditCardNumber = cart.CreditCardNumber,
                 CreditCardExpiration = cart.CreditCardExpiration,
+                CustomerPhone = cart.CustomerPhone,
+                CustomerAddress = cart.CustomerAddress,
                 CustomerName = cart.CustomerName
             };
             return View(model);
