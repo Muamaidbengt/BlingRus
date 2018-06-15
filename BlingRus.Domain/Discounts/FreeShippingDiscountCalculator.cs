@@ -1,6 +1,6 @@
 ﻿namespace BlingRus.Domain.Discounts
 {
-    public class FreeShippingDiscountCalculator : IOrderDiscountCalculator
+    public class FreeShippingDiscountCalculator : IOrderPriceAdjustmentCalculator
     {
         public decimal MinimumGoodsValue { get; }
 
@@ -14,7 +14,7 @@
             if (order.TotalGoodsValue < MinimumGoodsValue)
                 return;
 
-            order.Apply(new OrderDiscount($"Free shipping for orders above {MinimumGoodsValue}!", order.TotalShippingCost));
+            order.Apply(new OrderPriceAdjustment($"Free shipping for orders above {MinimumGoodsValue}!", order.TotalShippingCost, 0));
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BlingRus.Domain.Discounts
 {
-    public class NthFreeDiscountCalculator : IOrderLineDiscountCalculator
+    public class NthFreeDiscountCalculator : IOrderLinePriceAdjustmentCalculator
     {
         protected int Counter { get; set; }
         public int N { get; }
@@ -16,14 +16,14 @@ namespace BlingRus.Domain.Discounts
 
         public void ApplyTo(OrderLine line)
         {
-            Counter += line.AmountOrdered;
+            Counter += line.QuantityOrdered;
 
             var times = Counter / N;
             if (times <= 0)
                 return;
 
             Counter = Counter % N;
-            line.Apply(new LineDiscount($"Every {N}:th is free", line.UnitGoodsValue));
+            line.Apply(new PriceLineAdjustment($"Every {N}:th is free", line.UnitGoodsValue, 0));
         }
     }
 }

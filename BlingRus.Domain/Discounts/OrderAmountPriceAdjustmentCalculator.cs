@@ -2,12 +2,12 @@
 
 namespace BlingRus.Domain.Discounts
 {
-    public class OrderAmountDiscountCalculator : IOrderDiscountCalculator
+    public class OrderAmountPriceAdjustmentCalculator : IOrderPriceAdjustmentCalculator
     {
         public int MinimumAmount { get; }
         public decimal Percent { get; }
 
-        public OrderAmountDiscountCalculator(int minimumAmount, decimal percent)
+        public OrderAmountPriceAdjustmentCalculator(int minimumAmount, decimal percent)
         {
             if (percent < 0 || percent > 100)
                 throw new ArgumentException("Percent must be between 0 and 100");
@@ -24,7 +24,7 @@ namespace BlingRus.Domain.Discounts
                 return;
             var discountedAmount = order.TotalGoodsValue * Percent / 100;
 
-            order.Apply(new OrderDiscount($"Supersaver deal! {Percent}% off since you ordered more than {MinimumAmount} items.", discountedAmount));
+            order.Apply(new OrderPriceAdjustment($"Supersaver deal! {Percent}% off since you ordered more than {MinimumAmount} items.", discountedAmount, 0));
         }
     }
 }

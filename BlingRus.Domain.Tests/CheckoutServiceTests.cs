@@ -19,7 +19,7 @@ namespace BlingRus.Domain.Tests
             _checkoutService = new CheckoutService(
                 _mockHttpContext.Object, 
                 _mockShoppingContext.Object, 
-                new DiscountModel(), 
+                new PriceAdjustmentModel(), 
                 _mockMailService.Object);
         }
 
@@ -57,7 +57,7 @@ namespace BlingRus.Domain.Tests
             [Fact]
             public void ThenTheShippingCostShouldBeDiscounted()
             {
-                _order.EffectiveDiscounts.Should()
+                _order.EffectiveAdjustments.Should()
                     .ContainSingle(discount => discount.DiscountedAmount == 36 * 3);
             }
         }
@@ -95,14 +95,14 @@ namespace BlingRus.Domain.Tests
             [Fact]
             public void ThenTheShippingCostShouldBeDiscounted()
             {
-                _order.EffectiveDiscounts.Should()
+                _order.EffectiveAdjustments.Should()
                     .ContainSingle(discount => discount.DiscountedAmount == 36 * 11);
             }
 
             [Fact]
             public void ThenThereShouldBeA10PercentDiscount()
             {
-                _order.EffectiveDiscounts.Should()
+                _order.EffectiveAdjustments.Should()
                     .ContainSingle(discount => discount.DiscountedAmount == 1100m / 10);
             }
 
@@ -111,9 +111,8 @@ namespace BlingRus.Domain.Tests
             {
                 _order.OrderLines.Should()
                     .HaveCount(1)
-                    .And.Subject.First().EffectiveDiscounts.Should()
-                    .HaveCount(1)
-                    .And.ContainSingle(discount => discount.DiscountedAmount == 100);
+                    .And.Subject.First().EffectiveAdjustments.Should()
+                    .Contain(discount => discount.DiscountedAmount == 100);
             }
         }
     }

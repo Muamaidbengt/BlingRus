@@ -1,6 +1,6 @@
 ﻿namespace BlingRus.Domain.Discounts
 {
-    public interface IOrderDiscountCalculator
+    public interface IOrderPriceAdjustmentCalculator
     {
         void ApplyTo(Order order);
     }

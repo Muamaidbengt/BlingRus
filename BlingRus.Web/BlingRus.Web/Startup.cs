@@ -39,7 +39,7 @@ namespace BlingRus.Web
             services.AddDbContext<ShoppingContext>(options => options.UseSqlite("Filename=shopping.sqlite"));
             services.AddScoped<IShoppingContext, ShoppingContext>();
             services.AddScoped<CheckoutService, CheckoutService>();
-            services.AddScoped<DiscountModel, DiscountModel>();
+            services.AddScoped<PriceAdjustmentModel, PriceAdjustmentModel>();
             services.AddScoped<IViewRenderService, ViewRenderService>();
             services.AddTransient<IMailService>(service => new SendGridMailService(Configuration.GetValue<string>("SendGrid:ApiKey"), service.GetRequiredService<IViewRenderService>()));
         }

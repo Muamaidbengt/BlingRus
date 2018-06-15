@@ -64,7 +64,7 @@ namespace BlingRus.Domain
                 orderline.ToTable("OrderLines");
             });
 
-            modelBuilder.Entity<OrderDiscount>(discount =>
+            modelBuilder.Entity<OrderPriceAdjustment>(discount =>
             {
                 discount.Property<Guid>("Id");
                 discount.HasKey("Id");
@@ -73,7 +73,7 @@ namespace BlingRus.Domain
                 discount.ToTable("OrderDiscounts");
             });
 
-            modelBuilder.Entity<LineDiscount>(discount =>
+            modelBuilder.Entity<PriceLineAdjustment>(discount =>
             {
                 discount.Property<Guid>("Id");
                 discount.HasKey("Id");
@@ -95,13 +95,13 @@ namespace BlingRus.Domain
                 .HasForeignKey("OrderId");
 
             modelBuilder.Entity<OrderLine>()
-                .HasMany(l => l.EffectiveDiscounts)
+                .HasMany(l => l.EffectiveAdjustments)
                 .WithOne()
                 .HasPrincipalKey(l => l.Id)
                 .HasForeignKey("OrderLineId");
 
             modelBuilder.Entity<Order>()
-                .HasMany(l => l.EffectiveDiscounts)
+                .HasMany(l => l.EffectiveAdjustments)
                 .WithOne()
                 .HasPrincipalKey(l => l.Id)
                 .HasForeignKey("OrderId");

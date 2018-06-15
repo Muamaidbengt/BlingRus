@@ -25,14 +25,14 @@
     {
         <tr>
             <td>@item.Description</td>
-            <td>@item.AmountOrdered</td>
+            <td>@item.QuantityOrdered</td>
             <td>@item.GoodsValue</td>
         </tr>
 
 
-        if (item.EffectiveDiscounts?.Any() == true)
+        if (item.EffectiveAdjustments?.Any() == true)
         {
-            foreach (var discount in item.EffectiveDiscounts)
+            foreach (var discount in item.EffectiveAdjustments)
             {
                 <tr>
                     <td>@discount.Description</td>
@@ -47,7 +47,7 @@
                     <td></td>
                     <td>@Model.TotalShippingCost</td>
                 </tr>
-    @foreach (var discount in Model.EffectiveDiscounts)
+    @foreach (var discount in Model.EffectiveAdjustments)
     {
         <tr>
             <td>@discount.Description</td>

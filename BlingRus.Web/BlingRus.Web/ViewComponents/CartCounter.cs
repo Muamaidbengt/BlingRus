@@ -19,6 +19,5 @@ namespace BlingRus.Web.ViewComponents
             var cart = _checkoutService.GetCart();
             return View(cart?.Contents.Count());
         }
-
     }
 }

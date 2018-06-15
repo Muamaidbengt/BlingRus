@@ -15,7 +15,7 @@
                 <h4>@Localizer["Description"]</h4>
             </div>
             <div class="col-xs-1 list-group-item-heading">
-                <h4>@Localizer["Count"]</h4>
+                <h4>@Localizer["Quantity"]</h4>
             </div>
             <div class="col-xs-2 list-group-item-heading">
                 <h4>@Localizer["Subtotal"]</h4>
@@ -28,23 +28,23 @@
                     <span>@item.Description</span>
                 </div>
                 <div class="col-xs-1">
-                    <span>@item.AmountOrdered</span>
+                    <span>@item.QuantityOrdered</span>
                 </div>
                 <div class="col-xs-2">
-                    <span>@item.GoodsValue</span>
+                    <span>@item.GoodsValue.ToString("0.0")</span>
                 </div>
             </li>
-            if (item.EffectiveDiscounts?.Any() == true)
+            if (item.EffectiveAdjustments?.Any() == true)
             {
-                foreach (var discount in item.EffectiveDiscounts)
+                foreach (var adjustment in item.EffectiveAdjustments)
                 {
-                    <li class="list-group-item list-group-item-success row">
+                    <li class="list-group-item @(adjustment.DiscountedAmount > 0 ? "list-group-item-success" : "list-group-item-warning") row">
                         <div>
                             <div class="col-xs-8">
-                                @discount.Description
+                                @adjustment.Description
                             </div>
                             <div class="col-xs-offset-1 col-xs-3">
-                                -@discount.DiscountedAmount
+                                @(adjustment.DiscountedAmount > 0 ? $"-{adjustment.DiscountedAmount:0.0}" : $"{adjustment.AddedAmount:0.0}")
                             </div>
                         </div>
                     </li>
@@ -56,17 +56,17 @@
                 <h4 class="list-group-item-heading">@Localizer["ShippingCost"]</h4>
             </div>
             <div class="col-xs-3">
-                @Model.Order.TotalShippingCost
+                @Model.Order.TotalShippingCost.ToString("0.0")
             </div>
         </li>
-        @foreach (var discount in Model.Order.EffectiveDiscounts)
+        @foreach (var discount in Model.Order.EffectiveAdjustments)
         {
             <li class="list-group-item list-group-item-success row">
                 <div class="col-xs-8">
                     @discount.Description
                 </div>
                 <div class="col-xs-offset-1 col-xs-3">
-                    -@discount.DiscountedAmount
+                    -@discount.DiscountedAmount.ToString("0.0")
                 </div>
             </li>
         }
@@ -75,7 +75,7 @@
                 <h4 class="list-group-item-heading">@Localizer["OrderTotalAmount"]</h4>
             </div>
             <div class="col-xs-3">
-                @Model.Order.Sum
+                @Model.Order.Sum.ToString("0.0")
             </div>
         </li>
     </ul>

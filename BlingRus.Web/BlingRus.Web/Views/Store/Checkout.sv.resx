@@ -123,9 +123,6 @@
   <data name="ContentsOfYourBasket" xml:space="preserve">
     <value>Din varukorg innehåller</value>
   </data>
-  <data name="Count" xml:space="preserve">
-    <value>Antal</value>
-  </data>
   <data name="CustomerDetails" xml:space="preserve">
     <value>Kunduppgifter</value>
   </data>
@@ -137,6 +134,9 @@
   </data>
   <data name="PaymentDetails" xml:space="preserve">
     <value>Betalningsinformation</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Antal</value>
   </data>
   <data name="ShippingCost" xml:space="preserve">
     <value>Fraktkostnad</value>
