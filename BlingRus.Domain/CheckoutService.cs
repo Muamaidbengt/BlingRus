@@ -54,7 +54,7 @@ namespace BlingRus.Domain
 
             foreach (var entry in cart.Contents)
             {
-                var line = new OrderLine(entry.Description, entry.Quantity, entry.UnitCost, entry.UnitShippingCost);
+                var line = new OrderLine(entry.Description, entry.Quantity, entry.UnitCost, entry.UnitShippingCost, entry.Customization);
                 foreach(var orderlineDiscountCalculator in _priceAdjustmentModel.OrderLineAdjustmentCalculators)
                     orderlineDiscountCalculator.ApplyTo(line);
                 orderlines.Add(line);

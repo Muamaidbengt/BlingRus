@@ -13,12 +13,15 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body class="@(ViewBag.FullPageContent ?? false ? "fullpage" : "")">
-    @if (ViewBag.FullPageContent ?? false) { 
+    @if (ViewBag.FullPageContent ?? false)
+    {
         @RenderBody()
-    } else {
+    }
+    else
+    {
         <div class="logo">
             <div class="center-block">
-                <img src="@Url.Content("~/img/BlingRUsLogo_header_megastor.png")" class="" style="max-height: 125px;"/>
+                <img src="@Url.Content("~/img/BlingRUsLogo_header_megastor.png")" class="" style="max-height: 125px;" />
             </div>
         </div>
 
@@ -33,7 +36,12 @@
                 <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-right: 15px;">
                     <li>
                         <div class="input-group">
-                            <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button"><i class="glyphicon glyphicon-shopping-cart"></i> @await Component.InvokeAsync(nameof(CartCounter)) @Localizer["Cart"]</a>
+                            <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> @await Component.InvokeAsync(nameof(CartCounter)) @Localizer["Cart"]
+                            </a>
+                            <a asp-action="Empty" asp-controller="Cart" class="btn btn-warning" id="btn-empty-cart">
+                                <span class="glyphicon glyphicon-trash"></span> @Localizer["EmptyCart"]
+                            </a>
                         </div>
                     </li>
                 </ul>
@@ -52,8 +60,8 @@
                 </div>
                 <div class="navbar-text navbar-right">
                     <span>Powered by</span>
-                    <img src="/img/klarna-white-tagline.png" alt="Klarna"/>
-                    <img src="/img/bankgirot-logo.png" alt="Bankgirot"/>
+                    <img src="/img/klarna-white-tagline.png" alt="Klarna" />
+                    <img src="/img/bankgirot-logo.png" alt="Bankgirot" />
                 </div>
             </div>
         </nav>
@@ -63,6 +71,21 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn-empty-cart").click(function() {
+                var target = $(this).attr("href");
+                $.ajax(target).success(function() {
+                    $("#cart-counter").fadeOut(function () {
+                        $(this).text(0).fadeIn();
+                    });
+                });
+                return false;
+            });
+        });
+    </script>
+
     @RenderSection("scripts", required: false)
 </body>
-</html>
+</html >

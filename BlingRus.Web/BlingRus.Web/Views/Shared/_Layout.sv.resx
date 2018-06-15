@@ -126,6 +126,9 @@
   <data name="Contact" xml:space="preserve">
     <value>Kontakta oss</value>
   </data>
+  <data name="EmptyCart" xml:space="preserve">
+    <value>Töm varukorgen</value>
+  </data>
   <data name="Store" xml:space="preserve">
     <value>Butik</value>
   </data>

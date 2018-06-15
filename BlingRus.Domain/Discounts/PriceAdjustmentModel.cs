@@ -14,9 +14,11 @@ namespace BlingRus.Domain.Discounts
         {
             _orderAdjustmentCalculators.Add(new OrderAmountPriceAdjustmentCalculator(4, 10));
             _orderAdjustmentCalculators.Add(new FreeShippingDiscountCalculator(250));
-            
+
             _orderLineAdjustmentCalculators.Add(new ValueAddedTaxCalculator(25));
+            _orderLineAdjustmentCalculators.Add(new LongTextCostCalculator(10, 50));
             _orderLineAdjustmentCalculators.Add(new NthFreeDiscountCalculator(5));
+            
         }
     }
 }

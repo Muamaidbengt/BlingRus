@@ -8,6 +8,7 @@ namespace BlingRus.Domain
         public int Quantity { get; private set; }
         public Guid Id { get; private set; }
         public JewelrySize Size { get; private set; }
+        public string Customization { get; private set; }
 
         public decimal UnitCost { get; private set; }
         public decimal UnitShippingCost { get; private set; }
@@ -32,6 +33,7 @@ namespace BlingRus.Domain
             UnitCost = item.UnitCost;
             UnitShippingCost = item.UnitShippingCost;
             Quantity = quantity;
+            Customization = (item as ICustomizedJewelry)?.Text;
         }
     }
 }

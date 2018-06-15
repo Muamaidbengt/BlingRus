@@ -2,7 +2,7 @@
 
 namespace BlingRus.Domain
 {
-    public class CustomizedJewelry<T> : IOrderable where T: Jewelry
+    public class CustomizedJewelry<T> : ICustomizedJewelry, IOrderable where T: Jewelry
     {
         public CustomizedJewelry(string text, T jewelry)
         {
@@ -12,12 +12,17 @@ namespace BlingRus.Domain
 
         public string Text { get; }
 
-        public decimal UnitCost => Jewelry.UnitCost + (Text.Length > 10 ? 50 : 0);
+        public decimal UnitCost => Jewelry.UnitCost;
         public decimal UnitShippingCost => Jewelry.UnitShippingCost;
 
         public string Image => Jewelry.Image;
 
         public T Jewelry { get; }
-        public string Name => $"{Jewelry.Name} med gravyren: \"{Text}\"";
+        public string Name => Jewelry.Name;
+    }
+
+    public interface ICustomizedJewelry
+    {
+        string Text { get; }
     }
 }

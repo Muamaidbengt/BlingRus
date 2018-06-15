@@ -16,13 +16,14 @@ namespace BlingRus.Domain
         public List<PriceLineAdjustment> EffectiveAdjustments { get; private set; }
         public string Description { get; private set; }
         public Guid Id { get; private set; }
+        public string Customization { get; private set; }
 
         protected OrderLine()
         {
             
         }
 
-        public OrderLine(string description, int quantity, decimal unitCost, decimal unitShippingCost)
+        public OrderLine(string description, int quantity, decimal unitCost, decimal unitShippingCost, string customization)
         {
             if (quantity < 0)
                 throw new ArgumentException("Quantity cannot be negative");
@@ -33,6 +34,7 @@ namespace BlingRus.Domain
             QuantityOrdered = quantity;
             UnitGoodsValue = unitCost;
             ShippingCost = unitShippingCost * QuantityOrdered;
+            Customization = customization;
         }
 
         public void Apply(PriceLineAdjustment adjustment)

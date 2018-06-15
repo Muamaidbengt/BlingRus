@@ -43,7 +43,7 @@ namespace BlingRus.Domain
             }
             catch (Exception)
             {
-                // Orka...
+                // Shouldn't happen™
             }
         }
     }
