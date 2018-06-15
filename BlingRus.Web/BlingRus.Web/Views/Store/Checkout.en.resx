@@ -135,6 +135,9 @@
   <data name="PaymentDetails" xml:space="preserve">
     <value>Payment details</value>
   </data>
+  <data name="PricePerUnit" xml:space="preserve">
+    <value>Per unit</value>
+  </data>
   <data name="Quantity" xml:space="preserve">
     <value>Quantity</value>
   </data>

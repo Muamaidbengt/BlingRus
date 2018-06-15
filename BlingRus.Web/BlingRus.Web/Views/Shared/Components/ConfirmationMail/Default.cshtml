@@ -18,48 +18,54 @@
 <table>
     <tr>
         <td>@Localizer["Description"]</td>
-        <td>@Localizer["Count"]</td>
+        <td>@Localizer["Quantity"]</td>
+        <td>@Localizer["PricePerUnit"]</td>
         <td>@Localizer["Subtotal"]</td>
     </tr>
     @foreach (var item in Model.OrderLines)
     {
         <tr>
-            <td>@item.Description</td>
+            <td>@item.Description@(string.IsNullOrEmpty(item.Customization) ? string.Empty : $": {item.Customization}")</td>
             <td>@item.QuantityOrdered</td>
-            <td>@item.GoodsValue</td>
+            <td>@item.UnitGoodsValue.ToString("0.00")</td>
+            <td>@item.GoodsValue.ToString("0.00")</td>
         </tr>
 
 
         if (item.EffectiveAdjustments?.Any() == true)
         {
-            foreach (var discount in item.EffectiveAdjustments)
+            foreach (var adjustment in item.EffectiveAdjustments)
             {
                 <tr>
-                    <td>@discount.Description</td>
+                    <td>@adjustment.Description</td>
                     <td></td>
-                    <td>-@discount.DiscountedAmount</td>
+                    <td></td>
+                    <td>@(adjustment.DiscountedAmount > 0 ? $"-{adjustment.DiscountedAmount:0.00}" : $"{adjustment.AddedAmount:0.00}")</td>
                 </tr>
             }
         }
     }
-                <tr>
-                    <td>@Localizer["ShippingCost"]</td>
-                    <td></td>
-                    <td>@Model.TotalShippingCost</td>
-                </tr>
+    <tr>
+        <td>@Localizer["ShippingCost"]</td>
+        <td>@Model.TotalQuantityOrdered</td>
+        <td></td>
+        <td>@Model.TotalShippingCost.ToString("0.00")</td>
+    </tr>
     @foreach (var discount in Model.EffectiveAdjustments)
     {
         <tr>
             <td>@discount.Description</td>
             <td></td>
+            <td></td>
             <td>-@discount.DiscountedAmount</td>
         </tr>
     }
-    
+
     <tr>
-        <td>@Localizer["OrderTotalAmount"]</td>
+        <td><strong>@Localizer["OrderTotalAmount"]</strong></td>
         <td></td>
-        <td>@Model.Sum</td>
+        <td></td>
+        <td><strong>@Model.Sum.ToString("0.00")</strong></td>
     </tr>
 
 </table>

@@ -20,7 +20,7 @@ namespace BlingRus.Domain.Discounts
 
         public void ApplyTo(Order order)
         {
-            if (order.TotalAmountOrdered <= MinimumAmount)
+            if (order.TotalQuantityOrdered <= MinimumAmount)
                 return;
             var discountedAmount = order.TotalGoodsValue * Percent / 100;
 

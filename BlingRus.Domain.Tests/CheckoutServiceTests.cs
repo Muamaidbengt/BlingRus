@@ -37,9 +37,9 @@ namespace BlingRus.Domain.Tests
             }
 
             [Fact]
-            public void ThenTheAmountOrderedIs3()
+            public void ThenTheQuantityOrderedIs3()
             {
-                _order.TotalAmountOrdered.Should().Be(3);
+                _order.TotalQuantityOrdered.Should().Be(3);
             }
 
             [Fact]
@@ -75,9 +75,9 @@ namespace BlingRus.Domain.Tests
             }
 
             [Fact]
-            public void ThenTheAmountOrderedIs11()
+            public void ThenTheQuantityOrderedIs11()
             {
-                _order.TotalAmountOrdered.Should().Be(11);
+                _order.TotalQuantityOrdered.Should().Be(11);
             }
 
             [Fact]

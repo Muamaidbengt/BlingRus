@@ -135,6 +135,9 @@
   <data name="PaymentDetails" xml:space="preserve">
     <value>Betalningsinformation</value>
   </data>
+  <data name="PricePerUnit" xml:space="preserve">
+    <value>á-pris</value>
+  </data>
   <data name="Quantity" xml:space="preserve">
     <value>Antal</value>
   </data>

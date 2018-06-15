@@ -10,7 +10,7 @@ namespace BlingRus.Domain
         public Guid Id { get; protected set; }
 
         private readonly List<OrderPriceAdjustment> _adjustments = new List<OrderPriceAdjustment>();
-        public int TotalAmountOrdered => OrderLines.Sum(l => l.QuantityOrdered);
+        public int TotalQuantityOrdered => OrderLines.Sum(l => l.QuantityOrdered);
         public decimal TotalGoodsValue => OrderLines.Sum(l => l.GoodsValue);
         public decimal TotalShippingCost => OrderLines.Sum(l => l.ShippingCost);
         public decimal TotalDiscountedAmount => OrderLines.Sum(l => l.DiscountedAmount) 
