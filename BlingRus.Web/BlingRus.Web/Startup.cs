@@ -3,6 +3,7 @@ using System.IO;
 using BlingRus.Domain;
 using BlingRus.Domain.Discounts;
 using BlingRus.Domain.Services;
+using BlingRus.Web.Models;
 using BlingRus.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +36,8 @@ namespace BlingRus.Web
             services.AddLocalization();
             services.AddMvc()
                 .AddViewLocalization()
-                .AddDataAnnotationsLocalization();
+                .AddDataAnnotationsLocalization(opts => opts.DataAnnotationLocalizerProvider = 
+                    (type, factory) => factory.Create(typeof(ModelResources)));
             services.AddDbContext<ShoppingContext>(options => options.UseSqlite("Filename=shopping.sqlite"));
             services.AddScoped<IShoppingContext, ShoppingContext>();
             services.AddScoped<CheckoutService, CheckoutService>();

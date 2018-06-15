@@ -17,10 +17,27 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Models\ModelResources.sv.resx" />
     <None Include="Views\Store\Index.sv.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\BlingRus.Domain\BlingRus.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Models\ModelResources.sv.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ModelResources.sv.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Models\ModelResources.sv.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelResources.sv.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
