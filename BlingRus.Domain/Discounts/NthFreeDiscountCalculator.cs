@@ -23,7 +23,11 @@ namespace BlingRus.Domain.Discounts
                 return;
 
             Counter = Counter % N;
-            line.Apply(new PriceLineAdjustment($"Every {N}:th is free", line.UnitGoodsValue, 0));
+            line.Apply(new PriceLineAdjustment(
+                1, 
+                $"Every {N}:th is free", 
+                line.UnitGoodsValue, 
+                0));
         }
     }
 }

@@ -11,7 +11,11 @@
 
         public void ApplyTo(OrderLine line)
         {
-            line.Apply(new PriceLineAdjustment($"Value added tax ({_taxRate:0.0}%)", 0, line.GoodsValue * (_taxRate / 100)));
+            line.Apply(new PriceLineAdjustment(
+                line.QuantityOrdered,
+                $"Value added tax ({_taxRate:0.0}%)", 
+                0, 
+                line.GoodsValue * (_taxRate / 100)));
         }
     }
 }

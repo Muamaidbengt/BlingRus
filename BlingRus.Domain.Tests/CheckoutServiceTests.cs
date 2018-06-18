@@ -25,15 +25,14 @@ namespace BlingRus.Domain.Tests
 
         public class WhenCartContains3ItemsWithoutText : CheckoutServiceTests
         {
-            private readonly ShoppingCart _cart;
             private readonly Order _order;
 
             public WhenCartContains3ItemsWithoutText()
             {
-                _cart = new ShoppingCart(42);
-                _cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelets, 100, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
-                _cart.Add(new ShoppingCartItem(2, JewelrySize.Medium, new Jewelry("Necklace", Category.Necklaces, 100, "foo.jpg", "Necklacedescription", "Necklacedescription2")));
-                _order = _checkoutService.CalculateOrder(_cart);
+                var cart = new ShoppingCart(42);
+                cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelets, 100, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
+                cart.Add(new ShoppingCartItem(2, JewelrySize.Medium, new Jewelry("Necklace", Category.Necklaces, 100, "foo.jpg", "Necklacedescription", "Necklacedescription2")));
+                _order = _checkoutService.CalculateOrder(cart);
             }
 
             [Fact]
@@ -64,14 +63,13 @@ namespace BlingRus.Domain.Tests
 
         public class WhenCartContains11ItemsWithoutText : CheckoutServiceTests
         {
-            private readonly ShoppingCart _cart;
             private readonly Order _order;
 
             public WhenCartContains11ItemsWithoutText()
             {
-                _cart = new ShoppingCart(42);
-                _cart.Add(new ShoppingCartItem(11, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelets, 100, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
-                _order = _checkoutService.CalculateOrder(_cart);
+                var cart = new ShoppingCart(42);
+                cart.Add(new ShoppingCartItem(11, JewelrySize.Medium, new Jewelry("Ring", Category.Rings, 100, "foo.jpg", "Ringdescription", "Ringdescription2")));
+                _order = _checkoutService.CalculateOrder(cart);
             }
 
             [Fact]

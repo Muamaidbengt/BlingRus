@@ -120,6 +120,15 @@
   <data name="AddToCart" xml:space="preserve">
     <value>Köp</value>
   </data>
+  <data name="CategoryBracelets" xml:space="preserve">
+    <value>Armband</value>
+  </data>
+  <data name="CategoryNecklaces" xml:space="preserve">
+    <value>Halssmycken</value>
+  </data>
+  <data name="CategoryRings" xml:space="preserve">
+    <value>Ringar</value>
+  </data>
   <data name="ConfirmationDialogTitle" xml:space="preserve">
     <value>Varukorgen</value>
   </data>

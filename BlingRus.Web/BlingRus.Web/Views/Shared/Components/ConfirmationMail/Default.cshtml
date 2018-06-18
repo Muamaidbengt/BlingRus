@@ -38,7 +38,7 @@
             {
                 <tr>
                     <td>@adjustment.Description</td>
-                    <td></td>
+                    <td>@adjustment.Quantity</td>
                     <td></td>
                     <td>@(adjustment.DiscountedAmount > 0 ? $"-{adjustment.DiscountedAmount:0.00}" : $"{adjustment.AddedAmount:0.00}")</td>
                 </tr>
@@ -47,23 +47,23 @@
     }
     <tr>
         <td>@Localizer["ShippingCost"]</td>
-        <td>@Model.TotalQuantityOrdered</td>
+        <td></td>
         <td></td>
         <td>@Model.TotalShippingCost.ToString("0.00")</td>
     </tr>
-    @foreach (var discount in Model.EffectiveAdjustments)
+    @foreach (var adjustment in Model.EffectiveAdjustments)
     {
         <tr>
-            <td>@discount.Description</td>
+            <td>@adjustment.Description</td>
             <td></td>
             <td></td>
-            <td>-@discount.DiscountedAmount</td>
+            <td>@(adjustment.DiscountedAmount > 0 ? $"-{adjustment.DiscountedAmount:0.00}" : $"{adjustment.AddedAmount:0.00}")</td>
         </tr>
     }
 
     <tr>
         <td><strong>@Localizer["OrderTotalAmount"]</strong></td>
-        <td></td>
+        <td>@Model.TotalQuantityOrdered</td>
         <td></td>
         <td><strong>@Model.Sum.ToString("0.00")</strong></td>
     </tr>
