@@ -8,27 +8,27 @@ namespace BlingRus.Web.Models
     public class SubmitOrderModel
     {
         [Required]
-        [Display(Name = "Ditt namn")]
+        [Display(Name = "CustomerName")]
         public string CustomerName { get; set; }
 
         [Required]
-        [Display(Name = "Leveransadress")]
+        [Display(Name = "ShippingAddress")]
         public string CustomerAddress { get; set; }
 
-        [Display(Name = "Epostadress")]
+        [Display(Name = "CustomerEmail")]
         public string CustomerEmail { get; set; }
 
-        [Display(Name = "Telefonnummer")]
+        [Display(Name = "CustomerPhone")]
         public string CustomerPhone { get; set; }
 
         [Required]
-        [RequiresValidCreditCardNumber]
-        [Display(Name = "Kreditkortsnummer")]
+        [RequiresSafeCreditCardNumber]
+        [Display(Name = "CreditCardNumber")]
         public string CreditCardNumber { get; set; }
 
         [Required]
-        [RequiresValidExpiryDate]
-        [Display(Name = "Giltig till")]
+        [RequiresFutureDate]
+        [Display(Name = "CreditCardExpiration")]
         public DateTime? CreditCardExpiration { get; set; }
 
         public Order Order { get; set; }

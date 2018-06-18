@@ -4,19 +4,19 @@ namespace BlingRus.Web.Models
 {
     public enum ContactRequestType
     {
-        [Display(Name = "Jag har en fråga om en av era produkter")]
+        [Display(Name = nameof(ModelResources.ContactRequestTypeInquiry), ResourceType = typeof(ModelResources))]
         Inquiry,
 
-        [Display(Name = "Jag har en fråga om betalning")]
+        [Display(Name = nameof(ModelResources.ContactRequestTypeInvoicing), ResourceType = typeof(ModelResources))]
         Invoicing,
 
-        [Display(Name = "Jag är missnöjd med mina varor")]
+        [Display(Name = nameof(ModelResources.ContactRequestTypeOrderComplaint), ResourceType = typeof(ModelResources))]
         OrderComplaint,
 
-        [Display(Name = "Jag är missnöjd med min faktura")]
+        [Display(Name = nameof(ModelResources.ContactRequestTypeBillComplaint), ResourceType = typeof(ModelResources))]
         BillComplaint,
 
-        [Display(Name = "Övrigt")]
+        [Display(Name = nameof(ModelResources.ContactRequestTypeOther), ResourceType = typeof(ModelResources))]
         Other
     }
 }

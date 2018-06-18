@@ -17,10 +17,10 @@
 <h3>@Localizer["OrderDetails"]</h3>
 <table>
     <tr>
-        <td>@Localizer["Description"]</td>
-        <td>@Localizer["Quantity"]</td>
-        <td>@Localizer["PricePerUnit"]</td>
-        <td>@Localizer["Subtotal"]</td>
+        <th style="min-width: 120px;">@Localizer["Description"]</th>
+        <th style="min-width: 60px;">@Localizer["Quantity"]</th>
+        <th style="min-width: 80px;">@Localizer["PricePerUnit"]</th>
+        <th style="min-width: 80px;">@Localizer["Subtotal"]</th>
     </tr>
     @foreach (var item in Model.OrderLines)
     {

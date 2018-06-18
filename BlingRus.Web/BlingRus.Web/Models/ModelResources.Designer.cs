@@ -22,7 +22,7 @@ namespace BlingRus.Web.Models {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ModelResources {
+    public class ModelResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace BlingRus.Web.Models {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BlingRus.Web.Models.ModelResources", typeof(ModelResources).Assembly);
@@ -51,7 +51,7 @@ namespace BlingRus.Web.Models {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,74 +61,146 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to När på dagen föredrar du att vi kontaktar dig?.
+        ///   Looks up a localized string similar to I am dissatisfied with one of my bills.
         /// </summary>
-        internal static string ContactStart {
+        public static string ContactRequestTypeBillComplaint {
+            get {
+                return ResourceManager.GetString("ContactRequestTypeBillComplaint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have a question about one of your products.
+        /// </summary>
+        public static string ContactRequestTypeInquiry {
+            get {
+                return ResourceManager.GetString("ContactRequestTypeInquiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have a question about billing.
+        /// </summary>
+        public static string ContactRequestTypeInvoicing {
+            get {
+                return ResourceManager.GetString("ContactRequestTypeInvoicing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am dissatisfied with one of my orders.
+        /// </summary>
+        public static string ContactRequestTypeOrderComplaint {
+            get {
+                return ResourceManager.GetString("ContactRequestTypeOrderComplaint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string ContactRequestTypeOther {
+            get {
+                return ResourceManager.GetString("ContactRequestTypeOther", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At which time during the day would you prefer to be contacted?.
+        /// </summary>
+        public static string ContactStart {
             get {
                 return ResourceManager.GetString("ContactStart", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Din postadress.
+        ///   Looks up a localized string similar to Valid thru.
         /// </summary>
-        internal static string CustomerAddress {
+        public static string CreditCardExpiration {
+            get {
+                return ResourceManager.GetString("CreditCardExpiration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit card number.
+        /// </summary>
+        public static string CreditCardNumber {
+            get {
+                return ResourceManager.GetString("CreditCardNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string CustomerAddress {
             get {
                 return ResourceManager.GetString("CustomerAddress", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Din epostadress.
+        ///   Looks up a localized string similar to E-mail address.
         /// </summary>
-        internal static string CustomerEmail {
+        public static string CustomerEmail {
             get {
                 return ResourceManager.GetString("CustomerEmail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ditt namn.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string CustomerName {
+        public static string CustomerName {
             get {
                 return ResourceManager.GetString("CustomerName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Telefonnummer.
+        ///   Looks up a localized string similar to Phone no..
         /// </summary>
-        internal static string CustomerPhone {
+        public static string CustomerPhone {
             get {
                 return ResourceManager.GetString("CustomerPhone", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ditt meddelande.
+        ///   Looks up a localized string similar to Message.
         /// </summary>
-        internal static string Message {
+        public static string Message {
             get {
                 return ResourceManager.GetString("Message", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Beställningsdatum (om applicerbart).
+        ///   Looks up a localized string similar to Order date (if applicable).
         /// </summary>
-        internal static string OrderDate {
+        public static string OrderDate {
             get {
                 return ResourceManager.GetString("OrderDate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hur kan vi stå till tjänst?.
+        ///   Looks up a localized string similar to How may we be of service?.
         /// </summary>
-        internal static string RequestType {
+        public static string RequestType {
             get {
                 return ResourceManager.GetString("RequestType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shipping address.
+        /// </summary>
+        public static string ShippingAddress {
+            get {
+                return ResourceManager.GetString("ShippingAddress", resourceCulture);
             }
         }
     }

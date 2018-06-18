@@ -5,7 +5,7 @@ using System.Linq;
 namespace BlingRus.Web.Models.Validation
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class RequiresValidCreditCardNumberAttribute : ValidationAttribute
+    public class RequiresSafeCreditCardNumberAttribute : ValidationAttribute
     {
         private static readonly string[] ValidCreditCardNumbers = 
         {
@@ -34,16 +34,6 @@ namespace BlingRus.Web.Models.Validation
         {
             var number = (string) value;
             return ValidCreditCardNumbers.Contains(number);
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class RequiresValidExpiryDateAttribute : ValidationAttribute
-    {
-        public override bool IsValid(object value)
-        {
-            var expiryDate = (DateTime?) value;
-            return !expiryDate.HasValue || expiryDate.Value >= DateTime.Today;
         }
     }
 }

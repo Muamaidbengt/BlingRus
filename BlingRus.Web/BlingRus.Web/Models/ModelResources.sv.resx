@@ -117,8 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContactRequestTypeBillComplaint" xml:space="preserve">
+    <value>Jag är missnöjd med min faktura</value>
+  </data>
+  <data name="ContactRequestTypeInquiry" xml:space="preserve">
+    <value>Jag har en fråga om en av era produkter</value>
+  </data>
+  <data name="ContactRequestTypeInvoicing" xml:space="preserve">
+    <value>Jag har en fråga om betalning</value>
+  </data>
+  <data name="ContactRequestTypeOrderComplaint" xml:space="preserve">
+    <value>Jag är missnöjd med mina varor</value>
+  </data>
+  <data name="ContactRequestTypeOther" xml:space="preserve">
+    <value>Övrigt</value>
+  </data>
   <data name="ContactStart" xml:space="preserve">
     <value>När på dagen föredrar du att vi kontaktar dig?</value>
+  </data>
+  <data name="CreditCardExpiration" xml:space="preserve">
+    <value>Giltig t.o.m.</value>
+  </data>
+  <data name="CreditCardNumber" xml:space="preserve">
+    <value>Kortnummer</value>
   </data>
   <data name="CustomerAddress" xml:space="preserve">
     <value>Din postadress</value>
@@ -140,5 +161,8 @@
   </data>
   <data name="RequestType" xml:space="preserve">
     <value>Hur kan vi stå till tjänst?</value>
+  </data>
+  <data name="ShippingAddress" xml:space="preserve">
+    <value>Leveransadress</value>
   </data>
 </root>

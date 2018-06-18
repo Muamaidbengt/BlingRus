@@ -17,7 +17,6 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\ModelResources.sv.resx" />
     <None Include="Views\Store\Index.sv.resx" />
   </ItemGroup>
   <ItemGroup>
@@ -27,16 +26,22 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Models\ModelResources.sv.Designer.cs">
+    <Compile Update="Models\ModelResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ModelResources.sv.resx</DependentUpon>
+      <DependentUpon>ModelResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Models\ModelResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Models\ModelResources.sv.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ModelResources.sv.Designer.cs</LastGenOutput>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Models\ModelResources.en.resx">
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 
