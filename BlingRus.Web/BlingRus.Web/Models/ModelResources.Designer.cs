@@ -171,42 +171,6 @@ namespace BlingRus.Web.Models {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string JewelrySizeHumongous {
-            get {
-                return ResourceManager.GetString("JewelrySizeHumongous", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string JewelrySizeLarge {
-            get {
-                return ResourceManager.GetString("JewelrySizeLarge", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string JewelrySizeMedium {
-            get {
-                return ResourceManager.GetString("JewelrySizeMedium", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string JewelrySizeSmall {
-            get {
-                return ResourceManager.GetString("JewelrySizeSmall", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
         public static string Message {
             get {
                 return ResourceManager.GetString("Message", resourceCulture);

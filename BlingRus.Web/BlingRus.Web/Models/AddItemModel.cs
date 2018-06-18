@@ -1,4 +1,5 @@
 ﻿using System;
+using BlingRus.Domain;
 
 namespace BlingRus.Web.Models
 {

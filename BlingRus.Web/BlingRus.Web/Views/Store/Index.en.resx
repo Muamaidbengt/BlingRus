@@ -135,6 +135,18 @@
   <data name="Customization" xml:space="preserve">
     <value>Add your personal message to be engraved</value>
   </data>
+  <data name="JewelrySizeHumongous" xml:space="preserve">
+    <value>Humongous</value>
+  </data>
+  <data name="JewelrySizeLarge" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="JewelrySizeMedium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="JewelrySizeSmall" xml:space="preserve">
+    <value>Small</value>
+  </data>
   <data name="NrOfThingsAddedToCart" xml:space="preserve">
     <value>item(s) were added to your cart</value>
   </data>
