@@ -1,5 +1,4 @@
 ﻿@using BlingRus.Web.Models
-@using BlingRus.Domain
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.AspNetCore.Routing
 @inject IViewLocalizer Localizer
@@ -76,11 +75,31 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="preview" tabindex="-2" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Localizer["PreviewDialogTitle"]</h4>
+            </div>
+            <div class="modal-body">
+                <img id="preview-image" src="img/SmalArmbandText.png" alt="Preview" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts
     {
     <script type="text/javascript">
         $(document).ready(function() {
+            $("a.thumbnail").click(function(e) {
+                e.preventDefault();
+                $("#preview-image").attr("src", $(this).attr("href"));
+                $("#preview").modal('show');
+                return false;
+            });
+
             $(".btn[data-action='AddToCart']").click(function (e) {
                 e.preventDefault();
                 var row = $(this).closest("li"),

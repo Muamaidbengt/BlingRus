@@ -153,6 +153,18 @@
   <data name="CustomerPhone" xml:space="preserve">
     <value>Telefonnummer</value>
   </data>
+  <data name="JewelrySizeHumongous" xml:space="preserve">
+    <value>X-Large</value>
+  </data>
+  <data name="JewelrySizeLarge" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="JewelrySizeMedium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="JewelrySizeSmall" xml:space="preserve">
+    <value>Small</value>
+  </data>
   <data name="Message" xml:space="preserve">
     <value>Ditt meddelande</value>
   </data>

@@ -77,3 +77,11 @@ body.fullpage {
     margin-left: 15px;
     margin-right: 15px;
 }
+
+.order-contents {
+    max-width: 1024px;
+}
+
+#preview > .modal-dialog {
+    width: auto;
+}

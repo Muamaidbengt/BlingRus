@@ -9,7 +9,7 @@
 <div class="well">
     <h2>@Localizer["ContentsOfYourBasket"]</h2>
 
-    <ul class="list-group">
+    <ul class="list-group order-contents">
         <li class="list-group-item row">
             <div class="col-xs-6 list-group-item-heading">
                 <h4>@Localizer["Description"]</h4>
@@ -17,26 +17,26 @@
             <div class="col-xs-1 list-group-item-heading">
                 <h4>@Localizer["Quantity"]</h4>
             </div>
-            <div class="col-xs-2 list-group-item-heading">
+            <div class="col-xs-2 list-group-item-heading text-right">
                 <h4>@Localizer["PricePerUnit"]</h4>
             </div>
-            <div class="col-xs-2 list-group-item-heading">
+            <div class="col-xs-3 list-group-item-heading text-right">
                 <h4>@Localizer["Subtotal"]</h4>
             </div>
         </li>
         @foreach (var item in Model.Order.OrderLines)
         {
-            <li class="list-group-item list-group-item-info row">
+            <li class="list-group-item row">
                 <div class="col-xs-6">
                     <span>@item.Description@(string.IsNullOrEmpty(item.Customization) ? string.Empty : $": {item.Customization}")</span>
                 </div>
                 <div class="col-xs-1">
                     <span>@item.QuantityOrdered</span>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-xs-2 text-right">
                     <span>@item.UnitGoodsValue.ToString("0.00")</span>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-xs-3 text-right">
                     <span>@item.GoodsValue.ToString("0.00")</span>
                 </div>
             </li>
@@ -46,10 +46,10 @@
                 {
                     <li class="list-group-item @(adjustment.DiscountedAmount > 0 ? "list-group-item-success" : "list-group-item-warning") row">
                         <div>
-                            <div class="col-xs-8">
+                            <div class="col-xs-8 col-xs-push-1">
                                 @adjustment.Description
                             </div>
-                            <div class="col-xs-offset-1 col-xs-3">
+                            <div class="col-xs-offset-1 col-xs-3 text-right">
                                 @(adjustment.DiscountedAmount > 0 ? $"-{adjustment.DiscountedAmount:0.00}" : $"{adjustment.AddedAmount:0.00}")
                             </div>
                         </div>
@@ -64,7 +64,7 @@
             <div class="col-xs-1">
                 <span>@Model.Order.TotalQuantityOrdered</span>
             </div>
-            <div class="col-xs-3 col-xs-offset-2">
+            <div class="col-xs-3 col-xs-offset-2 text-right">
                 @Model.Order.TotalShippingCost.ToString("0.00")
             </div>
         </li>
@@ -74,17 +74,17 @@
                 <div class="col-xs-8">
                     @discount.Description
                 </div>
-                <div class="col-xs-offset-1 col-xs-3">
+                <div class="col-xs-offset-1 col-xs-3 text-right">
                     -@discount.DiscountedAmount.ToString("0.00")
                 </div>
             </li>
         }
-        <li class="list-group-item list-group-item-warning row">
+        <li class="list-group-item list-group-item-info row">
             <div class="col-xs-9">
                 <h4 class="list-group-item-heading">@Localizer["OrderTotalAmount"]</h4>
             </div>
-            <div class="col-xs-3">
-                @Model.Order.Sum.ToString("0.00")
+            <div class="col-xs-3 text-right">
+                <strong>@Model.Order.Sum.ToString("0.00") SEK</strong>
             </div>
         </li>
     </ul>

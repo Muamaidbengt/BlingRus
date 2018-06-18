@@ -6,6 +6,7 @@ using BlingRus.Domain;
 using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using JewelrySize = BlingRus.Domain.JewelrySize;
 
 namespace BlingRus.Web.Controllers
 {
@@ -66,14 +67,16 @@ namespace BlingRus.Web.Controllers
                     Thread.Sleep(3000);
                 }
 
+                var size = (JewelrySize)model.Size;
+
                 if (!string.IsNullOrEmpty(model.Customization))
                 {
                     var customItem = new CustomizedJewelry<Jewelry>(model.Customization, itemToAdd);
-                    targetCart.Add(model.Amount, model.Size, customItem);
+                    targetCart.Add(model.Amount, size, customItem);
                 }
                 else
                 {
-                    targetCart.Add(model.Amount, model.Size, itemToAdd);
+                    targetCart.Add(model.Amount, size, itemToAdd);
                 }
             }
             catch (Exception ex)

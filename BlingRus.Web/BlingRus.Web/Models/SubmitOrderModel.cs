@@ -16,18 +16,22 @@ namespace BlingRus.Web.Models
         public string CustomerAddress { get; set; }
 
         [Display(Name = "CustomerEmail")]
+        [DataType(DataType.EmailAddress)]
         public string CustomerEmail { get; set; }
 
         [Display(Name = "CustomerPhone")]
+        [DataType(DataType.PhoneNumber)]
         public string CustomerPhone { get; set; }
 
         [Required]
         [RequiresSafeCreditCardNumber]
+        [DataType(DataType.CreditCard)]
         [Display(Name = "CreditCardNumber")]
         public string CreditCardNumber { get; set; }
 
         [Required]
         [RequiresFutureDate]
+        [DataType(DataType.Date)]
         [Display(Name = "CreditCardExpiration")]
         public DateTime? CreditCardExpiration { get; set; }
 

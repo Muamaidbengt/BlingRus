@@ -14,7 +14,7 @@
             if (order.TotalGoodsValue < MinimumGoodsValue)
                 return;
 
-            order.Apply(new OrderPriceAdjustment($"Free shipping for orders above {MinimumGoodsValue}!", order.TotalShippingCost, 0));
+            order.Apply(new OrderPriceAdjustment($"Free shipping for orders of more than {MinimumGoodsValue} SEK!", order.TotalShippingCost, 0));
         }
     }
 }

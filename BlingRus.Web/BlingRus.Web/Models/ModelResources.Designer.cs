@@ -61,7 +61,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I am dissatisfied with one of my bills.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ContactRequestTypeBillComplaint {
             get {
@@ -70,7 +70,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I have a question about one of your products.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ContactRequestTypeInquiry {
             get {
@@ -79,7 +79,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I have a question about billing.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ContactRequestTypeInvoicing {
             get {
@@ -88,7 +88,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I am dissatisfied with one of my orders.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ContactRequestTypeOrderComplaint {
             get {
@@ -97,7 +97,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Other.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ContactRequestTypeOther {
             get {
@@ -106,7 +106,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to At which time during the day would you prefer to be contacted?.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ContactStart {
             get {
@@ -115,7 +115,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valid thru.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string CreditCardExpiration {
             get {
@@ -124,7 +124,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Credit card number.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string CreditCardNumber {
             get {
@@ -133,7 +133,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string CustomerAddress {
             get {
@@ -142,7 +142,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mail address.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string CustomerEmail {
             get {
@@ -151,7 +151,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string CustomerName {
             get {
@@ -160,7 +160,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phone no..
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string CustomerPhone {
             get {
@@ -169,7 +169,43 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message.
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string JewelrySizeHumongous {
+            get {
+                return ResourceManager.GetString("JewelrySizeHumongous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string JewelrySizeLarge {
+            get {
+                return ResourceManager.GetString("JewelrySizeLarge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string JewelrySizeMedium {
+            get {
+                return ResourceManager.GetString("JewelrySizeMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string JewelrySizeSmall {
+            get {
+                return ResourceManager.GetString("JewelrySizeSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string Message {
             get {
@@ -178,7 +214,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order date (if applicable).
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string OrderDate {
             get {
@@ -187,7 +223,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How may we be of service?.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string RequestType {
             get {
@@ -196,7 +232,7 @@ namespace BlingRus.Web.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shipping address.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ShippingAddress {
             get {

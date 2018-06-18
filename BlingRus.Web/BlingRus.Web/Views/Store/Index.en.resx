@@ -129,6 +129,9 @@
   <data name="NrOfThingsAddedToCart" xml:space="preserve">
     <value>item(s) were added to your cart</value>
   </data>
+  <data name="PreviewDialogTitle" xml:space="preserve">
+    <value>Preview</value>
+  </data>
   <data name="Store" xml:space="preserve">
     <value>Our jewelry</value>
   </data>

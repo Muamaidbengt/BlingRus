@@ -118,51 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContactRequestTypeBillComplaint" xml:space="preserve">
-    <value>I am dissatisfied with one of my bills</value>
+    <value />
   </data>
   <data name="ContactRequestTypeInquiry" xml:space="preserve">
-    <value>I have a question about one of your products</value>
+    <value />
   </data>
   <data name="ContactRequestTypeInvoicing" xml:space="preserve">
-    <value>I have a question about billing</value>
+    <value />
   </data>
   <data name="ContactRequestTypeOrderComplaint" xml:space="preserve">
-    <value>I am dissatisfied with one of my orders</value>
+    <value />
   </data>
   <data name="ContactRequestTypeOther" xml:space="preserve">
-    <value>Other</value>
+    <value />
   </data>
   <data name="ContactStart" xml:space="preserve">
-    <value>At which time during the day would you prefer to be contacted?</value>
+    <value />
   </data>
   <data name="CreditCardExpiration" xml:space="preserve">
-    <value>Valid thru</value>
+    <value />
   </data>
   <data name="CreditCardNumber" xml:space="preserve">
-    <value>Credit card number</value>
+    <value />
   </data>
   <data name="CustomerAddress" xml:space="preserve">
-    <value>Address</value>
+    <value />
   </data>
   <data name="CustomerEmail" xml:space="preserve">
-    <value>E-mail address</value>
+    <value />
   </data>
   <data name="CustomerName" xml:space="preserve">
-    <value>Name</value>
+    <value />
   </data>
   <data name="CustomerPhone" xml:space="preserve">
-    <value>Phone no.</value>
+    <value />
+  </data>
+  <data name="JewelrySizeHumongous" xml:space="preserve">
+    <value />
+  </data>
+  <data name="JewelrySizeLarge" xml:space="preserve">
+    <value />
+  </data>
+  <data name="JewelrySizeMedium" xml:space="preserve">
+    <value />
+  </data>
+  <data name="JewelrySizeSmall" xml:space="preserve">
+    <value />
   </data>
   <data name="Message" xml:space="preserve">
-    <value>Message</value>
+    <value />
   </data>
   <data name="OrderDate" xml:space="preserve">
-    <value>Order date (if applicable)</value>
+    <value />
   </data>
   <data name="RequestType" xml:space="preserve">
-    <value>How may we be of service?</value>
+    <value />
   </data>
   <data name="ShippingAddress" xml:space="preserve">
-    <value>Shipping address</value>
+    <value />
   </data>
 </root>
