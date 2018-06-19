@@ -2,9 +2,41 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-.vs
-bin
-obj
-logs
-*.sqlite
+# User-specific files
+*.suo
 *.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+bin/
+Bin/
+obj/
+Obj/
+
+# Visual Studio 2015 cache/options directory
+.vs/
+**/wwwroot/dist/
+**/ClientApp/dist/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Click-Once directory
+publish/
+
+# Logs
+logs/
+
+# Database
+*.sqlite

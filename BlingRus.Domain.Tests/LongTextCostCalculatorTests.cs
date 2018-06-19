@@ -33,5 +33,14 @@ namespace BlingRus.Domain.Tests
             line.EffectiveAdjustments.Should().ContainSingle()
                 .Which.AddedAmount.Should().Be(expected);
         }
+
+        [Fact]
+        public void IncludesAFreeLinebreakForTheTwin()
+        {
+            var line = new OrderLine("The Twin with text \"free/line break!\"", 1, 100, 100, "free/line break!");
+            _sut.ApplyTo(line);
+            line.EffectiveAdjustments.Should().ContainSingle()
+                .Which.AddedAmount.Should().Be(50);
+        }
     }
 }
