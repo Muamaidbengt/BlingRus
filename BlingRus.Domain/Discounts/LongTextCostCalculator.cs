@@ -37,6 +37,9 @@ namespace BlingRus.Domain.Discounts
 
             var totalCharge = nrOfLineBreaks * _linebreakCharge + tier * _longTextCharge;
 
+            if (totalCharge == 0)
+                return;
+
             line.Apply(new PriceLineAdjustment(
                 line.QuantityOrdered, 
                 "Premium engraving charge", 
