@@ -25,12 +25,20 @@ namespace BlingRus.Domain.Discounts
 
         public void ApplyTo(OrderLine line)
         {
-            var tier = CalculateTextLengthTier(line.Customization);
-            if(tier == 0)
+            if (line.Customization == null || line.Customization.Length < _maxFreeLength)
                 return;
-            
+
+            var tier = CalculateTextLengthTier(line.Customization);
             var nrOfLineBreaks = line.Customization.Count(letter => letter == LineBreakIndicator);
+            
+            // Special requirement for the Twin product - includes one line break free of charge
+            if (line.Description.ToLowerInvariant().Contains("twin"))
+                nrOfLineBreaks--;
+
             var totalCharge = nrOfLineBreaks * _linebreakCharge + tier * _longTextCharge;
+
+            if (totalCharge == 0)
+                return;
 
             line.Apply(new PriceLineAdjustment(
                 line.QuantityOrdered, 
