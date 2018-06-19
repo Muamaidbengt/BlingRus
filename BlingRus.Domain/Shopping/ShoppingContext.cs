@@ -3,7 +3,7 @@ using System.Linq;
 using BlingRus.Domain.Discounts;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Shopping
 {
     public class ShoppingContext : DbContext, IShoppingContext
     {

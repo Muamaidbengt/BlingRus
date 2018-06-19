@@ -1,4 +1,6 @@
-﻿namespace BlingRus.Domain
+﻿using BlingRus.Domain.Shopping;
+
+namespace BlingRus.Domain.Services
 {
     public interface IMailService
     {

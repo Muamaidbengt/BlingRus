@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
-using BlingRus.Domain.Services;
+using BlingRus.Domain.Shopping;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Services
 {
     public class SendGridMailService : IMailService
     {

@@ -1,5 +1,8 @@
 ﻿using System.Linq;
 using BlingRus.Domain;
+using BlingRus.Domain.Ordering;
+using BlingRus.Domain.Services;
+using BlingRus.Domain.Shopping;
 using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 

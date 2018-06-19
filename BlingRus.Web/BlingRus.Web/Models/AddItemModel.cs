@@ -1,5 +1,6 @@
 ﻿using System;
 using BlingRus.Domain;
+using BlingRus.Domain.Shopping;
 
 namespace BlingRus.Web.Models
 {

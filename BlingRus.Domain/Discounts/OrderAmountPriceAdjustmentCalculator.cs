@@ -1,4 +1,5 @@
 ﻿using System;
+using BlingRus.Domain.Shopping;
 
 namespace BlingRus.Domain.Discounts
 {

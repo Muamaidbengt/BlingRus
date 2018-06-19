@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Shopping
 {
     public static class ShoppingInitializer
     {

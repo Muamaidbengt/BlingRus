@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using BlingRus.Domain;
+using BlingRus.Domain.Shopping;
 using BlingRus.Web.Models.Validation;
 
 namespace BlingRus.Web.Models

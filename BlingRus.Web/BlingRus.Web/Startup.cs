@@ -1,8 +1,9 @@
 ﻿using System.Globalization;
 using System.IO;
-using BlingRus.Domain;
 using BlingRus.Domain.Discounts;
+using BlingRus.Domain.Ordering;
 using BlingRus.Domain.Services;
+using BlingRus.Domain.Shopping;
 using BlingRus.Web.Models;
 using BlingRus.Web.Services;
 using Microsoft.AspNetCore.Builder;
@@ -41,7 +42,7 @@ namespace BlingRus.Web
             services.AddDbContext<ShoppingContext>(options => options.UseSqlite("Filename=shopping.sqlite"));
             services.AddScoped<IShoppingContext, ShoppingContext>();
             services.AddScoped<CheckoutService, CheckoutService>();
-            services.AddScoped<PriceAdjustmentModel, PriceAdjustmentModel>();
+            services.AddScoped<PricingModel, PricingModel>();
             services.AddScoped<IViewRenderService, ViewRenderService>();
             services.AddTransient<IMailService>(service => new SendGridMailService(Configuration.GetValue<string>("SendGrid:ApiKey"), service.GetRequiredService<IViewRenderService>()));
         }

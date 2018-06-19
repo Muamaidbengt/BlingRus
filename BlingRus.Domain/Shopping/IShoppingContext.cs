@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Shopping
 {
     public interface IShoppingContext
     {

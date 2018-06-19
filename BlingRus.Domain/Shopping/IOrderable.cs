@@ -1,4 +1,4 @@
-﻿namespace BlingRus.Domain
+﻿namespace BlingRus.Domain.Shopping
 {
     public interface IOrderable : IHasCost
     {

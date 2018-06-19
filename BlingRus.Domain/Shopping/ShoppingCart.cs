@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Shopping
 {
     public class ShoppingCart : IHasAggregateCost
     {

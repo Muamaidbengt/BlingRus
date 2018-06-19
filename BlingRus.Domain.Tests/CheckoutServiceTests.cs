@@ -1,5 +1,8 @@
 using System.Linq;
 using BlingRus.Domain.Discounts;
+using BlingRus.Domain.Ordering;
+using BlingRus.Domain.Services;
+using BlingRus.Domain.Shopping;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Moq;
@@ -19,7 +22,7 @@ namespace BlingRus.Domain.Tests
             _checkoutService = new CheckoutService(
                 _mockHttpContext.Object, 
                 _mockShoppingContext.Object, 
-                new PriceAdjustmentModel(), 
+                new PricingModel(), 
                 _mockMailService.Object);
         }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Shopping
 {
     public class ShoppingCartItem : IHasCost, IHasAggregateCost
     {

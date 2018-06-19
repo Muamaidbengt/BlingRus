@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BlingRus.Domain.Discounts;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Shopping
 {
     public class OrderLine : IAdjustable<PriceLineAdjustment>
     {

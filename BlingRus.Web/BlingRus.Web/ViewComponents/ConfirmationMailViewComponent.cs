@@ -1,4 +1,5 @@
 ﻿using BlingRus.Domain;
+using BlingRus.Domain.Shopping;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.ViewComponents

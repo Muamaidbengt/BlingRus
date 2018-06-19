@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using BlingRus.Domain;
+using BlingRus.Domain.Ordering;
+using BlingRus.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.ViewComponents

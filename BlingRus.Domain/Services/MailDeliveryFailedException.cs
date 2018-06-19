@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlingRus.Domain
+namespace BlingRus.Domain.Services
 {
     public class MailDeliveryFailedException : Exception
     {

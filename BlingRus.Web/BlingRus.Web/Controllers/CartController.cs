@@ -3,10 +3,13 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using BlingRus.Domain;
+using BlingRus.Domain.Ordering;
+using BlingRus.Domain.Services;
+using BlingRus.Domain.Shopping;
 using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using JewelrySize = BlingRus.Domain.JewelrySize;
+using JewelrySize = BlingRus.Domain.Shopping.JewelrySize;
 
 namespace BlingRus.Web.Controllers
 {
