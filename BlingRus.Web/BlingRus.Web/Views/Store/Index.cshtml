@@ -27,7 +27,7 @@
                             <a href="@Url.Content("~/img/" + item.Image)" class="thumbnail">
                                 <img src="@Url.Content("~/img/" + item.Image)" class="img-rounded" />
                             </a>
-                            <span><strong>@item.UnitCost.ToString("0") SEK</strong></span>
+                            <span><strong><span data-role="cost">@item.UnitCost.ToString("0")</span> SEK</strong></span>
                         </div>
                         <div class="col-sm-5 col-xs-4">
                             <h4 class="list-group-item-heading">@item.Name</h4>
@@ -88,7 +88,7 @@
                 <h4 class="modal-title">@Localizer["PreviewDialogTitle"]</h4>
             </div>
             <div class="modal-body">
-                <img id="preview-image" src="img/SmalArmbandText.png" alt="Preview" class="img-responsive">
+                <img id="preview-image" src="@Url.Content("~/img/SmalArmbandText.png")" alt="Preview" class="img-responsive">
             </div>
         </div>
     </div>
@@ -109,9 +109,10 @@
                 e.preventDefault();
                 var row = $(this).closest("li"),
                     customization = row.find("input[data-role=\"customization\"]").val(),
-                    amount = row.find("input[data-role=\"amount\"]").val(),
+                    amount = parseInt(row.find("input[data-role=\"amount\"]").val()),
                     size = row.find("select[data-role=\"size\"]").val(),
                     itemId = row.find("input[data-role=\"itemId\"]").val(),
+                    cost = parseInt(row.find("span[data-role=\"cost\"]").text()),
                     url = $(this).attr("data-href"),
                     adding = $.post({
                         "type": "POST",
@@ -124,14 +125,22 @@
                         }
                     });
 
-                adding.done(function() {
+                adding.done(function(x, r) {
                     $("#checkout-button").addClass("nonempty-cart");
                     $("#cart-counter").fadeOut(function () {
                         var previousAmount = parseInt($(this).text());
                         if (isNaN(previousAmount))
                             previousAmount = 0;
-                        $(this).text(previousAmount + 1).fadeIn();
+                        $(this).text(previousAmount + amount).fadeIn();
                     });
+                    $("#cart-cost")
+                        .fadeOut(function() {
+                            var previousCost = parseInt($(this).text());
+                            if (isNaN(previousCost))
+                                previousCost = 0;
+                            var newCost = previousCost + (cost + 37) * amount;
+                            $(this).text(newCost + " SEK").fadeIn();
+                        });
                     $("#success-text").text(amount + " @Localizer["NrOfThingsAddedToCart"]");
                 });
                 adding.fail(function(data) {

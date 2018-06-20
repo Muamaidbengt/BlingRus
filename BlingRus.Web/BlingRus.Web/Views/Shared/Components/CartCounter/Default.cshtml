@@ -1,2 +1,9 @@
-﻿@model int?
-<span class="badge" id="cart-counter">@Model</span>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Tuple<int?, decimal?>
+@inject IViewLocalizer Localizer
+
+<span class="badge">
+    <span class="glyphicon glyphicon-shopping-cart"></span>
+    <span id="cart-counter">@Model.Item1</span>
+</span>
+ @Localizer["Cart"] (<span id="cart-cost">@Model.Item2?.ToString("0") SEK</span>)
