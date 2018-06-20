@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BlingRus.Domain.EnterpriseCollections;
 
 namespace BlingRus.Domain.Shopping
 {
@@ -15,14 +16,14 @@ namespace BlingRus.Domain.Shopping
         public string CustomerEmail { get; set; }
         public string CustomerPhone { get; set; }
 
-        internal List<ShoppingCartItem> ContentsInternal { get; set; }
+        internal IList<ShoppingCartItem> ContentsInternal { get; set; }
 
         public decimal AggregatedCost => ContentsInternal.Sum(c => c.AggregatedCost);
         public decimal AggregatedShippingCost => ContentsInternal.Sum(c => c.AggregatedShippingCost);
 
         protected ShoppingCart()
         {
-            ContentsInternal = new List<ShoppingCartItem>();
+            ContentsInternal = new EnterpriseListWrapper<ShoppingCartItem>(new List<ShoppingCartItem>());
         }
 
         public ShoppingCart(int id) : this()

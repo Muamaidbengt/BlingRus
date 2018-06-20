@@ -63,13 +63,6 @@ namespace BlingRus.Web.Controllers
 
             try
             {
-                var rnd = new Random();
-                if (rnd.Next(1, 100) > 70)
-                {
-                    // Oj vad jobbigt det var idag
-                    Thread.Sleep(3000);
-                }
-
                 if (!string.IsNullOrEmpty(model.Customization))
                 {
                     var customItem = new CustomizedJewelry<Jewelry>(model.Customization, itemToAdd);

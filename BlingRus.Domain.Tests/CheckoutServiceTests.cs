@@ -26,35 +26,34 @@ namespace BlingRus.Domain.Tests
                 _mockMailService.Object);
         }
 
-        public class WhenCartContains3ItemsCosting100Each : CheckoutServiceTests
+        public class WhenCartContains2ItemsCosting100Each : CheckoutServiceTests
         {
             private readonly Order _order;
 
-            public WhenCartContains3ItemsCosting100Each()
+            public WhenCartContains2ItemsCosting100Each()
             {
                 var cart = new ShoppingCart(42);
                 cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelets, 100, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
-                cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Necklace", Category.Necklaces, 100, "foo.jpg", "Necklacedescription", "Necklacedescription2")));
                 cart.Add(new ShoppingCartItem(1, JewelrySize.Small, new Jewelry("Ring", Category.Rings, 100, "foo.jpg", "Ringdescription", "Ringdescription2")));
                 _order = _checkoutService.CalculateOrder(cart);
             }
 
             [Fact]
-            public void ThenTheQuantityOrderedIs3()
+            public void ThenTheQuantityOrderedIs2()
             {
-                _order.TotalQuantityOrdered.Should().Be(3);
+                _order.TotalQuantityOrdered.Should().Be(2);
             }
 
             [Fact]
             public void ThenTheShippingCostIs108()
             {
-                _order.TotalShippingCost.Should().Be(36 * 3);
+                _order.TotalShippingCost.Should().Be(36 * 2);
             }
 
             [Fact]
             public void ThenTheGoodsValueIs300()
             {
-                _order.TotalGoodsValue.Should().Be(3 * 100);
+                _order.TotalGoodsValue.Should().Be(2 * 100);
             }
 
             [Fact]
@@ -65,10 +64,9 @@ namespace BlingRus.Domain.Tests
             }
 
             [Fact]
-            public void ThenTheShippingCostShouldBeDiscounted()
+            public void ThenTheShippingCostShouldNotBeDiscounted()
             {
-                _order.EffectiveAdjustments.Should()
-                    .ContainSingle(discount => discount.DiscountedAmount == 36 * 3);
+                _order.EffectiveAdjustments.Should().BeEmpty();
             }
 
             [Fact]

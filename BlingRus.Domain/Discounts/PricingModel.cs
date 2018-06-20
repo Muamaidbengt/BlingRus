@@ -16,7 +16,7 @@ namespace BlingRus.Domain.Discounts
         {
             LongTextCost = new LongTextCostCalculator(10, 30, 10, 50, 25);
 
-            _orderAdjustmentCalculators.Add(new OrderAmountPriceAdjustmentCalculator(4, 10));
+            _orderAdjustmentCalculators.Add(new OrderAmountPriceAdjustmentCalculator(3, 10));
             _orderAdjustmentCalculators.Add(new FreeShippingDiscountCalculator(250));
 
             _orderLineAdjustmentCalculators.Add(new ValueAddedTaxCalculator(25));

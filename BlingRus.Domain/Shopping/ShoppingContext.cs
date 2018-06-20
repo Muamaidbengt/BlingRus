@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using BlingRus.Domain.Discounts;
+using BlingRus.Domain.EnterpriseCollections;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlingRus.Domain.Shopping
