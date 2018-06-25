@@ -28,5 +28,11 @@ namespace BlingRus.Web.Controllers
 
             return View("ThankYou");
         }
+
+        [HttpGet("creditcards")]
+        public IActionResult CreditCards()
+        {
+            return View();
+        }
     }
 }

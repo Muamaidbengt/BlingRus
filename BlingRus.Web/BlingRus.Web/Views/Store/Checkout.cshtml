@@ -135,7 +135,7 @@
                 <div class="panel-body">
                     <div class="form-group row">
                         <div class="col-sm-4">
-                            <label asp-for="CreditCardNumber" class=" control-label">@Html.DisplayNameFor(m => m.CreditCardNumber) <a href="https://www.paypalobjects.com/en_AU/vhelp/paypalmanager_help/paypalmanager.htm#credit_card_numbers.htm" target="_blank"><span class="glyphicon glyphicon-info-sign"></span></a></label>
+                            <label asp-for="CreditCardNumber" class=" control-label">@Html.DisplayNameFor(m => m.CreditCardNumber) <a asp-controller="About" asp-action="CreditCards" target="_blank"><span class="glyphicon glyphicon-info-sign"></span></a></label>
                         </div>
 
                         <div class="col-sm-8">

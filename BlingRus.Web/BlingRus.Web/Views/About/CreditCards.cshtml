@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="well">
+
+    <h2>@Localizer["AllowedCreditCards"]</h2>
+    
+    <p>@Localizer["Explanation"]</p>
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>@Localizer["CreditCardType"]</th>
+                <th>@Localizer["CreditCardNumber"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>American Express</td>
+                <td>378282246310005</td>
+            </tr>
+            <tr>
+                <td>American Express</td>
+                <td>371449635398431</td>
+            </tr>
+            <tr>
+                <td>American Express Corporate</td>
+                <td>378734493671000</td>
+            </tr>
+            <tr>
+                <td>Australian BankCard</td>
+                <td>5610591081018250</td>
+            </tr>
+            <tr>
+                <td>Diners Club</td>
+                <td>30569309025904</td>
+            </tr>
+            <tr>
+                <td>Diners Club</td>
+                <td>38520000023237</td>
+            </tr>
+            <tr>
+                <td>Discover</td>
+                <td>6011111111111117</td>
+            </tr>
+            <tr>
+                <td>Discover</td>
+                <td>6011000990139424</td>
+            </tr>
+            <tr>
+                <td>JCB</td>
+                <td>3530111333300000</td>
+            </tr>
+            <tr>
+                <td>JCB</td>
+                <td>3566002020360505</td>
+            </tr>
+            <tr>
+                <td>MasterCard</td>
+                <td>5555555555554444</td>
+            </tr>
+            <tr>
+                <td>MasterCard</td>
+                <td>5105105105105100</td>
+            </tr>
+            <tr>
+                <td>Visa</td>
+                <td>4111111111111111</td>
+            </tr>
+            <tr>
+                <td>Visa</td>
+                <td>4012888888881881</td>
+            </tr>
+            <tr>
+                <td>Visa</td>
+                <td>4222222222222</td>
+            </tr>
+            <tr>
+                <td>Dankort (PBS)</td>
+                <td>76009244561</td>
+            </tr>
+            <tr>
+                <td>Dankort (PBS)</td>
+                <td>5019717010103742</td>
+            </tr>
+            <tr>
+                <td>Switch/Solo (Paymentech)</td>
+                <td>6331101999990016</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>@Localizer["Source"]: <a href="https://www.paypalobjects.com/en_AU/vhelp/paypalmanager_help/paypalmanager.htm#credit_card_numbers.htm">https://www.paypalobjects.com/en_AU/vhelp/paypalmanager_help/paypalmanager.htm#credit_card_numbers.htm</a></div>
+</div>
+
+
