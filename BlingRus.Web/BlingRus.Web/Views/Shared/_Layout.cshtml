@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-timepicker/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/css/datepicker.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body class="@(ViewBag.FullPageContent ?? false ? "fullpage" : "")">
@@ -20,7 +21,7 @@
     else
     {
         <div class="logo">
-            <div  style="height: 115px; width: 262px; margin-left: 15px;"><img src="@Url.Content("~/img/BlingRUsLogo_header_megastor.png")" style="max-height: 100px; margin-left: auto; margin-right: auto;" /></div>
+            <div style="height: 115px; width: 262px; margin-left: 15px;"><img src="@Url.Content("~/img/BlingRUsLogo_header_megastor.png")" style="max-height: 100px; margin-left: auto; margin-right: auto;" /></div>
         </div>
 
         <nav class="navbar navbar-default">
@@ -69,6 +70,8 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/lib/modernizr-custom/modernizr.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -90,6 +93,25 @@
                 });
                 return false;
             });
+
+            if (!Modernizr.inputtypes.time) {
+                console.log("HTML5 timepicker not supported. Using bootstrap-timepicker as fallback.");
+                $("input[type='time']")
+                    .timepicker({
+                        "minuteStep": 15,
+                        "showMeridian": false
+                    });
+            }
+            if (!Modernizr.inputtypes.month) {
+                console.log("HTML5 monthpicker not supported. Using bootstrap-datepicker as fallback.");
+                $("input[type='month']")
+                    .datepicker({
+                        "format": "yyyy-mm",
+                        "startView": "months",
+                        "viewMode": "months",
+                        "minViewMode": "months"
+                    });
+            }
         });
     </script>
 

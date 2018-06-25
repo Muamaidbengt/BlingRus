@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\BlingRus.Domain\BlingRus.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="logs\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
