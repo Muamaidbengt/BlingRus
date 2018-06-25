@@ -20,9 +20,7 @@
     else
     {
         <div class="logo">
-            <div class="center-block">
-                <img src="@Url.Content("~/img/BlingRUsLogo_header_megastor.png")" class="" style="max-height: 125px;" />
-            </div>
+            <div  style="height: 115px; width: 262px; margin-left: 15px;"><img src="@Url.Content("~/img/BlingRUsLogo_header_megastor.png")" style="max-height: 100px; margin-left: auto; margin-right: auto;" /></div>
         </div>
 
         <nav class="navbar navbar-default">
@@ -33,12 +31,13 @@
                     <li><a asp-controller="About" asp-action="Contact">@Localizer["Contact"]</a></li>
 
                 </ul>
-                <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-right: 15px;">
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 15px;">
                     <li>
                         <div class="input-group">
                             <a asp-controller="Store" asp-action="Checkout" class="btn btn-default navbar-btn" id="checkout-button">
                                 @await Component.InvokeAsync(nameof(CartCounter))
                             </a>
+
                             <a asp-action="Empty" asp-controller="Cart" class="btn btn-warning" id="btn-empty-cart">
                                 <span class="glyphicon glyphicon-trash"></span> @Localizer["EmptyCart"]
                             </a>
@@ -72,8 +71,8 @@
     <script src="~/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            var isEmptyCart = function() {
+        $(document).ready(function () {
+            var isEmptyCart = function () {
                 return /0/.test($("#cart-counter").text());
             };
 
@@ -81,8 +80,8 @@
                 if (isEmptyCart())
                     return false;
                 var target = $(this).attr("href");
-                $.ajax(target).success(function() {
-                    $("#cart-counter").fadeOut(function() {
+                $.ajax(target).success(function () {
+                    $("#cart-counter").fadeOut(function () {
                         $(this).text(0).fadeIn();
                     });
                     $("#cart-cost").fadeOut(function () {
@@ -96,4 +95,4 @@
 
     @RenderSection("scripts", required: false)
 </body>
-</html >
+</html>

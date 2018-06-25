@@ -1,5 +1,14 @@
-﻿body {
-    background-color: rgb(59,134,251);
+﻿/*  Mörkblå: rgb(25, 52, 90) 
+    Mellanblå: rgb(42, 108, 193)
+    Ljusblå: rgb(61, 138, 243)
+    Gul: rgb(240, 159, 63)
+    Gulvit: rgb(241, 242, 243)
+
+*/
+
+body {
+    background-color: rgb(25, 52, 90);
+    /*background-color: rgb(42, 108, 193);*/
     padding-bottom: 70px;
 }
 
@@ -13,11 +22,12 @@ body.fullpage {
 }
 
 .navbar-default {
-    background-color: rgb(6, 81, 107);
+    background-color: rgb(42, 108, 193);
+    /*background-color: rgb(25, 52, 90);*/
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: rgb(251, 176, 59) !important;
+    color: rgb(240, 159, 63) !important;
 }
 /*.navbar-header {
     background-color: rgb(254, 254, 254) !important;
@@ -37,7 +47,7 @@ body.fullpage {
 
 .logo {
     background-color: rgb(255, 255, 255);
-    color: rgb(251, 176, 59);
+    color: rgb(240, 159, 63);
 }
 
 .logo div {
@@ -54,16 +64,16 @@ body.fullpage {
 }
 
 .nonempty-cart .badge {
-    color: rgb(251, 176, 59);
+    color: rgb(240, 159, 63);
 }
 
 #checkout-button {
-    background-color: rgb(230, 239, 254);
+    background-color: rgb(241, 242, 243);
 }
 
 .page-footer {
-    background-color: rgb(6, 81, 107);
-    color: rgb(251, 176, 59);
+    background-color: rgb(42, 108, 193);
+    color: rgb(240, 159, 63);
     border: 0;
 }
 
@@ -76,6 +86,10 @@ body.fullpage {
 .store {
     margin-left: 15px;
     margin-right: 15px;
+}
+
+.store .list-group-item {
+    background-color: rgb(241, 242, 243);
 }
 
 .order-contents {
