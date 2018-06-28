@@ -7,8 +7,8 @@
 */
 
 body {
-    background-color: rgb(25, 52, 90);
-    /*background-color: rgb(42, 108, 193);*/
+    /*background-color: rgb(25, 52, 90);*/
+    background-color: rgb(51,78,116);
     padding-bottom: 70px;
 }
 
@@ -22,13 +22,22 @@ body.fullpage {
 }
 
 .navbar-default {
-    background-color: rgb(42, 108, 193);
-    /*background-color: rgb(25, 52, 90);*/
+    /*background-color: rgb(42, 108, 193);*/
+    background-color: rgb(25, 52, 90);
 }
 
 .navbar-default .navbar-nav > li > a {
     color: rgb(240, 159, 63) !important;
+    font-size: 110%;
+    line-height: inherit;
 }
+
+.navbar-nav li > a:hover,
+.navbar-nav li > a.active {
+    background-color: rgb(51,78,116) !important;
+    /*background-color: rgb(68,134,219) !important;*/
+}
+
 /*.navbar-header {
     background-color: rgb(254, 254, 254) !important;
     Mörkblå: rgb(6, 81, 107)
@@ -72,7 +81,8 @@ body.fullpage {
 }
 
 .page-footer {
-    background-color: rgb(42, 108, 193);
+    background-color: rgb(25, 52, 90);
+    /*background-color: rgb(42, 108, 193);*/
     color: rgb(240, 159, 63);
     border: 0;
 }

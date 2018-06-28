@@ -94,6 +94,12 @@
                 return false;
             });
 
+            $("a[href]").each(function() {
+                if (this.href === window.location.href) {
+                    $(this).addClass("active");
+                }
+            });
+
             if (!Modernizr.inputtypes.time) {
                 console.log("HTML5 timepicker not supported. Using bootstrap-timepicker as fallback.");
                 $("input[type='time']")
