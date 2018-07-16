@@ -126,6 +126,12 @@
   <data name="EmptyCart" xml:space="preserve">
     <value>Empty cart</value>
   </data>
+  <data name="Faq" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="SmithDescription" xml:space="preserve">
+    <value>Agneta hammers a red-hot bracelet into shape</value>
+  </data>
   <data name="Store" xml:space="preserve">
     <value>Store</value>
   </data>

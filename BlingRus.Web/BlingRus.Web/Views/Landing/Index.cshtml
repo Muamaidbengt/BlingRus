@@ -2,12 +2,25 @@
 @inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = Localizer["Title"];
-    ViewBag.FullPageContent = true;
+    //ViewBag.FullPageContent = true;
 }
 
-<div class="landing">
-    <a asp-action="Index" asp-controller="Store">
-        <img src="/img/BlingRUs_FrontLogoTagline.png" class="img-responsive center-block"
-             alt="Bling R Us: Why compromize when you can personalize?" />
-    </a>
+<div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+
+        <div class="well">
+            <a asp-action="Index" asp-controller="Store">
+                <img src="/img/BlingRUs_FrontLogoTagline2.png" class="img-responsive center-block"
+                     alt="Bling R Us: Why compromize when you can personalize?" />
+            </a>
+            <br />
+            <img src="/img/smedja.jpg" class="img-responsive img-rounded" 
+                 alt="@Localizer["SmithDescription"]" />
+            
+            <br/>
+            <p>@Localizer["Introduction"]</p>
+            <a asp-controller="Store" asp-action="Index">@Localizer["BrowseTheStore"]</a>
+        </div>
+    </div>
 </div>

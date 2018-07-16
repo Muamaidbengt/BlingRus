@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BrowseTheStore" xml:space="preserve">
+    <value>Why don't you have a look around in our store?</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>With nearly a century's worth of experience, Bling-R-Us is dedicated to offer you the greatest of Scandinavian jewelry with a personal touch. Our jewelry is crafted by hand in our smith in Svartlien, Sweden.</value>
+  </data>
   <data name="Title" xml:space="preserve">
-    <value>Welcome to Bling R Us!</value>
+    <value>Welcome to Bling-R-Us!</value>
   </data>
 </root>

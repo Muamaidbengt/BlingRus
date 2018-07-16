@@ -34,5 +34,11 @@ namespace BlingRus.Web.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Faq()
+        {
+            return View();
+        }
     }
 }

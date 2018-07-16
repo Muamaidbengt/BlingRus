@@ -126,6 +126,12 @@
   <data name="EmptyCart" xml:space="preserve">
     <value>Töm varukorgen</value>
   </data>
+  <data name="Faq" xml:space="preserve">
+    <value>Vanliga frågor</value>
+  </data>
+  <data name="SmithDescription" xml:space="preserve">
+    <value>Agneta använder hammaren för att forma ett glödhett armband</value>
+  </data>
   <data name="Store" xml:space="preserve">
     <value>Butik</value>
   </data>

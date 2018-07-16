@@ -74,7 +74,7 @@ namespace BlingRus.Web
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "{controller=Landing}/{action=Index}/{id?}");
+                routes.MapRoute("default", "{controller=Store}/{action=Index}/{id?}");
             });
 
             var inventoryJson = File.ReadAllText("Inventory.json");

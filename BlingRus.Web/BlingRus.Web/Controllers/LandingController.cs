@@ -2,7 +2,6 @@
 
 namespace BlingRus.Web.Controllers
 {
-
     [Route("~/")]
     [Route("[controller]")]
     public class LandingController : Controller

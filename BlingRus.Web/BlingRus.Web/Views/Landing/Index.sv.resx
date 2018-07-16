@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BrowseTheStore" xml:space="preserve">
+    <value>Varför inte ta en titt i vår butik?</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Med nästan ett sekels samlad erfarenhet i bagaget vill vi erbjuda dig en geniun skandinavisk design med din alldeles egna personliga prägel. Våra smycken produceras för hand i vår guldsmedja i Svartlien.</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Välkommen till Bling R Us!</value>
   </data>

@@ -22,7 +22,7 @@
     {
         <div class="logo">
             <div style="height: 105px; width: 262px; margin-left: 15px;">
-                <a asp-controller="Store" asp-action="Index"><img src="@Url.Content("~/img/Logo_HiRes.png")" style="max-height: 100px; margin-left: auto; margin-right: auto;" /></a>
+                <a asp-controller="Landing" asp-action="Index"><img src="@Url.Content("~/img/Logo_HiRes.png")" style="max-height: 100px; margin-left: auto; margin-right: auto;" /></a>
             </div>
         </div>
 
@@ -31,6 +31,7 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Store" asp-action="Index">@Localizer["Store"]</a></li>
                     <li><a asp-controller="About" asp-action="Index">@Localizer["About"]</a></li>
+                    <li><a asp-controller="About" asp-action="Faq">@Localizer["Faq"]</a></li>
                     <li><a asp-controller="About" asp-action="Contact">@Localizer["Contact"]</a></li>
 
                 </ul>
