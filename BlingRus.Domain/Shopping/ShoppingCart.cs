@@ -17,13 +17,14 @@ namespace BlingRus.Domain.Shopping
         public string CustomerPhone { get; set; }
 
         internal IList<ShoppingCartItem> ContentsInternal { get; set; }
-
+        internal IList<ShoppingCartItem> SecuredContents => new EnterpriseListWrapper<ShoppingCartItem>(ContentsInternal);
         public decimal AggregatedCost => ContentsInternal.Sum(c => c.AggregatedCost);
         public decimal AggregatedShippingCost => ContentsInternal.Sum(c => c.AggregatedShippingCost);
+        public int AggregatedQuantity => ContentsInternal.Sum(c => c.Quantity);
 
         protected ShoppingCart()
         {
-            ContentsInternal = new EnterpriseListWrapper<ShoppingCartItem>(new List<ShoppingCartItem>());
+            ContentsInternal = new List<ShoppingCartItem>();
         }
 
         public ShoppingCart(int id) : this()
@@ -40,14 +41,12 @@ namespace BlingRus.Domain.Shopping
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
-            ContentsInternal.Add(item);
+            SecuredContents.Add(item);
         }
 
         public void Remove(ShoppingCartItem item)
         {
-            ContentsInternal.Remove(item);
+            SecuredContents.Remove(item);
         }
-
-        public IEnumerable<ShoppingCartItem> Contents => new List<ShoppingCartItem>(ContentsInternal);
     }
 }

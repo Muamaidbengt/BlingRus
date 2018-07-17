@@ -35,7 +35,7 @@ namespace BlingRus.Domain.Tests
                 var cart = new ShoppingCart(42);
                 cart.Add(new ShoppingCartItem(1, JewelrySize.Medium, new Jewelry("Bracelet", Category.Bracelets, 100, "foo.jpg", "Braceletdescription", "Braceletdescription2")));
                 cart.Add(new ShoppingCartItem(1, JewelrySize.Small, new Jewelry("Ring", Category.Rings, 100, "foo.jpg", "Ringdescription", "Ringdescription2")));
-                _order = _checkoutService.CalculateOrder(cart);
+                _order = _checkoutService.CalculateOrder(cart).Result;
             }
 
             [Fact]
@@ -85,7 +85,7 @@ namespace BlingRus.Domain.Tests
             {
                 var cart = new ShoppingCart(42);
                 cart.Add(new ShoppingCartItem(7, JewelrySize.Medium, new Jewelry("Ring", Category.Rings, 100, "foo.jpg", "Ringdescription", "Ringdescription2")));
-                _order = _checkoutService.CalculateOrder(cart);
+                _order = _checkoutService.CalculateOrder(cart).Result;
             }
 
             [Fact]

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
-using System.Threading;
-using BlingRus.Domain;
+using System.Threading.Tasks;
 using BlingRus.Domain.Ordering;
-using BlingRus.Domain.Services;
 using BlingRus.Domain.Shopping;
 using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using JewelrySize = BlingRus.Domain.Shopping.JewelrySize;
 
 namespace BlingRus.Web.Controllers
 {
@@ -27,22 +23,23 @@ namespace BlingRus.Web.Controllers
         }
 
         [HttpGet("empty")]
-        public JsonResult Empty()
+        public async Task<JsonResult> Empty()
         {
-            var cart = _checkoutService.CreateCart();
+            var cart = await _checkoutService.CreateCart();
             return Json(cart);
         }
 
         [HttpGet("{id}")]
-        public JsonResult Get(int id)
+        public async Task<JsonResult> Get(int id)
         {
-            return Json(_shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id));
+            var cart = await _shoppingContext.GetCartById(id);
+            return Json(cart);
         }
 
         [HttpGet("{id}/calculate")]
-        public JsonResult Calculate(int id)
+        public async Task<JsonResult> Calculate(int id)
         {
-            var targetCart = _shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id);
+            var targetCart = await _shoppingContext.GetCartById(id);
             if (targetCart == null)
                 return Json("Not found");
 
@@ -51,13 +48,13 @@ namespace BlingRus.Web.Controllers
         }
 
         [HttpPost("{id}/add")]
-        public JsonResult Add(int id, AddItemModel model)
+        public async Task<JsonResult> Add(int id, AddItemModel model)
         {
-            var targetCart = _shoppingContext.Carts.FirstOrDefault(cart => cart.Id == id);
+            var targetCart = await _shoppingContext.GetCartById(id);
             if (targetCart == null)
                 return JsonError(HttpStatusCode.NotFound, "Cart not found");
 
-            var itemToAdd = _shoppingContext.Catalog.FirstOrDefault(item => item.Id == model.ItemId);
+            var itemToAdd = await _shoppingContext.GetJewelryById(model.ItemId);
             if (itemToAdd == null)
                 return JsonError(HttpStatusCode.BadRequest, "Item not found");
 
@@ -78,7 +75,7 @@ namespace BlingRus.Web.Controllers
                 return JsonError(HttpStatusCode.BadRequest, ex.Message);
             }
 
-            _shoppingContext.Save();
+            await _shoppingContext.Save();
             return Json(targetCart);
         }
 

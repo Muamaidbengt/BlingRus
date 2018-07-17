@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BlingRus.Domain.Discounts;
-using BlingRus.Domain.EnterpriseCollections;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlingRus.Domain.Shopping
@@ -15,27 +16,43 @@ namespace BlingRus.Domain.Shopping
         public IQueryable<ShoppingCart> Carts => CartsInternal.Include(c => c.ContentsInternal);
         public IQueryable<Jewelry> Catalog => CatalogInternal;
 
-        public void Add(Order order)
+        public async Task Add(Order order)
         {
-            OrdersInternal.Add(order);
+            await OrdersInternal.AddAsync(order);
         }
 
-        public void Add(ShoppingCart cart)
+        public async Task Add(ShoppingCart cart)
         {
-            CartsInternal.Add(cart);
+            await CartsInternal.AddAsync(cart);
         }
 
-        public ShoppingCart CreateCart()
+        public async Task<ShoppingCart> GetCartById(int id)
+        {
+            return await Carts.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<IEnumerable<Jewelry>> GetCatalog()
+        {
+            return await Catalog.ToListAsync();
+        }
+        
+        public async Task<Jewelry> GetJewelryById(Guid id)
+        {
+            return await Catalog.FirstOrDefaultAsync(jewelry => jewelry.Id == id);
+        }
+
+        public Task<ShoppingCart> CreateCart()
         {
             var maxId = CartsInternal.Any() 
                 ? CartsInternal.Max(c => c.Id) 
                 : 821103;
-            return new ShoppingCart(maxId + 1);
+            return Task.FromResult(new ShoppingCart(maxId + 1));
         }
 
-        public void Save()
+        public Task Save()
         {
             SaveChanges();
+            return Task.CompletedTask;
         }
 
         internal DbSet<Jewelry> CatalogInternal { get; set; }

@@ -1,11 +1,8 @@
-﻿using System.Linq;
-using BlingRus.Domain;
+﻿using System.Threading.Tasks;
 using BlingRus.Domain.Ordering;
-using BlingRus.Domain.Services;
 using BlingRus.Domain.Shopping;
 using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace BlingRus.Web.Controllers
 {
@@ -27,10 +24,10 @@ namespace BlingRus.Web.Controllers
 
         [HttpGet]
         [HttpGet("index")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var cart = _checkoutService.GetCart();
-            var catalog = _shoppingContext.Catalog.ToList();
+            var cart = await _checkoutService.GetCart();
+            var catalog = await _shoppingContext.GetCatalog();
 
             var model = new CatalogModel
             {
@@ -41,10 +38,10 @@ namespace BlingRus.Web.Controllers
         }
 
         [HttpGet("checkout")]
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout()
         {
-            var cart = _checkoutService.GetCart();
-            var order = _checkoutService.CalculateOrder(cart);
+            var cart = await _checkoutService.GetCart();
+            var order = await _checkoutService.CalculateOrder(cart);
             var model = new SubmitOrderModel 
             {
                 Order = order, 
@@ -58,13 +55,13 @@ namespace BlingRus.Web.Controllers
         }
 
         [HttpPost("checkout")]
-        public IActionResult Checkout(SubmitOrderModel model)
+        public async Task<IActionResult> Checkout(SubmitOrderModel model)
         {
-            var cart =_checkoutService.GetCart();
+            var cart = await _checkoutService.GetCart();
             
             if (!ModelState.IsValid)
             {
-                var originalOrder = _checkoutService.CalculateOrder(cart);
+                var originalOrder = await _checkoutService.CalculateOrder(cart);
                 model.Order = originalOrder;
                 return View(model);
             }
@@ -76,7 +73,7 @@ namespace BlingRus.Web.Controllers
             cart.CreditCardNumber = model.CreditCardNumber;
             cart.CreditCardExpiration = model.CreditCardExpiration;
 
-            _checkoutService.FinalizeOrder(cart);
+            await _checkoutService.FinalizeOrder(cart);
 
             return View("Confirm");
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 using BlingRus.Domain.Discounts;
+using BlingRus.Domain.EnterpriseCollections;
 using BlingRus.Domain.Services;
 using BlingRus.Domain.Shopping;
 using Microsoft.AspNetCore.Http;
@@ -26,34 +27,39 @@ namespace BlingRus.Domain.Ordering
             _mailService = mailService;
         }
 
-        public ShoppingCart CreateCart()
+        public async Task<ShoppingCart> CreateCart()
         {
-            var cart = _shoppingContext.CreateCart();
-            _shoppingContext.Add(cart);
-            _shoppingContext.Save();
+            var cart = await _shoppingContext.CreateCart();
+            await _shoppingContext.Add(cart);
+            await _shoppingContext.Save();
 
             _httpContext.HttpContext.Response.Cookies.Append("ShoppingCartId", cart.Id.ToString());
             
             return cart;
         }
 
-        public ShoppingCart GetCart()
+        public async Task<ShoppingCart> GetCart()
         {
             var cartCookie = _httpContext.HttpContext.Request.Cookies["ShoppingCartId"];
             if (cartCookie != null && int.TryParse(cartCookie, out var cartId))
             {
-                var cart = _shoppingContext.Carts.FirstOrDefault(c => c.Id == cartId);
+                var cart = await _shoppingContext.GetCartById(cartId);
                 if (cart != null)
                     return cart;
             }
-            return CreateCart();
+            return await CreateCart();
         }
 
-        public Order CalculateOrder(ShoppingCart cart)
+        public async Task<IEnumerable<Jewelry>> GetJewelryCatalog()
+        {
+            return await _shoppingContext.GetCatalog();
+        }
+
+        public Task<Order> CalculateOrder(ShoppingCart cart)
         {
             var orderlines = new List<OrderLine>();
 
-            foreach (var entry in cart.Contents)
+            foreach (var entry in cart.SecuredContents)
             {
                 var line = new OrderLine(entry.Description, entry.Quantity, entry.UnitCost, entry.UnitShippingCost, entry.Customization);
                 foreach(var orderlineDiscountCalculator in _pricingModel.OrderLineAdjustmentCalculators)
@@ -65,12 +71,12 @@ namespace BlingRus.Domain.Ordering
             foreach(var orderDiscountCalculator in _pricingModel.OrderAdjustmentCalculators)
                 orderDiscountCalculator.ApplyTo(order);
 
-            return order;
+            return Task.FromResult(order);
         }
 
-        public Order FinalizeOrder(ShoppingCart cart)
+        public async Task<Order> FinalizeOrder(ShoppingCart cart)
         {
-            var order = CalculateOrder(cart);
+            var order = await CalculateOrder(cart);
             
             order.DeliveryName = cart.CustomerName;
             order.DeliveryAddress = cart.CustomerAddress;
@@ -78,9 +84,9 @@ namespace BlingRus.Domain.Ordering
             order.CreditCardNumber = cart.CreditCardNumber;
             order.CreditCardExpiration = cart.CreditCardExpiration;
 
-            CreateCart();
+            await CreateCart();
 
-            _shoppingContext.Save();
+            await _shoppingContext.Save();
 
             _mailService.SendOrderConfirmationMail(order);
             return order;

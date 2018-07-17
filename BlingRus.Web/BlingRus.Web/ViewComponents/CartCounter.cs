@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BlingRus.Domain;
 using BlingRus.Domain.Ordering;
-using BlingRus.Domain.Services;
+using BlingRus.Domain.Shopping;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlingRus.Web.ViewComponents
@@ -19,10 +19,8 @@ namespace BlingRus.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var cart = _checkoutService.GetCart();
-            var model = cart == null
-                ? new Tuple<int?, decimal?>(null, null)
-                : new Tuple<int?, decimal?>(cart.Contents.Sum(thing => thing.Quantity), cart.AggregatedCost + cart.AggregatedShippingCost);
+            var cart = await _checkoutService.GetCart();
+            var model = new Tuple<int?, decimal?>(cart?.AggregatedQuantity, cart?.AggregatedCost + cart?.AggregatedShippingCost);
             
             return View(model);
         }

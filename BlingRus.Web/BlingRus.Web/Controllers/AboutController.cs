@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using BlingRus.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,20 +9,20 @@ namespace BlingRus.Web.Controllers
     public class AboutController : Controller
     {
         [HttpGet("index")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
 
         [HttpGet("contact")]
-        public IActionResult Contact()
+        public async Task<IActionResult> Contact()
         {
             var model = new ContactRequestModel();
             return View(model);
         }
 
         [HttpPost("contact")]
-        public IActionResult Contact(ContactRequestModel model)
+        public async Task<IActionResult> Contact(ContactRequestModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -30,13 +31,13 @@ namespace BlingRus.Web.Controllers
         }
 
         [HttpGet("creditcards")]
-        public IActionResult CreditCards()
+        public async Task<IActionResult> CreditCards()
         {
             return View();
         }
 
         [HttpGet]
-        public IActionResult Faq()
+        public async Task<IActionResult> Faq()
         {
             return View();
         }
