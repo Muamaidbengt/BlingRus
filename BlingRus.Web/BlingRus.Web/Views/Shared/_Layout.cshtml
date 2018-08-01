@@ -20,7 +20,7 @@
     }
     else
     {
-        <div class="logo">
+        <div class="logo hidden-xs">
             <div style="height: 105px; width: 262px; margin-left: 15px;">
                 <a asp-controller="Landing" asp-action="Index"><img src="@Url.Content("~/img/Logo_HiRes.png")" style="max-height: 100px; margin-left: auto; margin-right: auto;" /></a>
             </div>
@@ -43,7 +43,7 @@
                             </a>
 
                             <a asp-action="Empty" asp-controller="Cart" class="btn btn-warning" id="btn-empty-cart">
-                                <span class="glyphicon glyphicon-trash"></span> @Localizer["EmptyCart"]
+                                <span class="glyphicon glyphicon-trash"></span> <span class="hidden-xs">@Localizer["EmptyCart"]</span>
                             </a>
                         </div>
                     </li>
@@ -56,7 +56,7 @@
             @RenderBody()
         </div>
 
-        <nav class="navbar page-footer navbar-fixed-bottom">
+        <nav class="navbar page-footer navbar-fixed-bottom hidden-xs">
             <div class="container-fluid">
                 <div class="navbar-text">
                     <span>Why compromize when you can personalize?</span>

@@ -22,40 +22,34 @@
             {
                 <li class="list-group-item row">
                     <div class="form-group form-inline">
-                        <div class="col-sm-1 col-xs-4">
+                        <div class="col-sm-2 col-xs-4">
                             <input type="hidden" value="@item.Id" data-role="itemId" />
                             <a href="@Url.Content("~/img/" + item.Image)" class="thumbnail">
                                 <img src="@Url.Content("~/img/" + item.Image)" class="img-rounded" />
                             </a>
                             <span><strong><span data-role="cost">@item.UnitCost.ToString("0")</span> SEK</strong></span>
                         </div>
-                        <div class="col-sm-5 col-xs-4">
+                        <div class="col-xs-8 col-sm-6">
                             <h4 class="list-group-item-heading">@item.Name</h4>
                             <div class="list-group-item-text" style="white-space: pre-line">@item.Description</div>
                             <div class="list-group-item-text" style="white-space: pre-line; margin-top: 0.8em;"><em>@item.Description2</em></div>
                         </div>
-                        <div class="col-sm-6 col-xs-4 row">
-                            <div class="input-group col-xs-6 col-sm-4">
-                                <input type="text" class="form-control" value="" data-role="customization" placeholder="@Localizer["Customization"]" />
-                            </div>
-
-                            <div class="input-group col-xs-6 col-sm-2">
+                        <div class="col-xs-12 col-sm-4">
+                            <input type="text" class="form-control" value="" data-role="customization" placeholder="@Localizer["Customization"]" />
+                            <select class="form-control" data-role="size">
+                                <option value="1">@Localizer["JewelrySizeSmall"]</option>
+                                <option value="3" selected="selected">@Localizer["JewelrySizeMedium"]</option>
+                                <option value="4">@Localizer["JewelrySizeLarge"]</option>
+                                <option value="6">@Localizer["JewelrySizeHumongous"]</option>
+                            </select>
+                            <div class="input-group">
                                 <input class="form-control" type="number" data-role="amount" value="1">
-                            </div>
-
-                            <div class="input-group col-xs-6 col-sm-2">
-                                <select class="form-control" data-role="size">
-                                    <option value="1">@Localizer["JewelrySizeSmall"]</option>
-                                    <option value="3" selected="selected">@Localizer["JewelrySizeMedium"]</option>
-                                    <option value="4">@Localizer["JewelrySizeLarge"]</option>
-                                    <option value="6">@Localizer["JewelrySizeHumongous"]</option>
-                                </select>
-                            </div>
-                            <div class="input-group col-xs-6 col-sm-3">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" data-action="AddToCart" data-href="@Url.Action("Add", "Cart", new RouteValueDictionary(new {id = Model.CartId}))">
+                                        <i class="glyphicon glyphicon-shopping-cart hidden-sm hidden-md hidden-lg"></i>
                                         <i class="glyphicon glyphicon-plus"></i>
-                                        @Localizer["AddToCart"]
+                                        
+                                        <span class="hidden-xs">@Localizer["AddToCart"]</span>
                                     </button>
                                 </span>
                             </div>
