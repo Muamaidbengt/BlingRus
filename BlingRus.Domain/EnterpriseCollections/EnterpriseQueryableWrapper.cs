@@ -17,7 +17,8 @@ namespace BlingRus.Domain.EnterpriseCollections
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new EnterpriseEnumerator<T>(_wrappedQueryable);
+            return _wrappedQueryable.GetEnumerator();
+            //return new EnterpriseEnumerator<T>(_wrappedQueryable);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
