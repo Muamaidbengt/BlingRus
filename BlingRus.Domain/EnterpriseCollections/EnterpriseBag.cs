@@ -11,6 +11,8 @@ namespace BlingRus.Domain.EnterpriseCollections
             var enterpriseCoefficient = _enterpriseGenerator.Next(1, 16) / 10d;
             enterpriseCoefficient *= enterpriseCoefficient;
             var enterpriseFactor = (int) Math.Pow(10, enterpriseCoefficient);
+
+            // Wow! Very enterprise! Such scalable!
             Thread.Sleep(enterpriseFactor);
         }
     }
