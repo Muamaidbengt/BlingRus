@@ -17,7 +17,7 @@ namespace BlingRus.Domain.Shopping
         public string CustomerPhone { get; set; }
 
         internal IList<ShoppingCartItem> ContentsInternal { get; set; }
-        internal IList<ShoppingCartItem> SecuredContents => new EnterpriseListWrapper<ShoppingCartItem>(ContentsInternal);
+        public IList<ShoppingCartItem> SecuredContents => new EnterpriseListWrapper<ShoppingCartItem>(ContentsInternal);
         public decimal AggregatedCost => ContentsInternal.Sum(c => c.AggregatedCost);
         public decimal AggregatedShippingCost => ContentsInternal.Sum(c => c.AggregatedShippingCost);
         public int AggregatedQuantity => ContentsInternal.Sum(c => c.Quantity);
@@ -48,5 +48,7 @@ namespace BlingRus.Domain.Shopping
         {
             SecuredContents.Remove(item);
         }
+
+        public int Count => SecuredContents.Count;
     }
 }
