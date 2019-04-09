@@ -21,15 +21,7 @@ namespace BlingRus.Domain.Shopping
             var inventory = JObject.Parse(inventoryJson);
             foreach (var itemJson in inventory.First.First.Children())
             {
-                var name = itemJson.Value<string>("name");
-                var image = itemJson.Value<string>("image");
-                var description = itemJson.Value<string>("description");
-                var description2 = itemJson.Value<string>("description2");
-                var categoryRaw = itemJson.Value<string>("category");
-                var cost = itemJson.Value<int>("cost");
-                var category = Enum.Parse<Category>(categoryRaw);
-
-                var jewelry = new Jewelry(name, category, cost, image, description, description2);
+                var jewelry = itemJson.ToObject<Jewelry>();
                 context.CatalogInternal.Add(jewelry);
             }
 
